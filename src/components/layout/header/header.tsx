@@ -30,7 +30,7 @@ export default function HeaderMenu() {
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
           <Text weight="bold" style={{ color: colors.textColor }}>
-            <Link href="/">Art of Banking.</Link>
+            <Link href="/">Art of Banking</Link>
           </Text>
 
           <GroupDesktop />

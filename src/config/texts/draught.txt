@@ -1,0 +1,17 @@
+`In order to try reduce the risk involved in loan creations and overdrafts etc, various 
+constraints may be put on banks, by the government or even the banks themselves. constraints
+however are also naturally imposed, due to the dual role a bank plays as a profit making 
+instution and a payments facilitator.`,
+`Because cash is in many ways seen as the final form of settlement, a bank must ensure that
+it can redeem its customers on a day to day basis. The surest way of doing this would be
+to keep all the cash deposited in a vault, in case all the customers decide to all take out
+their money at the same time. Of course, this is unlikely and the bank would like to use 
+these funds for investments elsewhere. But bank-runs can and do happen.`,
+`This then is one of many constraints a bank faces. Traditionally banks are required to keep
+a fraction of total customer deposits as reserves. For example if total customer deposits were
+$10000, a bank may be required by law to keep $2500 in reserve to meet its daily demands.`,
+`We have seen by playing with overdrafts how credit can expand and contract. Credit expansion 
+means there is lots of investment going on, and lots of payments being made. However this 
+is a precarious position for a bank if suddenly everyone gets spooked and wants to redeem their
+deposits as cash. On the other hand, if credit doesn't expand, growth becomes much slower or 
+even impossible. The art of banking requires striking a balance between constraint and elasticity.`,

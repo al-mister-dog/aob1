@@ -11,7 +11,8 @@ import {
 import ActionsPanel from "./actions-panel";
 import React from "react";
 import { colors } from "../../../../../../../config/colorPalette";
-// import RecordsPanel from "./records/panel";
+import RecordsPanel from "./records-panel";
+import BillsPanel from "./bills-panel";
 // import BillsPanel from "./bills/panel";
 
 const useStyles = createStyles((theme) => ({
@@ -64,14 +65,14 @@ function SidePanel({ player }) {
           </Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="records" pt="xs">
-          {/* <RecordsPanel bank={bank} /> */}
+          <RecordsPanel player={player} />
         </Tabs.Panel>
         <Tabs.Panel value="actions" pt="xs">
           <ActionsPanel player={player} />
         </Tabs.Panel>
 
         <Tabs.Panel value="bills" pt="xs">
-          {/* <BillsPanel bank={bank} /> */}
+          <BillsPanel player={player} />
         </Tabs.Panel>
       </Tabs>
     </Card>

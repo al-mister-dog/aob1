@@ -1,7 +1,15 @@
-import { Drawer, useMantineTheme } from "@mantine/core";
+import {
+  ActionIcon,
+  Box,
+  Drawer,
+  Group,
+  Text,
+  useMantineTheme,
+} from "@mantine/core";
 import { useState } from "react";
 import { RefreshDot } from "tabler-icons-react";
 import { useAppDispatch, useAppSelector } from "../../../../../../../app/hooks";
+import { colors } from "../../../../../../../config/colorPalette";
 import {
   reset,
   selectBankers,
@@ -29,7 +37,19 @@ export default function Board({ florencePlayers, lyonsPlayers }) {
   }
   return (
     <>
-      <RefreshDot size={40} color={`${theme.colors.violet[9]}`} />
+      <Box p={10}>
+        <Group position="apart">
+          <Box style={{ display: "flex", alignItems: "center" }}>
+            <ActionIcon size="lg" onClick={handleRefresh}>
+              <RefreshDot size={30} color={`${theme.colors.violet[9]}`} />
+            </ActionIcon>
+            <Text size="xs" color="violet">
+              Refresh
+            </Text>
+          </Box>
+        </Group>
+      </Box>
+
       <CardGrid
         florencePlayers={florencePlayers}
         lyonsPlayers={lyonsPlayers}

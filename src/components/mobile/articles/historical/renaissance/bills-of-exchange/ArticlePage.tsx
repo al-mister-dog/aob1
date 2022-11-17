@@ -4,6 +4,7 @@ import Title from "../../../../../shared-ui/texts/Title";
 import ArticleText from "../../../../../shared-ui/texts/Text-Mobile";
 import SubTitle from "../../../texts/Subtitle";
 import Board from "./ui/board";
+import Caption from "../../../texts/Caption";
 
 export default function PartTwo({
   path,
@@ -23,7 +24,9 @@ export default function PartTwo({
       {texts.paragraphs.map((paragraph) => (
         <ArticleText key={paragraph}>{paragraph}</ArticleText>
       ))}
-
+      <Box>
+        <Caption>{texts.assignment}</Caption>
+      </Box>
       <Board florencePlayers={florencePlayers} lyonsPlayers={lyonsPlayers} />
 
       <Box p={25}>

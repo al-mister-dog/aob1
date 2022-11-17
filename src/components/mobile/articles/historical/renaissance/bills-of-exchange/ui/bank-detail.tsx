@@ -10,8 +10,8 @@ import {
 // import { CardInfo } from "../types";
 import ActionsPanel from "./actions-panel";
 import React from "react";
-// import RecordsPanel from "./records/panel";
-// import BillsPanel from "./bills/panel";
+// import RecordsPanel from "./records-panel";
+// import BillsPanel from "./bills-panel";
 
 const useStyles = createStyles((theme) => ({
   header: { padding: "5px" },

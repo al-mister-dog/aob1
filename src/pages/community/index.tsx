@@ -46,7 +46,7 @@ function PostForm({ email }) {
       body,
       email,
     });
-    console.log(data);
+    setResponse(JSON.stringify(data));
   }
 
   return (
@@ -69,7 +69,7 @@ function PostForm({ email }) {
           <Button type="submit">Submit</Button>
         </Group>
       </form>
-      <p>{JSON.stringify(response)}</p>
+      <p>{response}</p>
     </Box>
   );
 }

@@ -52,8 +52,8 @@ export default function PartFive() {
       <Box p={25}>
         <SubTitle>
           Go to{" "}
-          <Link href="conclusion">
-            <a style={{ color: theme.colors.violet[9] }}>Conclusion. . .</a>
+          <Link href="conclusion" style={{ color: theme.colors.violet[9] }}>
+            Conclusion. . .
           </Link>
         </SubTitle>
       </Box>

@@ -7,6 +7,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
+import { colors } from "../../../../../../../config/colorPalette";
 import BalanceSheetRowHeading from "./balance-sheet-heading";
 
 export default function CardUI({ bank, selectPlayer }) {
@@ -21,7 +22,7 @@ export default function CardUI({ bank, selectPlayer }) {
       radius="xs"
       style={{
         height: "9.75rem",
-        backgroundColor: theme.colors.violet[0],
+        backgroundColor: colors.background2,
         paddingBottom: "0px",
         cursor: "pointer",
         border: hovered ? `2px solid ${theme.colors.violet[2]}` : "",

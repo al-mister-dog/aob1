@@ -67,10 +67,11 @@ export default function PartTwo() {
       <Box p={25}>
         <SubTitle>
           Go to{" "}
-          <Link href="remitting-bills">
-            <a style={{ color: theme.colors.violet[9] }}>
-              Remitting Bills. . .
-            </a>
+          <Link
+            href="remitting-bills"
+            style={{ color: theme.colors.violet[9] }}
+          >
+            Remitting Bills. . .
           </Link>
         </SubTitle>
       </Box>

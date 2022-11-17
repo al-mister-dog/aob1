@@ -21,10 +21,11 @@ export default function CompoundInterestDoubling() {
       </Box>
       <Caption>
         For a basic introduction to compound interest, see our{" "}
-        <Link href="compound-interest">
-          <a style={{ color: theme.colors.violet[9] }}>
-            compound interest introduction article
-          </a>
+        <Link
+          href="compound-interest"
+          style={{ color: theme.colors.violet[9] }}
+        >
+          compound interest introduction article
         </Link>
       </Caption>
       <ArticleText>

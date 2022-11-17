@@ -176,10 +176,11 @@ export default function CompoundInterestPage() {
       <Box p={25}>
         <SubTitle>
           Want to dive deeper into the topic of compound interest?, see our{" "}
-          <Link href="compound-interest-doubling">
-            <a style={{ color: theme.colors.violet[9] }}>
-              compound interest doubling article. . .
-            </a>
+          <Link
+            href="compound-interest-doubling"
+            style={{ color: theme.colors.violet[9] }}
+          >
+            compound interest doubling article. . .
           </Link>
         </SubTitle>
       </Box>

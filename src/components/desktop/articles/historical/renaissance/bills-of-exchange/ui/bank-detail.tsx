@@ -10,6 +10,7 @@ import {
 // import { CardInfo } from "../types";
 import ActionsPanel from "./actions-panel";
 import React from "react";
+import { colors } from "../../../../../../../config/colorPalette";
 // import RecordsPanel from "./records/panel";
 // import BillsPanel from "./bills/panel";
 
@@ -36,10 +37,11 @@ function SidePanel({ player }) {
     <Card
       p="sm"
       radius="xs"
+      shadow="sm"
       style={{
         paddingBottom: "0px",
-        height: "26rem",
-        backgroundColor: theme.colors.violet[1],
+        height: "30.5rem",
+        backgroundColor: colors.background2,
       }}
     >
       <Card.Section className={`${classes.header}`}>
@@ -49,7 +51,7 @@ function SidePanel({ player }) {
           </Title>
         </Center>
       </Card.Section>
-      <Tabs color="violet" defaultValue="records">
+      <Tabs color="violet" defaultValue="actions">
         <Tabs.List grow>
           <Tabs.Tab value="records">
             <Text color={theme.colors.violet[9]}>Records</Text>

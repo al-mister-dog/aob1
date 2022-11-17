@@ -9,9 +9,8 @@ import Link from "next/link";
 import Title from "../../../../../shared-ui/texts/Title";
 import ArticleText from "../../../../../shared-ui/texts/Article-Text";
 import SubTitle from "../../../texts/Subtitle";
-import { useState } from "react";
-
 import Board from "./ui/board";
+import Caption from "../../../../../shared-ui/texts/Caption";
 
 export const texts = {
   title: `Bills of Exchange and Units of Account`,
@@ -62,16 +61,19 @@ export default function PartTwo() {
       {texts.paragraphs.map((paragraph) => (
         <ArticleText key={paragraph}>{paragraph}</ArticleText>
       ))}
-
+      <Box>
+        <Caption>{texts.assignment}</Caption>
+      </Box>
       <Board florencePlayers={florencePlayers} lyonsPlayers={lyonsPlayers} />
 
       <Box p={25}>
         <SubTitle>
           Go to{" "}
-          <Link href="remitting-bills">
-            <a style={{ color: theme.colors.violet[9] }}>
-              Remitting Bills. . .
-            </a>
+          <Link
+            href="remitting-bills"
+            style={{ color: theme.colors.violet[9] }}
+          >
+            Remitting Bills. . .
           </Link>
         </SubTitle>
       </Box>

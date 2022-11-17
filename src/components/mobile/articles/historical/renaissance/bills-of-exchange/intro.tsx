@@ -79,11 +79,12 @@ export default function Intro() {
 
       <Box p={25}>
         <SubTitle>
-          Go to {" "}
-          <Link href="bills-of-exchange/bills-of-exchange-and-units-of-account">
-            <a style={{ color: theme.colors.violet[9] }}>
-              Bills of Exchange and Units of Account. . .
-            </a>
+          Go to{" "}
+          <Link
+            href="bills-of-exchange/bills-of-exchange-and-units-of-account"
+            style={{ color: theme.colors.violet[9] }}
+          >
+            Bills of Exchange and Units of Account. . .
           </Link>
         </SubTitle>
       </Box>

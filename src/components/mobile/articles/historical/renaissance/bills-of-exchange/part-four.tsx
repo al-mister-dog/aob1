@@ -63,10 +63,8 @@ export default function PartFour() {
       <Box p={25}>
         <SubTitle>
           Go to{" "}
-          <Link href="rechange-2">
-            <a style={{ color: theme.colors.violet[9] }}>
-              Rechange: Part 2. . .
-            </a>
+          <Link href="rechange-2" style={{ color: theme.colors.violet[9] }}>
+            Rechange: Part 2. . .
           </Link>
         </SubTitle>
       </Box>

@@ -1,14 +1,7 @@
-import {
-  Box,
-  Card,
-  Center,
-  createStyles,
-  SimpleGrid,
-  Title,
-} from "@mantine/core";
+import { Card, createStyles, SimpleGrid } from "@mantine/core";
 import KeyTerms from "../lectures/article/lecture-index/key-terms";
 import Article from "./lectures/article";
-import NextLectureLink from "../shared-ui/next-lecture-link";
+
 import LayoutDesktop from "./interactive-ui/layout";
 import { colors } from "../../config/colorPalette";
 import NextLectureCard from "../shared-ui/next-lecture-card";

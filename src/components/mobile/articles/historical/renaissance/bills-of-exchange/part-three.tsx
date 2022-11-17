@@ -57,10 +57,8 @@ export default function Part3() {
       <Box p={25}>
         <SubTitle>
           Go to{" "}
-          <Link href="rechange-1">
-            <a style={{ color: theme.colors.violet[9] }}>
-              Rechange: Part 1. . .
-            </a>
+          <Link href="rechange-1" style={{ color: theme.colors.violet[9] }}>
+            Rechange: Part 1. . .
           </Link>
         </SubTitle>
       </Box>

@@ -1,8 +1,8 @@
-import { Box, Center, useMantineTheme } from "@mantine/core";
+import { Box, useMantineTheme } from "@mantine/core";
 
 import Link from "next/link";
 import Title from "../../../../../shared-ui/texts/Title";
-import Caption from "../../../../../shared-ui/texts/Caption";
+
 import ArticleText from "../../../../../shared-ui/texts/Article-Text";
 import SubTitle from "../../../texts/Subtitle";
 import Source from "../../../../../shared-ui/texts/Source";
@@ -79,11 +79,12 @@ export default function Intro() {
 
       <Box p={25}>
         <SubTitle>
-          Go to {" "}
-          <Link href="bills-of-exchange/bills-of-exchange-and-units-of-account">
-            <a style={{ color: theme.colors.violet[9] }}>
-              Bills of Exchange and Units of Account. . .
-            </a>
+          Go to{" "}
+          <Link
+            href="bills-of-exchange/bills-of-exchange-and-units-of-account"
+            style={{ color: theme.colors.violet[9] }}
+          >
+            Bills of Exchange and Units of Account. . .
           </Link>
         </SubTitle>
       </Box>

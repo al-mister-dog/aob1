@@ -50,10 +50,11 @@ export default function Conclusion() {
       <Box p={25}>
         <SubTitle>
           To learn more about correspondent banking, go to{" "}
-          <Link href="/lectures/towards-a-central-bank/correspondent-banking">
-            <a style={{ color: theme.colors.violet[9] }}>
-              Money and Banking Lectures: Correspondent Banking. . .
-            </a>
+          <Link
+            href="/lectures/towards-a-central-bank/correspondent-banking"
+            style={{ color: theme.colors.violet[9] }}
+          >
+            Money and Banking Lectures: Correspondent Banking. . .
           </Link>
         </SubTitle>
       </Box>

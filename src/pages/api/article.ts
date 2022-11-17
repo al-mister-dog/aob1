@@ -1,7 +1,4 @@
-import { prisma } from "../../../lib/prisma";
-
-import { unstable_getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]";
+import { prisma } from "../../lib/prisma";
 
 async function post(req, res) {
   const { title, body, email } = req.body;

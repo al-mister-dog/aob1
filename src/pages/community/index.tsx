@@ -41,7 +41,7 @@ function PostForm({ email }) {
 
   async function submitArticle(values) {
     const { title, body } = values;
-    const { data } = await axios.post("/api/posts", {
+    const { data } = await axios.post("/api/article", {
       title,
       body,
       email,

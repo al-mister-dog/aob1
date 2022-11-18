@@ -18,39 +18,22 @@ In articles add written by and 'software by'
 
 
 
-import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
-import { prisma } from "../../../lib/prisma";
-import { verifyPassword } from "../../../lib/auth";
+SCHEMAS
 
-export default NextAuth({
-  session: {
-    jwt: true,
-  },
-  providers: [
-    Providers.Credentials({
-      async authorize(credentials) {
-        const user = await prisma.user.findUnique({
-          where: {
-            email: credentials.email,
-          },
-        });
+user {
+  articles
+}
 
-        if (!user) {
-          throw new Error("No user found!");
-        }
-
-        const isValid = await verifyPassword(
-          credentials.password,
-          user.password
-        );
-
-        if (!isValid) {
-          throw new Error("Could not log you in!");
-        }
-
-        return { email: user.email };
-      },
-    }),
-  ],
-});
+profile {
+  pic
+  bio
+  tag
+}
+article {
+  title
+  body
+  path
+  createdAt
+  updatedAt
+  userId
+}

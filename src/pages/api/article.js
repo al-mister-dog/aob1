@@ -1,7 +1,6 @@
 import { unstable_getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 import { prisma } from "../../lib/prisma";
-import { PrismaClientRustPanicError } from "@prisma/client/runtime";
 
 async function post(req, res) {
   const session = await unstable_getServerSession(req, res, authOptions);
@@ -10,6 +9,7 @@ async function post(req, res) {
     return;
   }
   const { title, body, email } = req.body;
+
   const prismaUser = await prisma.user.findUnique({
     where: { email: email },
   });
@@ -40,7 +40,7 @@ async function get(req, res) {
   const posts = await prisma.post.findMany({
     where: { userId: prismaUser.id },
   });
-  console.log(posts)
+
   return res.status(201).json(posts);
 }
 

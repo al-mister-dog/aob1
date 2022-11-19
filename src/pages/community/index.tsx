@@ -1,44 +1,40 @@
 import {
   TextInput,
-  Container,
   Text,
   Button,
   Group,
   Box,
   Title,
   Card,
-  Avatar,
-  Center,
-  Header,
   Tabs,
-  createStyles,
-  useMantineTheme,
   Divider,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useSession, getSession } from "next-auth/react";
-import Image from "next/image";
+
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "../../lib/fetcher";
 import { colors } from "../../config/colorPalette";
-import Navbar from "../../components/desktop/profile/navbar";
+import Navbar from "../../components/desktop/profile/navbar/navbar";
+import Link from "next/link";
+import { PrismaClient } from "@prisma/client";
+import About from "../../components/desktop/profile/about";
 
-export default function Index() {
-  const { data: session } = useSession();
+export default function Index(props) {
+  // const { data: session } = useSession();
+  const { user } = props;
 
   return (
     <>
       <Box style={{ minHeight: "100vh", display: "flex" }}>
-        <Navbar user={session.user} />
-        <Box style={{ width: "100%", height: "100vh", overflow: "auto" }}>
+        <Navbar user={user} />
+        <Box style={{ width: "100%" }}>
           <Box ml={50} mt={100} style={{ width: "60%" }}>
-            <h1>{session.user.name}</h1>
-            <HeaderTabs />
+            <h1 style={{ color: colors.textColor }}>{user.name}</h1>
+            <HeaderTabs user={user} />
           </Box>
-          <MyArticles email={session.user.email} />
-          <PostForm email={session.user.email} />
         </Box>
       </Box>
     </>
@@ -124,7 +120,7 @@ function PostForm({ email }) {
   );
 }
 
-function HeaderTabs() {
+function HeaderTabs({ user }) {
   return (
     <Tabs
       mt={25}
@@ -141,14 +137,29 @@ function HeaderTabs() {
 
       <Tabs.Panel value="first" pt="xs">
         <Box mt={25}>
+          <Box
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Link href="community/new-article">
+              <Button variant="outline" color="violet">
+                Write New Article
+              </Button>
+            </Link>
+          </Box>
           <Box>
             <Text color="dimmed" mb={10}>
               3 Days ago
             </Text>
-            <h3 style={{ margin: 0, marginBottom: 10 }}>
+            <h3
+              style={{ margin: 0, marginBottom: 10, color: colors.textColor }}
+            >
               Clearing House Loans
             </h3>
-            <p>
+            <p style={{ color: colors.textColor }}>
               Clearinghouse loan certificates are like banknotes, but they're
               being issued against member loans rather than the special 2%
               government bonds. Before 1907, it wasn't clear that they were
@@ -161,10 +172,12 @@ function HeaderTabs() {
             <Text color="dimmed" mb={10}>
               6 Days ago
             </Text>
-            <h3 style={{ margin: 0, marginBottom: 10 }}>
+            <h3
+              style={{ margin: 0, marginBottom: 10, color: colors.textColor }}
+            >
               Fed Funds Effective Rate
             </h3>
-            <p>
+            <p style={{ color: colors.textColor }}>
               If we averaged all the different fed funds loans traded between
               banks we would get the Effective Federal Funds Rate (EFFR). The
               precise rate is determined by finding the volume-weighted median
@@ -175,24 +188,14 @@ function HeaderTabs() {
       </Tabs.Panel>
 
       <Tabs.Panel value="second" pt="xs">
-        <Box mt={25}>
-          <p>
-            I love coding and learning new technologies. My passion is creating
-            educational software that make complex topics accessible to as many
-            people as possible. As a self taught developer since 2020 I've
-            become proficient using languages such as Typescript, Javascript,
-            Python and SQL, as well as frameworks like React, Next-JS, Redux,
-            Node/Express, Django and Vue. For most of my career I have been a
-            professional musician, and have toured internationally playing folk,
-            jazz and other styles. In my spare time I enjoy reading and sports.
-          </p>
-        </Box>
+        <About user={user} />
       </Tabs.Panel>
     </Tabs>
   );
 }
 
 export async function getServerSideProps(context) {
+  const prisma = new PrismaClient();
   const session = await getSession(context);
 
   if (!session) {
@@ -202,7 +205,15 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  return {
-    props: { session },
-  };
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+  });
+  if (user) {
+    return {
+      props: {
+        session,
+        user,
+      },
+    };
+  }
 }

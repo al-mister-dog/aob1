@@ -1,6 +1,8 @@
+import axios, { AxiosRequestConfig } from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   Box,
-  Navbar,
   Button,
   UnstyledButton,
   Badge,
@@ -13,23 +15,17 @@ import {
   TextInput,
   createStyles,
   Textarea,
+  Spoiler,
 } from "@mantine/core";
-import {
-  IconBulb,
-  IconUser,
-  IconCheckbox,
-  IconSearch,
-  IconPlus,
-  IconSelector,
-} from "@tabler/icons";
+import { IconBulb, IconUser, IconCheckbox, IconPlus } from "@tabler/icons";
 import { useState } from "react";
+import AvatarComponent from "./avatar";
 
 const useStyles = createStyles((theme) => ({
   navbar: {
     paddingTop: 0,
     borderRight: "1px solid #dee2e6",
     backgroundColor: "#fff",
-    
   },
 
   section: {
@@ -162,7 +158,7 @@ const collections = [
 
 export default function NavbarSearch({ user }) {
   const { classes } = useStyles();
-  const [editButtonHidden, setEditButtonHidden] = useState(false);
+
   const mainLinks = links.map((link) => (
     <UnstyledButton key={link.label} className={classes.mainLink}>
       <div className={classes.mainLinkInner}>
@@ -196,34 +192,13 @@ export default function NavbarSearch({ user }) {
 
   return (
     <Box
-      style={{ height: "100%", width: "22.5vw",top: 0, left: 0 }}
+      style={{ height: "100%", width: "22.5vw", top: 0, left: 0 }}
       w={{ sm: 300 }}
       p="md"
       className={classes.navbar}
     >
       <Box className={classes.section}>
-        <Center>
-          <Avatar src={user.image} alt={user.name} size={200} radius={200} />
-        </Center>
-        <Center>
-          <h2>{user.name}</h2>
-        </Center>
-        <Center>
-          {!editButtonHidden && (
-            <Button
-              variant="outline"
-              mb="sm"
-              color="violet"
-              style={{ width: "95%" }}
-              onClick={() => setEditButtonHidden(true)}
-            >
-              Edit Profile
-            </Button>
-          )}
-        </Center>
-        {editButtonHidden && (
-          <ProfileForm setEditButtonHidden={setEditButtonHidden} />
-        )}
+        <AvatarComponent user={user} />
       </Box>
 
       <Box className={classes.section}>
@@ -243,49 +218,6 @@ export default function NavbarSearch({ user }) {
         </Group>
         <div className={classes.collections}>{collectionLinks}</div>
       </Box>
-    </Box>
-  );
-}
-
-import { useForm } from "@mantine/form";
-
-function ProfileForm({ setEditButtonHidden }) {
-  const form = useForm({
-    initialValues: {
-      tag: "",
-      bio: "",
-    },
-
-    validate: {
-      tag: (value) => (value.length > 1 ? null : "Invalid tag"),
-      bio: (value) => (value.length > 5 ? null : "Invalid bio"),
-    },
-  });
-
-  return (
-    <Box mx="auto" style={{ width: "90%" }} mb={5}>
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
-        <TextInput
-          label="Tag"
-          placeholder="Tag Line"
-          {...form.getInputProps("tag")}
-        />
-        <Textarea
-          minRows={2}
-          maxRows={4}
-          label="Bio"
-          placeholder="Bio"
-          {...form.getInputProps("bio")}
-        />
-        <Group position="left" mt="md">
-          <Button color="violet" type="submit" disabled>
-            Submit
-          </Button>
-          <Button color="violet" onClick={() => setEditButtonHidden(false)}>
-            Cancel
-          </Button>
-        </Group>
-      </form>
     </Box>
   );
 }

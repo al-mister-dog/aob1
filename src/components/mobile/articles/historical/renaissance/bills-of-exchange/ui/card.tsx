@@ -19,9 +19,11 @@ export default function CardUI({ bank, selectPlayer }) {
       shadow="sm"
       p="sm"
       radius="xs"
+      mr={10}
       style={{
+        width: "20rem",
         height: "8rem",
-        backgroundColor: theme.colors.violet[0],
+        backgroundColor: bank.city === "florence" ? theme.colors.violet[0] : theme.colors.blue[0],
         paddingBottom: "0px",
         cursor: "pointer",
         border: hovered ? `2px solid ${theme.colors.violet[2]}` : "",

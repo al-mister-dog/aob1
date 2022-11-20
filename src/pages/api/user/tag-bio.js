@@ -18,7 +18,7 @@ async function post(req, res) {
     return;
   }
   const { tag, bio } = req.body;
-  console.log(tag)
+
   /**I love coding and learning new technologies. My passion is creating educational software that make complex topics accessible to as many people as possible. As a self taught developer since 2020 I've become proficient using languages such as Typescript, Javascript, Python and SQL, as well as frameworks like React, Next-JS, Redux, Node/Express, Django and Vue. For most of my career I have been a professional musician, and have toured internationally playing folk, jazz and other styles. In my spare time I enjoy reading and sports. */
   const updatedUser = await prisma.user.update({
     where: { id: prismaUser.id },

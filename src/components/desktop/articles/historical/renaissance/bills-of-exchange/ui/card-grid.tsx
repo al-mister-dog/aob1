@@ -2,8 +2,8 @@ import { Grid } from "@mantine/core";
 import Card from "./card";
 
 export default function Layout({
-  florencePlayers,
-  lyonsPlayers,
+  FlorencePlayers,
+  LyonsPlayers,
   selectPlayer,
 }) {
   return (
@@ -11,7 +11,7 @@ export default function Layout({
       <Grid gutter="sm" grow>
         <Grid.Col span={1}>
           <div style={{ height: "30.5rem", overflow: "auto" }}>
-            {florencePlayers.map((bank) => (
+            {FlorencePlayers.map((bank) => (
               <div key={bank.id} style={{ marginBottom: "10px" }}>
                 <Card bank={bank} selectPlayer={selectPlayer} />
               </div>
@@ -20,7 +20,7 @@ export default function Layout({
         </Grid.Col>
         <Grid.Col span={1}>
           <div style={{ height: "30.5rem", overflow: "auto" }}>
-            {lyonsPlayers.map((bank) => (
+            {LyonsPlayers.map((bank) => (
               <div key={bank.id} style={{ marginBottom: "10px" }}>
                 <Card bank={bank} selectPlayer={selectPlayer} />
               </div>

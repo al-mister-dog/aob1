@@ -27,8 +27,8 @@ export default function Assignment({ assignment, nextLecture }) {
       >
         <div
           style={{
-            borderTop: `1px solid #dee2e6`,
-            borderRight: `1px solid #dee2e6`,
+            borderTop: `1px solid ${colors.muiGray}`,
+            borderRight: `1px solid ${colors.muiGray}`,
             borderTopRightRadius: 15,
             padding: "5px 50px 0px 50px",
             backgroundColor: colors.background3,
@@ -49,7 +49,7 @@ export default function Assignment({ assignment, nextLecture }) {
           style={{
             margin: 0,
             padding: 0,
-            borderBottom: `1px solid #dee2e6`,
+            border: `1px solid ${colors.muiGray}`,
             flexGrow: 1,
           }}
         ></div>
@@ -96,7 +96,7 @@ export default function Assignment({ assignment, nextLecture }) {
             more details in the selected bank panel on the right hand side. Here
             you can perform actions such as depositing cash. For more detailed
             instructions{" "}
-            <span style={{color: "purple"}}>
+            <span style={{ color: "purple" }}>
               <Link href="/lectures/instructions">click here</Link>
             </span>
           </p>

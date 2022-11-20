@@ -41,27 +41,27 @@ export const texts = {
 };
 
 export default function BillsOfExchange() {
-  const { me, salviati } = useAppSelector(selectTraders);
+  const { me, Salviati } = useAppSelector(selectTraders);
   const { you } = useAppSelector(selectBankers);
 
-  const florencePlayers = [me, you];
-  const lyonsPlayers = [salviati];
+  const FlorencePlayers = [me, you];
+  const LyonsPlayers = [Salviati];
   const isMobile = useMediaQuery(mediaQuery);
   return isMobile ? (
     <ArticlePageMobile
       path="remitting-bills"
       linkTitle="Remitting Bills"
       texts={texts}
-      florencePlayers={florencePlayers}
-      lyonsPlayers={lyonsPlayers}
+      FlorencePlayers={FlorencePlayers}
+      LyonsPlayers={LyonsPlayers}
     />
   ) : (
     <ArticlePageDesktop
       path="remitting-bills"
       linkTitle="Remitting Bills"
       texts={texts}
-      florencePlayers={florencePlayers}
-      lyonsPlayers={lyonsPlayers}
+      FlorencePlayers={FlorencePlayers}
+      LyonsPlayers={LyonsPlayers}
     />
   );
 }

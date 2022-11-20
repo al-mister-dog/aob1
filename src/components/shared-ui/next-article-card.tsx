@@ -5,12 +5,11 @@ import { useNextPage } from "../../hooks/useNextPage";
 import { useHover } from "@mantine/hooks";
 import { ChevronRight } from "tabler-icons-react";
 
-export default function NextLectureLink({ nextLecture }) {
-  let link = useNextPage(nextLecture);
+export default function NextArticleLink({ path, title }) {
   const { hovered, ref } = useHover();
   const theme = useMantineTheme();
   return (
-    <Link href={`/lectures${link.path}`}>
+    <Link href={path}>
       <Card
         ref={ref}
         mt={50}
@@ -28,7 +27,7 @@ export default function NextLectureLink({ nextLecture }) {
               NEXT
             </Text>
             <Text size="xl" weight="bold" align="right" color="violet">
-              {link.title}
+              {title}
             </Text>
           </Box>
           <Box

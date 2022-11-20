@@ -16,13 +16,13 @@ const DrawBill: React.FunctionComponent<{
   const dispatch = useAppDispatch();
   const theme = useMantineTheme();
 
-  const { me, salviati, federigo, piero } = useAppSelector(selectTraders);
-  const { you, tomasso } = useAppSelector(selectBankers);
+  const { me, Salviati, Federigo, Piero } = useAppSelector(selectTraders);
+  const { you, Tommaso } = useAppSelector(selectBankers);
 
   const [selectedBill, setSelectedBill] = useState(null);
   const [selectedValuePlayer, setSelectedValuePlayer] = useState(null);
 
-  const bankersArray = [you, tomasso, salviati, me, federigo, piero];
+  const bankersArray = [you, Tommaso, Salviati, me, Federigo, Piero];
 
   const selectedBankers = bankersArray
     .filter((t) => {

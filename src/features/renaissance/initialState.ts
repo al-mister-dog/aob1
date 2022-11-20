@@ -1,23 +1,23 @@
 import { Quotes, Rates, Currencies } from "./types";
 
 export const certaintyQuotes: Quotes = {
-  florence: false,
-  lyons: true,
+  Florence: false,
+  Lyons: true,
 };
 
 export const exchangeRates: Rates = {
-  florence: 65.5,
-  lyons: 64,
+  Florence: 65.5,
+  Lyons: 64,
 };
 
 export const currencies: Currencies = {
-  florence: "ecus",
-  lyons: "marcs",
+  Florence: "ecus",
+  Lyons: "marcs",
 };
 
-// export const salviati = {
-//   id: "salviati",
-//   city: "lyons",
+// export const Salviati = {
+//   id: "Salviati",
+//   city: "Lyons",
 //   assets: [],
 //   liabilities: [],
 //   coins: {
@@ -28,7 +28,7 @@ export const currencies: Currencies = {
 
 // export const me = {
 //   id: "me",
-//   city: "florence",
+//   city: "Florence",
 //   assets: [],
 //   liabilities: [],
 //   coins: {
@@ -37,9 +37,9 @@ export const currencies: Currencies = {
 //   goods: 10,
 // };
 
-// export const federigo = {
-//   id: "federigo",
-//   city: "florence",
+// export const Federigo = {
+//   id: "Federigo",
+//   city: "Florence",
 //   assets: [],
 //   liabilities: [],
 //   coins: {
@@ -48,9 +48,9 @@ export const currencies: Currencies = {
 //   goods: 10,
 // };
 
-// export const piero = {
-//   id: "piero",
-//   city: "lyons",
+// export const Piero = {
+//   id: "Piero",
+//   city: "Lyons",
 //   assets: [],
 //   liabilities: [],
 //   coins: {
@@ -61,7 +61,7 @@ export const currencies: Currencies = {
 
 // export const you = {
 //   id: "you",
-//   city: "florence",
+//   city: "Florence",
 //   assets: [],
 //   liabilities: [],
 //   coins: {
@@ -70,9 +70,9 @@ export const currencies: Currencies = {
 //   },
 // };
 
-// export const tomasso = {
-//   id: "tomasso",
-//   city: "lyons",
+// export const Tommaso = {
+//   id: "Tommaso",
+//   city: "Lyons",
 //   assets: [],
 //   liabilities: [],
 //   coins: {
@@ -86,15 +86,15 @@ export const currencies: Currencies = {
 //   exchangeRates,
 //   currencies,
 //   me,
-//   salviati,
-//   federigo,
-//   piero,
+//   Salviati,
+//   Federigo,
+//   Piero,
 //   you,
-//   tomasso
+//   Tommaso
 // }
-export const salviati = {
-  id: "salviati",
-  city: "lyons",
+export const Salviati = {
+  id: "Salviati",
+  city: "Lyons",
   type: "importer",
   assets: [],
   liabilities: [],
@@ -108,7 +108,7 @@ export const salviati = {
 };
 export const me = {
   id: "me",
-  city: "florence",
+  city: "Florence",
   type: "exporter",
   assets: [],
   liabilities: [],
@@ -120,9 +120,9 @@ export const me = {
   coinLiability: [],
   records: [],
 };
-export const federigo = {
-  id: "federigo",
-  city: "florence",
+export const Federigo = {
+  id: "Federigo",
+  city: "Florence",
   type: "importer",
   assets: [],
   liabilities: [],
@@ -134,9 +134,9 @@ export const federigo = {
   coinLiability: [],
   records: [],
 };
-export const piero = {
-  id: "piero",
-  city: "lyons",
+export const Piero = {
+  id: "Piero",
+  city: "Lyons",
   type: "exporter",
   assets: [],
   liabilities: [],
@@ -150,7 +150,7 @@ export const piero = {
 };
 export const you = {
   id: "you",
-  city: "florence",
+  city: "Florence",
   type: "banker",
   assets: [],
   liabilities: [],
@@ -163,9 +163,9 @@ export const you = {
   coinLiability: [],
   records: [],
 };
-export const tomasso = {
-  id: "tomasso",
-  city: "lyons",
+export const Tommaso = {
+  id: "Tommaso",
+  city: "Lyons",
   type: "banker",
   assets: [],
   liabilities: [],

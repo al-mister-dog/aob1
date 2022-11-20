@@ -8,15 +8,15 @@ const actionData = {
     { value: "export", label: "Export" },
     { value: "drawBill", label: "Draw Bill" },
   ],
-  piero: [
+  Piero: [
     { value: "export", label: "Export" },
     { value: "drawBill", label: "Draw Bill" },
   ],
-  federigo: [
+  Federigo: [
     { value: "import", label: "Import" },
     { value: "drawBill", label: "Draw Bill" },
   ],
-  salviati: [
+  Salviati: [
     { value: "import", label: "Import" },
     { value: "drawBill", label: "Draw Bill" },
   ],
@@ -24,7 +24,7 @@ const actionData = {
     { value: "remitBill", label: "Remit Bill" },
     { value: "drawBill", label: "Draw Bill" },
   ],
-  tomasso: [
+  Tommaso: [
     { value: "remitBill", label: "Remit Bill" },
     { value: "drawBill", label: "Draw Bill" },
   ],

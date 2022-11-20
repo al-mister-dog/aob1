@@ -3,6 +3,7 @@ import { Tabs, useMantineTheme } from "@mantine/core";
 import LineChart from "./linechart-private-credit";
 import VerticalBarChart from "./verticalbarcharts";
 import MultiAxisLineChart from "./multiaxislinechart";
+import { colors } from "../../../../config/colorPalette";
 
 const tabs = {
   one: false,
@@ -59,7 +60,7 @@ export default function TabsUI() {
 
       <Tabs.Panel
         style={{
-          border: "1px solid #dee2e6",
+          border: `1px solid ${colors.muiGray}`,
           borderTop: 0,
           backgroundColor: "white",
         }}
@@ -71,7 +72,7 @@ export default function TabsUI() {
 
       <Tabs.Panel
         style={{
-          border: "1px solid #dee2e6",
+          border: `1px solid ${colors.muiGray}`,
           borderTop: 0,
           backgroundColor: "white",
         }}
@@ -83,7 +84,7 @@ export default function TabsUI() {
 
       <Tabs.Panel
         style={{
-          border: "1px solid #dee2e6",
+          border: `1px solid ${colors.muiGray}`,
           borderTop: 0,
           backgroundColor: "white",
         }}

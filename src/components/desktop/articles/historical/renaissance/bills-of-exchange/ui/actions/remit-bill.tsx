@@ -15,11 +15,11 @@ const RemitBill: React.FunctionComponent<{
   selected: any;
 }> = ({ selected }) => {
   const dispatch = useAppDispatch();
-  const { you, tomasso } = useAppSelector(selectBankers);
+  const { you, Tommaso } = useAppSelector(selectBankers);
 
   const theme = useMantineTheme();
 
-  const bankersArray = [you, tomasso];
+  const bankersArray = [you, Tommaso];
   const selectedBankers = bankersArray
     .filter((t) => selected.id !== t.id && t.type === "banker")
     .map((t) => {

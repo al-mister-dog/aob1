@@ -7,11 +7,11 @@ import {
   exchangeRates,
   currencies,
   me,
-  salviati,
-  federigo,
-  piero,
+  Salviati,
+  Federigo,
+  Piero,
   you,
-  tomasso,
+  Tommaso,
 } from "./initialState";
 
 interface Trader {
@@ -46,13 +46,13 @@ export interface PlayersState {
   };
   traders: {
     me: Trader;
-    salviati: Trader;
-    federigo: Trader;
-    piero: Trader;
+    Salviati: Trader;
+    Federigo: Trader;
+    Piero: Trader;
   };
   bankers: {
     you: Banker;
-    tomasso: Banker;
+    Tommaso: Banker;
   };
   records: string[];
 }
@@ -65,13 +65,13 @@ const initialState: PlayersState = {
   },
   traders: {
     me,
-    salviati,
-    federigo,
-    piero,
+    Salviati,
+    Federigo,
+    Piero,
   },
   bankers: {
     you,
-    tomasso,
+    Tommaso,
   },
   records: [],
 };
@@ -203,12 +203,12 @@ export const renaissanceSlice = createSlice({
       state.conditions.currencies = currencies;
 
       state.traders.me = me;
-      state.traders.salviati = salviati;
-      state.traders.federigo = federigo;
-      state.traders.piero = piero;
+      state.traders.Salviati = Salviati;
+      state.traders.Federigo = Federigo;
+      state.traders.Piero = Piero;
 
       state.bankers.you = you;
-      state.bankers.tomasso = tomasso;
+      state.bankers.Tommaso = Tommaso;
 
       state.records = [];
     },

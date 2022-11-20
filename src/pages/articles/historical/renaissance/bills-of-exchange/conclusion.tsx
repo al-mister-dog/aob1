@@ -24,11 +24,11 @@ export const texts = {
 };
 
 export default function RemittingBills() {
-  const { me, salviati, federigo, piero } = useAppSelector(selectTraders);
-  const { you, tomasso } = useAppSelector(selectBankers);
+  const { me, Salviati, Federigo, Piero } = useAppSelector(selectTraders);
+  const { you, Tommaso } = useAppSelector(selectBankers);
 
-  const florencePlayers = [me, you, federigo];
-  const lyonsPlayers = [salviati, tomasso, piero];
+  const FlorencePlayers = [me, you, Federigo];
+  const LyonsPlayers = [Salviati, Tommaso, Piero];
 
   const isMobile = useMediaQuery(mediaQuery);
 
@@ -37,16 +37,16 @@ export default function RemittingBills() {
       path="conclusion"
       linkTitle="Conclusion"
       texts={texts}
-      florencePlayers={florencePlayers}
-      lyonsPlayers={lyonsPlayers}
+      FlorencePlayers={FlorencePlayers}
+      LyonsPlayers={LyonsPlayers}
     />
   ) : (
     <ArticlePageDesktop
       path="/lectures/towards-a-central-bank/correspondent-banking"
       linkTitle="Learn More About Correspondent Banking"
       texts={texts}
-      florencePlayers={florencePlayers}
-      lyonsPlayers={lyonsPlayers}
+      FlorencePlayers={FlorencePlayers}
+      LyonsPlayers={LyonsPlayers}
     />
   );
 }

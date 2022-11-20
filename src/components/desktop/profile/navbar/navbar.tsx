@@ -20,11 +20,12 @@ import {
 import { IconBulb, IconUser, IconCheckbox, IconPlus } from "@tabler/icons";
 import { useState } from "react";
 import AvatarComponent from "./avatar";
+import { colors } from "../../../../config/colorPalette";
 
 const useStyles = createStyles((theme) => ({
   navbar: {
     paddingTop: 0,
-    borderRight: "1px solid #dee2e6",
+    borderRight: `1px solid ${colors.muiGray}`,
     backgroundColor: "#fff",
   },
 

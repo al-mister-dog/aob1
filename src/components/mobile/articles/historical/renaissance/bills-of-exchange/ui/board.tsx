@@ -1,28 +1,22 @@
-import {
-  ActionIcon,
-  Box,
-  Drawer,
-  Group,
-  Text,
-  useMantineTheme,
-} from "@mantine/core";
+import { Box, Drawer, Group, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
-import { RefreshDot } from "tabler-icons-react";
+
 import { useAppDispatch, useAppSelector } from "../../../../../../../app/hooks";
-import { colors } from "../../../../../../../config/colorPalette";
+
 import {
   reset,
   selectBankers,
   selectTraders,
 } from "../../../../../../../features/renaissance/renaissanceSlice";
+import RefreshButton from "../../../../../../shared-ui/components/RefreshButton";
 import BankDetail from "./bank-detail";
 import CardGrid from "./card-grid";
 
-export default function Board({ florencePlayers, lyonsPlayers }) {
+export default function Board({ FlorencePlayers, LyonsPlayers }) {
   const theme = useMantineTheme();
   const dispatch = useAppDispatch();
-  const { me, salviati, federigo, piero } = useAppSelector(selectTraders);
-  const { you, tomasso } = useAppSelector(selectBankers);
+  const { me, Salviati, Federigo, Piero } = useAppSelector(selectTraders);
+  const { you, Tommaso } = useAppSelector(selectBankers);
 
   const [selected, setSelected] = useState<string>("me");
   const [opened, setOpened] = useState(false);
@@ -37,22 +31,28 @@ export default function Board({ florencePlayers, lyonsPlayers }) {
   }
   return (
     <>
-      <Box p={10}>
-        <Group position="apart">
-          <Box style={{ display: "flex", alignItems: "center" }}>
-            <ActionIcon size="lg" onClick={handleRefresh}>
-              <RefreshDot size={30} color={`${theme.colors.violet[9]}`} />
-            </ActionIcon>
-            <Text size="xs" color="violet">
-              Refresh
-            </Text>
+      <Box id="board-toolbar" mt={25}>
+        <Group
+          position="apart"
+          style={{
+            borderRadius: 5,
+            margin: "10px",
+          }}
+        >
+          <Box
+            style={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <RefreshButton onClick={handleRefresh} />
           </Box>
         </Group>
       </Box>
 
       <CardGrid
-        florencePlayers={florencePlayers}
-        lyonsPlayers={lyonsPlayers}
+        FlorencePlayers={FlorencePlayers}
+        LyonsPlayers={LyonsPlayers}
         selectPlayer={selectPlayer}
       />
       <Drawer
@@ -65,42 +65,19 @@ export default function Board({ florencePlayers, lyonsPlayers }) {
         {selected === "you" && (
           <BankDetail player={you} setOpened={setOpened} />
         )}
-        {selected === "salviati" && (
-          <BankDetail player={salviati} setOpened={setOpened} />
+        {selected === "Salviati" && (
+          <BankDetail player={Salviati} setOpened={setOpened} />
         )}
-        {selected === "tomasso" && (
-          <BankDetail player={tomasso} setOpened={setOpened} />
+        {selected === "Tommaso" && (
+          <BankDetail player={Tommaso} setOpened={setOpened} />
         )}
-        {selected === "piero" && (
-          <BankDetail player={piero} setOpened={setOpened} />
+        {selected === "Piero" && (
+          <BankDetail player={Piero} setOpened={setOpened} />
         )}
-        {selected === "federigo" && (
-          <BankDetail player={federigo} setOpened={setOpened} />
+        {selected === "Federigo" && (
+          <BankDetail player={Federigo} setOpened={setOpened} />
         )}
       </Drawer>
     </>
   );
-}
-
-{
-  /* <Card
-style={{
-  height: "4rem",
-  marginBottom: "0.55rem",
-  backgroundColor: theme.colors.violet[1],
-}}
->
-<Tooltip color="violet" label="Reset Balancesheets" position="right">
-  <ActionIcon size="lg" onClick={handleRefresh}>
-    <RefreshDot size={40} color={`${theme.colors.violet[9]}`} />
-  </ActionIcon>
-</Tooltip>
-
-{selected === "me" && <BankDetail player={me} />}
-{selected === "you" && <BankDetail player={you} />}
-{selected === "salviati" && <BankDetail player={salviati} />}
-{selected === "tomasso" && <BankDetail player={tomasso} />}
-{selected === "piero" && <BankDetail player={piero} />}
-{selected === "federigo" && <BankDetail player={federigo} />}
-</Card> */
 }

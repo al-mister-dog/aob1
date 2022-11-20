@@ -33,11 +33,11 @@ export const texts = {
 };
 
 export default function RemittingBills() {
-  const { me, salviati } = useAppSelector(selectTraders);
-  const { you, tomasso } = useAppSelector(selectBankers);
+  const { me, Salviati } = useAppSelector(selectTraders);
+  const { you, Tommaso } = useAppSelector(selectBankers);
 
-  const florencePlayers = [me, you];
-  const lyonsPlayers = [salviati, tomasso];
+  const FlorencePlayers = [me, you];
+  const LyonsPlayers = [Salviati, Tommaso];
 
   const isMobile = useMediaQuery(mediaQuery);
 
@@ -46,16 +46,16 @@ export default function RemittingBills() {
       path="rechange-1"
       linkTitle="Rechange: Part 1"
       texts={texts}
-      florencePlayers={florencePlayers}
-      lyonsPlayers={lyonsPlayers}
+      FlorencePlayers={FlorencePlayers}
+      LyonsPlayers={LyonsPlayers}
     />
   ) : (
     <ArticlePageDesktop
       path="rechange-1"
       linkTitle="Rechange: Part 1"
       texts={texts}
-      florencePlayers={florencePlayers}
-      lyonsPlayers={lyonsPlayers}
+      FlorencePlayers={FlorencePlayers}
+      LyonsPlayers={LyonsPlayers}
     />
   );
 }

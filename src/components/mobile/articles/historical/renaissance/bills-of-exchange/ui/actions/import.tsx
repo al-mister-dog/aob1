@@ -41,8 +41,8 @@ const ExportCard: React.FunctionComponent<{
   setOpened: (v: boolean) => void;
 }> = ({ selected, setOpened }) => {
   const dispatch = useAppDispatch();
-  const { me, salviati, federigo, piero } = useAppSelector(selectTraders);
-  const tradersArray = [me, salviati, federigo, piero];
+  const { me, Salviati, Federigo, Piero } = useAppSelector(selectTraders);
+  const tradersArray = [me, Salviati, Federigo, Piero];
   const selectedTraders = tradersArray
     .filter(
       (t) =>

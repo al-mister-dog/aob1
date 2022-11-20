@@ -1,4 +1,4 @@
-import { Box, useMantineTheme } from "@mantine/core";
+import { Box, Text, useMantineTheme } from "@mantine/core";
 
 import Link from "next/link";
 import ArticleText from "../../../../../components/shared-ui/texts/Article-Text";
@@ -78,15 +78,15 @@ export default function Intro() {
       ))}
 
       <Box p={25}>
-        <SubTitle>
-          Go to{" "}
+        <Text align="right">NEXT</Text>
+        <Text align="right">
           <Link
             href="bills-of-exchange/bills-of-exchange-and-units-of-account"
             style={{ color: theme.colors.violet[9] }}
           >
             Bills of Exchange and Units of Account. . .
           </Link>
-        </SubTitle>
+        </Text>
       </Box>
     </>
   );

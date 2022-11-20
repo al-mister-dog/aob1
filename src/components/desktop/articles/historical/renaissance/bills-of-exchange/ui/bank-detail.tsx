@@ -37,6 +37,7 @@ function SidePanel({ player }) {
   return (
     <Card
       p="sm"
+      withBorder
       radius="xs"
       shadow="sm"
       style={{

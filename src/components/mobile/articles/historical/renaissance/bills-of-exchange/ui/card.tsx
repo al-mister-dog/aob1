@@ -12,8 +12,7 @@ import BalanceSheetRowHeading from "./balance-sheet-heading";
 
 export default function CardUI({ bank, selectPlayer }) {
   const theme = useMantineTheme();
-  const row1Color = "";
-  const row2Color = "";
+
   const rowColor = (depth: number) =>
     bank.city === "Florence"
       ? theme.colors.violet[depth]

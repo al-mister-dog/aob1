@@ -39,8 +39,8 @@ export default function Board({ FlorencePlayers, LyonsPlayers }) {
         </Group>
       </Header>
 
-      <Grid grow pt={10} style={{ background: colors.background3 }}>
-        <Grid.Col span={4}>
+      <Grid grow pt={10} >
+        <Grid.Col span={5}>
           <CardGrid
             FlorencePlayers={FlorencePlayers}
             LyonsPlayers={LyonsPlayers}

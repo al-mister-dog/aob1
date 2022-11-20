@@ -13,16 +13,24 @@ import BalanceSheetRowHeading from "./balance-sheet-heading";
 export default function CardUI({ bank, selectPlayer }) {
   const theme = useMantineTheme();
   const { hovered, ref } = useHover();
+
+  const rowColor = (depth: number) =>
+    bank.city === "Florence"
+      ? theme.colors.violet[depth]
+      : theme.colors.indigo[depth];
+
   return (
     <Card
       key={bank.id}
       ref={ref}
       shadow="sm"
+      withBorder
       p="sm"
       radius="xs"
       style={{
         height: "9.75rem",
-        backgroundColor: colors.background2,
+        // backgroundColor: colors.background2,
+        backgroundColor: "#FFFFFC",
         paddingBottom: "0px",
         cursor: "pointer",
         border: hovered ? `2px solid ${theme.colors.violet[2]}` : "",
@@ -31,8 +39,8 @@ export default function CardUI({ bank, selectPlayer }) {
     >
       <Card.Section style={{ padding: "3px", cursor: "pointer" }}>
         <Center>
-          <h4 style={{ color: theme.colors.violet[9], padding: 0, margin: 0 }}>
-            {bank.id}
+          <h4 style={{ color: rowColor(9), padding: 0, margin: 0 }}>
+            {bank.id}: {bank.city}
           </h4>
         </Center>
       </Card.Section>
@@ -40,14 +48,14 @@ export default function CardUI({ bank, selectPlayer }) {
         <SimpleGrid
           cols={2}
           sx={{
-            borderBottom: `1px solid ${theme.colors.violet[2]}`,
+            borderBottom: `1px solid ${rowColor(2)}`,
             height: "1.25rem",
           }}
         >
-          <Text size="xs" align="center" color={`${theme.colors.violet[9]}`}>
+          <Text size="xs" align="center" color={`${rowColor(9)}`}>
             Assets
           </Text>
-          <Text size="xs" align="center" color={`${theme.colors.violet[9]}`}>
+          <Text size="xs" align="center" color={`${rowColor(9)}`}>
             Liabilities
           </Text>
         </SimpleGrid>
@@ -60,7 +68,7 @@ export default function CardUI({ bank, selectPlayer }) {
         >
           <div
             style={{
-              borderRight: `1px solid ${theme.colors.violet[2]}`,
+              borderRight: `1px solid ${rowColor(2)}`,
             }}
           >
             <BalanceSheetRowHeading

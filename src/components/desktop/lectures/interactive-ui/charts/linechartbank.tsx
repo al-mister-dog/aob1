@@ -9,9 +9,9 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { colors } from "../../../../config/colorPalette";
-import { Totals } from "../../../../domain/analytics/totals";
-import { BankingSystem } from "../../../../domain/banking-system";
+import { Totals } from "../../../../../domain/analytics/totals";
+import { BankingSystem } from "../../../../../domain/banking-system";
+
 import ChartContainer from "./chart-container";
 
 ChartJS.register(
@@ -26,6 +26,13 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
+  elements: {
+    line: {
+      borderWidth: 1,
+      // tension: 1,
+      // borderJoinStyle: "bevel" as const,
+    },
+  },
   plugins: {
     legend: {
       position: "top" as const,
@@ -49,21 +56,21 @@ export default function LineChart({ bank }) {
       {
         label: "Credit",
         data: deposits,
-        borderColor: colors.charts.qualitative[1],
-        backgroundColor: colors.charts.qualitative[1],
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
       {
         label: "Reserves",
         data: deposits.map((d) => d - 5),
-        borderColor: colors.charts.qualitative[2],
-        backgroundColor: colors.charts.qualitative[2],
+        borderColor: "rgb(53, 162, 235)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
   };
 
   return (
     <ChartContainer>
-      <Line options={options} data={data} height={250}/>
+      <Line options={options} data={data} />
     </ChartContainer>
   );
 }

@@ -1,13 +1,13 @@
 import { lectureRoutes } from "../../config/routes/lectureRoutes";
 import { homeTexts } from "../../config/homeTexts";
-import Intro from "../../components/lectures/article/intro";
+import Landing from "../../components/desktop/lectures/landing";
 
 export default function LecturePath({ id, title, nextPath }) {
   const { text } = homeTexts[id];
 
   return (
     <>
-      <Intro title={title} text={text} nextPath={nextPath} />
+      <Landing title={title} text={text} nextPath={nextPath} />
     </>
   );
 }

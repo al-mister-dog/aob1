@@ -12,7 +12,7 @@ import Sources from "./lectures/sources";
 const useStyles = createStyles((theme) => ({
   interactiveUiContainer: {
     backgroundColor: colors.background1,
-    paddingBottom: "200px",
+    // paddingBottom: "200px",
   },
   keyTermsContainer: {
     backgroundColor: colors.background1,
@@ -44,13 +44,13 @@ export default function LecturePageMobile({
         <>
           <Article slug={slug} title={title} text={text} />
           <Box mt={100}>
-            <Assignment assignment={assignment} nextLecture={nextLecture} />
+            <Assignment assignment={assignment} />
           </Box>
 
           <Box className={classes.interactiveUiContainer}>
             <Box
               style={{
-                marginBottom: "25px",
+                marginTop: "25px",
                 padding: "5px",
                 display: "flex",
                 justifyContent: "space-between",

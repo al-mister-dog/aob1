@@ -1,5 +1,6 @@
-import { useAppSelector } from "../../../../app/hooks";
-import { selectBanks } from "../../../../features/banks/banksSlice";
+import { useAppSelector } from "../../../../../app/hooks";
+import { bankData } from "../../../../../domain/structures/objects";
+import { selectBanks } from "../../../../../features/banks/banksSlice";
 import React from "react";
 import {
   Chart as ChartJS,
@@ -11,10 +12,10 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { bankData } from "../../../../domain/structures/objects";
+
 import { useMantineTheme } from "@mantine/core";
 import ChartContainer from "./chart-container";
-import { colors } from "../../../../config/colorPalette";
+import { colors } from "../../../../../config/colorPalette";
 
 ChartJS.register(
   CategoryScale,
@@ -28,6 +29,7 @@ ChartJS.register(
 export default function BarChart() {
   const { analytics } = useAppSelector(selectBanks);
   const theme = useMantineTheme();
+
   const banks = Object.keys(analytics.graphs.nationalData).map((id) => {
     return bankData.banks[id];
   });
@@ -55,7 +57,7 @@ export default function BarChart() {
   }
   const options = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     plugins: {
       legend: {
         position: "top" as const,
@@ -88,7 +90,7 @@ export default function BarChart() {
   };
   return (
     <ChartContainer>
-      <Bar options={options} data={data} height={250}/>
+      <Bar options={options} data={data} />
     </ChartContainer>
   );
 }

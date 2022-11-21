@@ -14,6 +14,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { useMantineTheme } from "@mantine/core";
 import ChartContainer from "./chart-container";
+import { colors } from "../../../../config/colorPalette";
 
 ChartJS.register(
   CategoryScale,
@@ -68,14 +69,14 @@ export default function LineChart() {
       {
         label: "Credit",
         data: creditData,
-        borderColor: theme.colors.pink[7],
-        backgroundColor: theme.colors.pink[3],
+        borderColor: colors.charts.qualitative[1],
+        backgroundColor: colors.charts.qualitative[1],
       },
       {
         label: "Reserves",
         data: reservesData,
-        borderColor: theme.colors.cyan[7],
-        backgroundColor: theme.colors.cyan[3],
+        borderColor: colors.charts.qualitative[2],
+        backgroundColor: colors.charts.qualitative[2],
       },
     ],
   };
@@ -87,7 +88,7 @@ export default function LineChart() {
 
   return (
     <ChartContainer>
-      <Line options={options} data={data} />
+      <Line options={options} data={data} height={250} />
     </ChartContainer>
   );
 }

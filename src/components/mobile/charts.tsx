@@ -15,7 +15,7 @@ export default function Desktop() {
     <div
       style={{
         position: "relative",
-        height: `50vh`,
+        // height: `50vh`,
         marginTop: "30px",
         // backgroundColor: colors.background2,
       }}

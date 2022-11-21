@@ -10,7 +10,7 @@ import { lectureRoutes } from "../../config/routes/lectureRoutes";
 import { useLoaded } from "../../hooks/useLoaded";
 import { mediaQuery } from "../../config/media-query";
 import { useMediaQuery } from "@mantine/hooks";
-import LecturePageDesktop from "../../components/desktop/lecture-page";
+import LecturePageDesktop from "../../components/desktop/lectures/lecture-page";
 import LecturePageMobile from "../../components/mobile/lecture-page";
 
 export default function LecturePath({

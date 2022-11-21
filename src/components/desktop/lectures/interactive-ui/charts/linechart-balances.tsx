@@ -1,5 +1,3 @@
-import { useAppSelector } from "../../../../app/hooks";
-import { selectBanks } from "../../../../features/banks/banksSlice";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,9 +11,12 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useMantineTheme } from "@mantine/core";
-import { bankData } from "../../../../domain/structures/objects";
+
 import ChartContainer from "./chart-container";
-import { colors } from "../../../../config/colorPalette";
+import { selectBanks } from "../../../../../features/banks/banksSlice";
+import { useAppSelector } from "../../../../../app/hooks";
+import { bankData } from "../../../../../domain/structures/objects";
+import { colors } from "../../../../../config/colorPalette";
 
 ChartJS.register(
   CategoryScale,
@@ -30,6 +31,13 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
+  elements: {
+    line: {
+      borderWidth: 1,
+      // tension: 1,
+      // borderJoinStyle: "bevel" as const,
+    },
+  },
   scales: {
     y: {
       beginAtZero: true,
@@ -52,6 +60,13 @@ export default function LineChart() {
 
   const options = {
     responsive: true,
+    elements: {
+      line: {
+        borderWidth: 1,
+        // tension: 1,
+        // borderJoinStyle: "bevel" as const,
+      },
+    },
     // scales: {
     //   y: {
     //     beginAtZero: true,
@@ -113,7 +128,7 @@ export default function LineChart() {
   }
   return (
     <ChartContainer>
-      <Line options={options} data={data} height={250}/>
+      <Line options={options} data={data} />
     </ChartContainer>
   );
 }

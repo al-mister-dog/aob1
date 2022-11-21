@@ -1,8 +1,6 @@
 import { createStyles } from "@mantine/core";
 import { Text, Title } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
-import { useNextPage } from "../../../hooks/useNextPage";
-import NextLectureLink from "../../shared-ui/next-lecture-link";
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -19,12 +17,12 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: colors.background1,
   },
 }));
-export default function Assignment({ assignment, nextLecture }) {
+export default function Assignment({ assignment }) {
   const { classes } = useStyles();
 
   return (
     <div>
-      <Title className={classes.title} order={2}>
+      <Title className={classes.title} style={{ color: colors.text }} order={2}>
         Assignment
       </Title>
       <div className={`${classes.card}`}>
@@ -34,10 +32,17 @@ export default function Assignment({ assignment, nextLecture }) {
             paddingRight: 16,
           }}
         >
-          <Text size="md" weight="bold" italic>
+          <Text
+            size="sm"
+            weight="bold"
+            style={{
+              paddingBottom: 0,
+              letterSpacing: "1px",
+              color: colors.text,
+            }}
+          >
             {assignment}
           </Text>
-          <NextLectureLink nextLecture={nextLecture} />
         </div>
       </div>
     </div>

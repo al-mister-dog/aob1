@@ -1,22 +1,30 @@
-import { useAppSelector } from "../../../../app/hooks";
-import { selectBanks } from "../../../../features/banks/banksSlice";
+import { useAppSelector } from "../../../../../app/hooks";
+import { selectBanks } from "../../../../../features/banks/banksSlice";
 import React from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart } from "chart.js";
 import annotationPlugin from "chartjs-plugin-annotation";
 import { useMantineTheme } from "@mantine/core";
 import ChartContainer from "./chart-container";
-import { colors } from "../../../../config/colorPalette";
+import { colors } from "../../../../../config/colorPalette";
 
 Chart.register(annotationPlugin);
 
 export default function EffectiveRate() {
   const { analytics } = useAppSelector(selectBanks);
   const theme = useMantineTheme();
+  
   const loanData = analytics.graphs.loanData;
   const labels = loanData.associatedData.map((data) => `${data.rate}%`);
   const options = {
     maintainAspectRatio: true,
+    elements: {
+      line: {
+        borderWidth: 10,
+        // tension: 1,
+        // borderJoinStyle: "bevel" as const,
+      },
+    },
     scales: {
       y: {
         // beginAtZero: true,
@@ -90,7 +98,7 @@ export default function EffectiveRate() {
 
   return (
     <ChartContainer>
-      <Bar options={options} data={data} height={250} />
+      <Bar options={options} data={data}   />
     </ChartContainer>
   );
 }

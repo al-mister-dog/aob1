@@ -49,7 +49,7 @@ export default function Assignment({ assignment, nextLecture }) {
           style={{
             margin: 0,
             padding: 0,
-            border: `1px solid ${colors.muiGray}`,
+            borderBottom: `1px solid ${colors.muiGray}`,
             flexGrow: 1,
           }}
         ></div>

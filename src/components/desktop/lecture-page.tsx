@@ -1,5 +1,5 @@
 import { Card, createStyles, SimpleGrid } from "@mantine/core";
-import KeyTerms from "../lectures/article/lecture-index/key-terms";
+import KeyTerms from "./lectures/key-terms";
 import Article from "./lectures/article";
 
 import LayoutDesktop from "./interactive-ui/layout";

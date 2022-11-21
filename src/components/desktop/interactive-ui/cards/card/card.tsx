@@ -2,6 +2,7 @@ import { useAppSelector } from "../../../../../app/hooks";
 import { selectSettings } from "../../../../../features/settings/settingsSlice";
 import { useCallback } from "react";
 import { useHover } from "@mantine/hooks";
+import LectureCard from "../../../../shared-ui/components/card/LectureCard";
 import {
   Card,
   Center,
@@ -24,7 +25,6 @@ interface Props {
 export default function CardUI({ bank, handleSetBankDetail }: Props) {
   const { displaySettings, spreadsheetSettings } =
     useAppSelector(selectSettings);
-  const { hovered, ref } = useHover();
   const theme = useMantineTheme();
 
   const onSelectBank = useCallback((bank: CardInfo) => {
@@ -39,19 +39,10 @@ export default function CardUI({ bank, handleSetBankDetail }: Props) {
   }
 
   return (
-    <Card
-      key={bank.cardInfo.id}
-      ref={ref}
-      shadow="sm"
-      p="sm"
-      radius="xs"
-      style={{
-        height: "13rem",
-        backgroundColor: colors.background2,
-        paddingBottom: "0px",
-        cursor: "pointer",
-        border: hovered ? `2px solid ${theme.colors[bank.color][2]}` : "",
-      }}
+    <LectureCard
+      cardKey={bank.cardInfo.id}
+      height="13.5rem"
+      hoverBorder={`2px solid ${theme.colors[bank.color][2]}`}
       onClick={() => onSelectBank(bank)}
     >
       <Card.Section style={{ padding: "3px", cursor: "pointer" }}>
@@ -138,6 +129,6 @@ export default function CardUI({ bank, handleSetBankDetail }: Props) {
           </SimpleGrid>
         )}
       </Card.Section>
-    </Card>
+    </LectureCard>
   );
 }

@@ -1,8 +1,6 @@
 import { Text, useMantineTheme } from "@mantine/core";
 
 export default function BalanceSheetRowHeading({ side, bills, coins }) {
-  const theme = useMantineTheme();
-console.log(bills)
   return (
     <div style={{ marginBottom: "1.5px" }}>
       {bills.length > 0 && (

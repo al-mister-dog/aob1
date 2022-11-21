@@ -7,7 +7,6 @@ import {
   Title,
 } from "@mantine/core";
 import { useState } from "react";
-import { colors } from "../../../../config/colorPalette";
 
 const useStyles = createStyles((theme) => ({
   button: {

@@ -17,7 +17,6 @@ export default function SpoilerText({ text }: IntroProps) {
           style={{
             letterSpacing: "1px",
             marginBottom: "25px",
-            
             color: colors.text,
           }}
         >

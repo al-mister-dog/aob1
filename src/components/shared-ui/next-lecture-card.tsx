@@ -17,7 +17,7 @@ export default function NextLectureLink({ nextLecture }) {
         mb={150}
         style={{
           maxWidth: "40vw",
-          backgroundColor: hovered ? colors.background3 : colors.background2,
+          backgroundColor: hovered ? colors.background3 : colors.background1,
           color: colors.text,
           cursor: "pointer",
         }}

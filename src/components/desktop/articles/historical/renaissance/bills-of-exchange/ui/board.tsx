@@ -39,7 +39,7 @@ export default function Board({ FlorencePlayers, LyonsPlayers }) {
         </Group>
       </Header>
 
-      <Grid grow pt={10} >
+      <Grid grow p={10} >
         <Grid.Col span={5}>
           <CardGrid
             FlorencePlayers={FlorencePlayers}

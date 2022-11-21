@@ -6,6 +6,7 @@ import { ChevronRight } from "tabler-icons-react";
 import Board from "./ui/board";
 import { colors } from "../../../../../../config/colorPalette";
 import NextArticleLink from "../../../../../shared-ui/next-article-card";
+import ArticleTitle from "../../../../../shared-ui/components/bread-crumbs/articles";
 
 export default function PartTwo({
   path,
@@ -19,7 +20,7 @@ export default function PartTwo({
   return (
     <>
       <Box ml={25} mt={200}>
-        <Title>{texts.title}</Title>
+        <ArticleTitle title={texts.title} />
       </Box>
 
       {texts.paragraphs.map((paragraph) => (

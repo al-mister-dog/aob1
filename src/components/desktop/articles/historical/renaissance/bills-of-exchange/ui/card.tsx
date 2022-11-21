@@ -8,6 +8,7 @@ import {
 } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
 import { colors } from "../../../../../../../config/colorPalette";
+import LectureCard from "../../../../../../shared-ui/components/card/LectureCard";
 import BalanceSheetRowHeading from "./balance-sheet-heading";
 
 export default function CardUI({ bank, selectPlayer }) {
@@ -20,21 +21,10 @@ export default function CardUI({ bank, selectPlayer }) {
       : theme.colors.indigo[depth];
 
   return (
-    <Card
-      key={bank.id}
-      ref={ref}
-      shadow="sm"
-      withBorder
-      p="sm"
-      radius="xs"
-      style={{
-        height: "9.75rem",
-        // backgroundColor: colors.background2,
-        backgroundColor: "#FFFFFC",
-        paddingBottom: "0px",
-        cursor: "pointer",
-        border: hovered ? `2px solid ${theme.colors.violet[2]}` : "",
-      }}
+    <LectureCard
+      cardKey={bank.id}
+      height="9.75rem"
+      hoverBorder={`2px solid ${rowColor(2)}`}
       onClick={() => selectPlayer(bank)}
     >
       <Card.Section style={{ padding: "3px", cursor: "pointer" }}>
@@ -73,6 +63,7 @@ export default function CardUI({ bank, selectPlayer }) {
           >
             <BalanceSheetRowHeading
               side="assets"
+              color={rowColor(9)}
               bills={bank.assets}
               coins={bank.coinAsset}
             />
@@ -80,12 +71,13 @@ export default function CardUI({ bank, selectPlayer }) {
           <div>
             <BalanceSheetRowHeading
               side="liabilities"
+              color={rowColor(9)}
               bills={bank.liabilities}
               coins={bank.coinLiability}
             />
           </div>
         </SimpleGrid>
       </Card.Section>
-    </Card>
+    </LectureCard>
   );
 }

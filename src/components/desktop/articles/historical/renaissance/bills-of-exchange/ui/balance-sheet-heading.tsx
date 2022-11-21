@@ -1,6 +1,6 @@
 import { Text, useMantineTheme } from "@mantine/core";
 
-export default function BalanceSheetRowHeading({ side, bills, coins }) {
+export default function BalanceSheetRowHeading({ side, color, bills, coins }) {
   const theme = useMantineTheme();
 
   return (
@@ -12,10 +12,9 @@ export default function BalanceSheetRowHeading({ side, bills, coins }) {
             padding: 0,
             textAlign: "left",
             fontSize: 12,
-            color: "black",
+            color,
             fontWeight: 500,
-            fontFamily:
-              '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+            
           }}
         >
           <Text style={{ margin: 0, padding: 0 }}>Bills</Text>
@@ -52,7 +51,7 @@ export default function BalanceSheetRowHeading({ side, bills, coins }) {
             padding: 0,
             textAlign: "left",
             fontSize: 12,
-            color: "black",
+            color,
             fontWeight: 500,
             fontFamily:
               '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',

@@ -7,6 +7,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import { mediaQuery } from "../../../../../config/media-query";
 import ArticlePageMobile from "../../../../../components/mobile/articles/historical/renaissance/bills-of-exchange/ArticlePage";
 import ArticlePageDesktop from "../../../../../components/desktop/articles/historical/renaissance/bills-of-exchange/ArticlePage";
+import { useRouter } from "next/router";
 
 export const texts = {
   title: `Rechange: Part 1`,
@@ -42,6 +43,7 @@ export const texts = {
 };
 
 export default function RemittingBills() {
+  
   const { me, Salviati, Federigo, Piero } = useAppSelector(selectTraders);
   const { you, Tommaso } = useAppSelector(selectBankers);
 

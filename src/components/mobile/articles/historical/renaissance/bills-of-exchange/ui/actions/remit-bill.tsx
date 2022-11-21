@@ -10,6 +10,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../../../../../../../app/hooks";
+import { cityColor } from "../../../../../../../desktop/articles/historical/renaissance/bills-of-exchange/ui/utils/city-color";
 
 const RemitBill: React.FunctionComponent<{
   selected: any;
@@ -58,7 +59,7 @@ const RemitBill: React.FunctionComponent<{
           <Select
             size="xs"
             label={
-              <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+              <Text size="xs" weight="bold" color={cityColor(selected, 9)}>
                 Bill To Remit
               </Text>
             }
@@ -71,7 +72,7 @@ const RemitBill: React.FunctionComponent<{
           <Select
             size="xs"
             label={
-              <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+              <Text size="xs" weight="bold" color={cityColor(selected, 9)}>
                 Remit Bill To
               </Text>
             }

@@ -8,8 +8,6 @@ import {
   Center,
   SimpleGrid,
   Text,
-  Title,
-  createStyles,
   Drawer,
   useMantineTheme,
 } from "@mantine/core";
@@ -41,14 +39,16 @@ export default function CardUI({ bank }: { bank: CardInfo }) {
         key={bank.cardInfo.id}
         ref={ref}
         shadow="sm"
+        withBorder
         p="sm"
         radius="xs"
+        m={10}
         style={{
           backgroundColor: colors.background2,
           paddingBottom: "0px",
-          width: "100%",
+          width: "20rem",
           height: "11.75rem",
-          margin: "auto",
+
           border: hovered ? `2px solid ${theme.colors[bank.color][2]}` : "",
         }}
         onClick={() => setOpened(true)}

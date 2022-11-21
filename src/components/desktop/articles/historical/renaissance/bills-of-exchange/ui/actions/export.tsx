@@ -16,6 +16,7 @@ import {
   Stack,
 } from "@mantine/core";
 import { useState } from "react";
+import { cityColor } from "../utils/city-color";
 
 interface Trader {
   id: string;
@@ -75,7 +76,7 @@ const ExportCard: React.FunctionComponent<{
       <Select
         size="xs"
         label={
-          <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+          <Text size="xs" weight="bold" color={cityColor(selected, 9)}>
             Export To
           </Text>
         }
@@ -87,7 +88,7 @@ const ExportCard: React.FunctionComponent<{
       <NumberInput
         size="xs"
         label={
-          <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+          <Text size="xs" weight="bold" color={cityColor(selected, 9)}>
             Amount
           </Text>
         }
@@ -97,6 +98,7 @@ const ExportCard: React.FunctionComponent<{
 
       <Button
         variant="filled"
+        color={`${cityColor(selected)}`}
         disabled={isNaN(selectedValueAmount) || selectedValueAmount <= 0}
         onClick={onClickTrade}
       >

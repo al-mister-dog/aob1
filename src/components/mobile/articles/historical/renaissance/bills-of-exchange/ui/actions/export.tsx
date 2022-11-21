@@ -16,6 +16,7 @@ import {
   Stack,
 } from "@mantine/core";
 import { useState } from "react";
+import { cityColor } from "../../../../../../../desktop/articles/historical/renaissance/bills-of-exchange/ui/utils/city-color";
 
 const ExportCard: React.FunctionComponent<{
   selected: any;
@@ -57,7 +58,7 @@ const ExportCard: React.FunctionComponent<{
       <Select
         size="xs"
         label={
-          <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+          <Text size="xs" weight="bold" color={cityColor(selected, 9)}>
             Export To
           </Text>
         }
@@ -69,7 +70,7 @@ const ExportCard: React.FunctionComponent<{
       <NumberInput
         size="xs"
         label={
-          <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+          <Text size="xs" weight="bold" color={cityColor(selected, 9)}>
             Amount
           </Text>
         }

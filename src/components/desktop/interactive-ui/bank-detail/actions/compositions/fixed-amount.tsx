@@ -1,5 +1,5 @@
-import { forwardRef, useContext, useState } from "react";
-import { useMediaQuery } from "@mantine/hooks";
+import { forwardRef } from "react";
+
 import {
   Button,
   Group,

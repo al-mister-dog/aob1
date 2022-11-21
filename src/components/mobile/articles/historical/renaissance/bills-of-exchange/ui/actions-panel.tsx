@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Text, Center, Stack, useMantineTheme, Select } from "@mantine/core";
 
 import ActionForms from "./action-forms";
+import { cityColor } from "./utils/city-color";
 
 const actionData = {
   me: [
@@ -38,7 +39,7 @@ export default function ActionsPanel({ player, setOpened }) {
       <Select
         size="xs"
         label={
-          <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+          <Text size="xs" weight="bold" color={cityColor(player, 9)}>
             Actions
           </Text>
         }

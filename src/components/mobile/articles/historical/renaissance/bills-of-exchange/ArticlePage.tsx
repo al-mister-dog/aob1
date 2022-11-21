@@ -19,7 +19,7 @@ export default function PartTwo({
 
   return (
     <>
-      <Box ml={25} mt={200}>
+      <Box ml={30} mt={100}>
         <ArticleTitle title={texts.title} />
       </Box>
 

@@ -1,6 +1,7 @@
 import { Text, useMantineTheme } from "@mantine/core";
+import { cityColor } from "./utils/city-color";
 
-export default function BalanceSheetRowHeading({ side, bills, coins }) {
+export default function BalanceSheetRowHeading({ bank, side, bills, coins }) {
   return (
     <div style={{ marginBottom: "1.5px" }}>
       {bills.length > 0 && (
@@ -16,12 +17,21 @@ export default function BalanceSheetRowHeading({ side, bills, coins }) {
               '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
           }}
         >
-          <Text size={10} style={{ margin: 0, padding: 0 }}>
+          <Text
+            size={10}
+            color={cityColor(bank, 9)}
+            style={{ margin: 0, padding: 0 }}
+          >
             Bills
           </Text>
           {bills.map((account, i: number) => {
             return account.paid ? (
-              <Text size={9} key={account.id} style={{ margin: 0, padding: 0 }}>
+              <Text
+                size={9}
+                color={cityColor(bank, 9)}
+                key={account.id}
+                style={{ margin: 0, padding: 0 }}
+              >
                 <s>
                   <span>
                     {side === "liabilities"
@@ -33,7 +43,12 @@ export default function BalanceSheetRowHeading({ side, bills, coins }) {
                 </s>
               </Text>
             ) : (
-              <Text size={9} key={account.id} style={{ margin: 0, padding: 0 }}>
+              <Text
+                size={9}
+                color={cityColor(bank, 9)}
+                key={account.id}
+                style={{ margin: 0, padding: 0 }}
+              >
                 <span>
                   {side === "liabilities"
                     ? `Due to ${account.dueTo}: `
@@ -58,7 +73,7 @@ export default function BalanceSheetRowHeading({ side, bills, coins }) {
               '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
           }}
         >
-          <Text size={10} style={{ margin: 0, padding: 0 }}>
+          <Text size={10} color={cityColor(bank, 9)} style={{ margin: 0, padding: 0 }}>
             Coins
           </Text>
 

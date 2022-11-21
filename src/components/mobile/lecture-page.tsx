@@ -1,4 +1,4 @@
-import { Text, createStyles } from "@mantine/core";
+import { Box, createStyles } from "@mantine/core";
 import Toolbar from "./interactive-ui/settings/toolbar";
 import Article from "./lectures/article";
 import KeyTerms from "./lectures/key-terms";
@@ -6,13 +6,13 @@ import BalanceSheets from "./interactive-ui/cards/card-list";
 import Charts from "./charts";
 import NextLectureLink from "../shared-ui/next-lecture-link";
 
-import { useNextPage } from "../../hooks/useNextPage";
 import { colors } from "../../config/colorPalette";
+import Assignment from "./lectures/assignment";
+import Sources from "./lectures/sources";
 const useStyles = createStyles((theme) => ({
   interactiveUiContainer: {
     backgroundColor: colors.background1,
     paddingBottom: "200px",
-    marginBottom: -25,
   },
   keyTermsContainer: {
     backgroundColor: colors.background1,
@@ -32,41 +32,41 @@ export default function LecturePageMobile({
   nextLecture,
 }) {
   const { classes } = useStyles();
-  let link = useNextPage(nextLecture);
+
   return (
     <>
-      <Article
-        slug={slug}
-        title={title}
-        text={text}
-        assignment={assignment}
-        nextLecture={nextLecture}
-      />
-      {title !== "Introduction" && (
+      {title === "Introduction" ? (
         <>
-          <div className={classes.interactiveUiContainer}>
-            <div className={classes.balanceSheets}>
-              <div
-                style={{
-                  marginBottom: "25px",
-                  padding: "5px",
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Toolbar />
-              </div>
+          <Article slug={slug} title={title} text={text} />
+          <Sources assignment={assignment} nextLecture={nextLecture} />
+        </>
+      ) : (
+        <>
+          <Article slug={slug} title={title} text={text} />
+          <Box mt={100}>
+            <Assignment assignment={assignment} nextLecture={nextLecture} />
+          </Box>
 
-              <BalanceSheets />
-              <Charts />
-            </div>
-          </div>
-          <div className={classes.keyTermsContainer}>
+          <Box className={classes.interactiveUiContainer}>
+            <Box
+              style={{
+                marginBottom: "25px",
+                padding: "5px",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Toolbar />
+            </Box>
+            <BalanceSheets />
+            <Charts />
+          </Box>
+          <Box className={classes.keyTermsContainer}>
             <KeyTerms ids={keyTermsIds} />
-            <div style={{ padding: "50px", backgroundColor: "inherit" }}>
+            <Box style={{ padding: "50px", backgroundColor: "inherit" }}>
               <NextLectureLink nextLecture={nextLecture} />
-            </div>
-          </div>
+            </Box>
+          </Box>
         </>
       )}
     </>

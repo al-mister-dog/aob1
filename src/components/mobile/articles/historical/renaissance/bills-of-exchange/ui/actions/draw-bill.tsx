@@ -9,6 +9,7 @@ import {
 } from "../../../../../../../../features/renaissance/renaissanceSlice";
 import { useState } from "react";
 import { Stack, Button, Select, Text, useMantineTheme } from "@mantine/core";
+import { cityColor } from "../../../../../../../desktop/articles/historical/renaissance/bills-of-exchange/ui/utils/city-color";
 
 const DrawBill: React.FunctionComponent<{
   selected: any;
@@ -76,7 +77,7 @@ const DrawBill: React.FunctionComponent<{
           <Select
             size="xs"
             label={
-              <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+              <Text size="xs" weight="bold" color={cityColor(selected, 9)}>
                 Bill To Redeem
               </Text>
             }
@@ -88,7 +89,7 @@ const DrawBill: React.FunctionComponent<{
           <Select
             size="xs"
             label={
-              <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+              <Text size="xs" weight="bold" color={cityColor(selected, 9)}>
                 Draw Bill On
               </Text>
             }

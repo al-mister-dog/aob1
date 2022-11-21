@@ -1,4 +1,5 @@
-import { Group } from "@mantine/core";
+import { Box, Group } from "@mantine/core";
+import { splitArray } from "../../../helpers";
 import { CardInfo } from "../types";
 import Card from "./card/card";
 
@@ -7,11 +8,37 @@ export default function LayoutMobile({
 }: {
   banksArray: CardInfo[];
 }) {
+  const [array1, array2] = splitArray(banksArray);
   return (
-    <Group style={{ height: "26rem", width: "100%", overflow: "auto" }}>
-      {banksArray.map((bank) => (
-        <Card key={bank.cardInfo.id} bank={bank} />
-      ))}
-    </Group>
+    <>
+      <Box
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          overflow: "auto",
+        }}
+      >
+        {array1.map((bank) => (
+          <div key={bank.id} style={{ marginBottom: "10px" }}>
+            <Card key={bank.cardInfo.id} bank={bank} />
+          </div>
+        ))}
+      </Box>
+      <Box
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          overflow: "auto",
+        }}
+      >
+        {array2.map((bank) => (
+          <div key={bank.id} style={{ marginBottom: "10px" }}>
+            <Card key={bank.cardInfo.id} bank={bank} />
+          </div>
+        ))}
+      </Box>
+    </>
   );
 }

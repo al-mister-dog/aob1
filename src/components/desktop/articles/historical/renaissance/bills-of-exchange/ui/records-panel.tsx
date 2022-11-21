@@ -2,17 +2,6 @@ import uuid from "react-uuid";
 import { Box, Text, useMantineTheme } from "@mantine/core";
 import { createStyles } from "@mantine/core";
 
-const useStyles = createStyles(() => ({
-  newest: {
-    display: "flex",
-    flexDirection: "column-reverse",
-  },
-  oldest: {
-    display: "flex",
-    flexDirection: "column",
-  },
-}));
-
 export default function RecordList({ player }) {
   return (
     <Box>

@@ -1,4 +1,10 @@
-import { Card, createStyles, SimpleGrid, useMantineTheme } from "@mantine/core";
+import {
+  Box,
+  Card,
+  createStyles,
+  SimpleGrid,
+  useMantineTheme,
+} from "@mantine/core";
 import { Text } from "@mantine/core";
 
 import { colors } from "../../../config/colorPalette";
@@ -48,21 +54,10 @@ export default function Introduction({
 }
 
 function Sources({ assignment, nextLecture }) {
-  const { classes } = useStyles();
-
   return (
-    <div>
+    <Box>
       <SimpleGrid cols={2}>
-        <Card
-          mt={50}
-          mb={150}
-          ml={25}
-          shadow="sm"
-          style={{
-            maxWidth: "40vw",
-            backgroundColor: colors.background2,
-          }}
-        >
+        <Box mt={25} mb={150} ml={50}>
           {assignment.slice(0, 7) === "Sources" ? (
             <>
               <h2
@@ -70,7 +65,6 @@ function Sources({ assignment, nextLecture }) {
                   margin: 0,
                   padding: 0,
                   fontWeight: "lighter",
-                  fontStyle: "italic",
                   letterSpacing: 1,
                 }}
               >
@@ -92,9 +86,11 @@ function Sources({ assignment, nextLecture }) {
               {assignment}
             </p>
           )}
-        </Card>
-        <NextLectureCard nextLecture={nextLecture} />
+        </Box>
+        <Box mr={25}>
+          <NextLectureCard nextLecture={nextLecture} />
+        </Box>
       </SimpleGrid>
-    </div>
+    </Box>
   );
 }

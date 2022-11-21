@@ -21,7 +21,7 @@ const useStyles = createStyles((theme) => ({
 }));
 export default function Assignment({ assignment, nextLecture }) {
   const { classes } = useStyles();
-  let link = useNextPage(nextLecture);
+
   return (
     <div>
       <Title className={classes.title} order={2}>

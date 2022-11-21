@@ -1,4 +1,4 @@
-import { Card, createStyles, SimpleGrid } from "@mantine/core";
+import { Box, Card, createStyles, SimpleGrid } from "@mantine/core";
 import KeyTerms from "./lectures/key-terms";
 import Article from "./lectures/article";
 
@@ -57,16 +57,18 @@ export default function LecturePath({
                 mt={50}
                 mb={150}
                 ml={25}
-                shadow="sm"
+                
                 style={{
                   maxWidth: "40vw",
-                  backgroundColor: colors.background2,
+                  backgroundColor: colors.background1,
                   cursor: "pointer",
                 }}
               >
                 <KeyTerms ids={keyTermsIds} />
               </Card>
-              <NextLectureCard nextLecture={nextLecture} />
+              <Box mt={50}>
+                <NextLectureCard nextLecture={nextLecture} />
+              </Box>
             </SimpleGrid>
           ) : (
             <SimpleGrid cols={2}>

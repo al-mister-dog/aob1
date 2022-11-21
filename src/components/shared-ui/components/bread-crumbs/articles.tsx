@@ -11,53 +11,78 @@ export default function ArticleTitle({ title }) {
   if (paths.length === 1) {
     return (
       <>
-        <Breadcrumbs style={{ marginBottom: "25px", fontWeight: "bold" }}>
+        <Breadcrumbs ml={2} style={{ fontWeight: "bold" }}>
           {[
             <Link href={`/${paths[0]}`} key={0}>
-              <Text style={{color: colors.text}} transform="capitalize">{paths[0]}</Text>
+              <Text style={{ color: colors.text }} transform="capitalize">
+                {paths[0]}
+              </Text>
             </Link>,
           ]}
         </Breadcrumbs>
-        <h1 style={{color: colors.text}}>{title}</h1>
+        <h1   style={{
+            color: colors.text,
+            padding: 0,
+            margin: 0,
+
+          }}>{title}</h1>
       </>
     );
   } else if (paths.length === 2) {
     return (
       <>
-        <Breadcrumbs style={{ marginBottom: "25px", fontWeight: "bold" }}>
+        <Breadcrumbs ml={2} style={{ fontWeight: "bold" }}>
           {[
             <Link href={`/${paths[0]}`} key={0}>
-              <Text style={{color: colors.text}} transform="capitalize">{paths[0]}</Text>
+              <Text style={{ color: colors.text }} transform="capitalize">
+                {paths[0]}
+              </Text>
             </Link>,
             <Link href={`/${paths[1]}`} key={1}>
-              <Text style={{color: colors.text}} transform="capitalize">{paths[1]}</Text>
+              <Text style={{ color: colors.text }} transform="capitalize">
+                {paths[1]}
+              </Text>
             </Link>,
           ]}
         </Breadcrumbs>
-        <h1 style={{color: colors.text}}>{title}</h1>
+        <h1   style={{
+            color: colors.text,
+            padding: 0,
+            margin: 0,
+
+          }}>{title}</h1>
       </>
     );
   } else if (paths.length > 2) {
     return (
       <>
-        <Breadcrumbs
-          style={{ display: "flex", marginBottom: "25px", fontWeight: "bold" }}
-        >
+        <Breadcrumbs ml={2} style={{ display: "flex", fontWeight: "bold" }}>
           {[
             <Link href={`/${paths[0]}`} key={0}>
-              <Text style={{color: colors.text}} transform="capitalize">{paths[0]}</Text>
+              <Text style={{ color: colors.text }} transform="capitalize">
+                {paths[0]}
+              </Text>
             </Link>,
             <Link
               href={`/${paths.slice(0, paths.length - 1).join("/")}`}
               key={2}
             >
-              <Text style={{color: colors.text}} transform="capitalize">
+              <Text style={{ color: colors.text }} transform="capitalize">
                 . . {paths[paths.length - 2].split("-").join(" ")}
               </Text>
             </Link>,
           ]}
         </Breadcrumbs>
-        <h1 style={{color: colors.text}}>{title}</h1>
+        <h1
+          style={{
+            color: colors.text,
+            padding: 0,
+            margin: 0,
+
+          }}
+        >
+          {title}
+        </h1>
       </>
     );
   }

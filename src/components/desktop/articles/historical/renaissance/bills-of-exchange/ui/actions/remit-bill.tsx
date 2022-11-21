@@ -10,6 +10,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../../../../../../../app/hooks";
+import { cityColor } from "../utils/city-color";
 
 const RemitBill: React.FunctionComponent<{
   selected: any;
@@ -57,7 +58,7 @@ const RemitBill: React.FunctionComponent<{
           <Select
             size="xs"
             label={
-              <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+              <Text size="xs" weight="bold" color={cityColor(selected, 9)}>
                 Bill To Remit
               </Text>
             }
@@ -70,7 +71,7 @@ const RemitBill: React.FunctionComponent<{
           <Select
             size="xs"
             label={
-              <Text size="xs" weight="bold" color={theme.colors.violet[9]}>
+              <Text size="xs" weight="bold" color={cityColor(selected, 9)}>
                 Remit Bill To
               </Text>
             }
@@ -82,6 +83,7 @@ const RemitBill: React.FunctionComponent<{
 
           <Button
             variant="filled"
+            color={`${cityColor(selected)}`}
             disabled={!selectedValueTo || !selectedBill}
             onClick={onClickremitBill}
           >
@@ -89,7 +91,7 @@ const RemitBill: React.FunctionComponent<{
           </Button>
         </>
       ) : (
-        <Text>There are no bills to remit</Text>
+        <Text color={cityColor(selected, 9)}>There are no bills to remit</Text>
       )}
     </Stack>
   );

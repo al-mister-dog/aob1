@@ -8,15 +8,13 @@ import { ChevronRight } from "tabler-icons-react";
 export default function NextLectureLink({ nextLecture }) {
   let link = useNextPage(nextLecture);
   const { hovered, ref } = useHover();
-  const theme = useMantineTheme();
+  
   return (
     <Link href={`/lectures${link.path}`}>
       <Card
         ref={ref}
-        mt={50}
         mb={150}
         style={{
-          maxWidth: "40vw",
           backgroundColor: hovered ? colors.background3 : colors.background1,
           color: colors.text,
           cursor: "pointer",
@@ -24,7 +22,7 @@ export default function NextLectureLink({ nextLecture }) {
       >
         <Box p={25} style={{ display: "flex" }}>
           <Box style={{ flex: 1 }}>
-            <Text size="xl" weight="bold" align="right">
+            <Text size="xl" weight="bold" align="right" style={{letterSpacing: 1}}>
               NEXT
             </Text>
             <Text size="xl" weight="bold" align="right" color="violet">

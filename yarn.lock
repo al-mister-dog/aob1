@@ -2293,7 +2293,7 @@
   "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.284.tgz"
   "version" "1.4.284"
 
-"embla-carousel-react@^7.0.3":
+"embla-carousel-react@^7.0.5":
   "integrity" "sha512-qhw980gKj7G+O5d3WSwj0TyhcbpGP3DqJPiAatt1t3wEEcZqn7csaIfLh4e1N/0kna9sZfZZRzz+//NSrUodSg=="
   "resolved" "https://registry.npmjs.org/embla-carousel-react/-/embla-carousel-react-7.0.5.tgz"
   "version" "7.0.5"

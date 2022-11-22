@@ -2,6 +2,7 @@ import {
   Box,
   Card,
   createStyles,
+  Flex,
   SimpleGrid,
   useMantineTheme,
 } from "@mantine/core";
@@ -10,6 +11,7 @@ import { Text } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
 import NextLectureCard from "../../shared-ui/next-lecture-card";
 import NextLectureLink from "../../shared-ui/next-lecture-link";
+import PrevLectureCard from "../../shared-ui/prev-lecture-card";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -47,50 +49,67 @@ export default function Introduction({
       </div>
 
       <div style={{ marginTop: "25px" }}>
-        <Sources assignment={assignment} nextLecture={nextLecture} />
+        <Sources assignment={assignment} />
       </div>
+      <Flex
+        mt={100}
+        direction={{ base: "column", sm: "row" }}
+        justify={{ base: "center", sm: "space-between" }}
+        align={{ base: "center", sm: "space-between" }}
+      >
+        <Box
+          style={{
+            marginRight: "auto",
+          }}
+        >
+          <PrevLectureCard prevLecture={nextLecture} />
+        </Box>
+        <Box
+          style={{
+            marginLeft: "auto",
+          }}
+        >
+          <NextLectureCard nextLecture={nextLecture} />
+        </Box>
+      </Flex>
     </>
   );
 }
 
-function Sources({ assignment, nextLecture }) {
+function Sources({ assignment }) {
   return (
-    <Box>
-      <SimpleGrid cols={2}>
-        <Box mt={25} mb={150} ml={50}>
-          {assignment.slice(0, 7) === "Sources" ? (
-            <>
-              <h2
-                style={{
-                  margin: 0,
-                  padding: 0,
-                  fontWeight: "lighter",
-                  letterSpacing: 1,
-                }}
-              >
-                Sources
-              </h2>
-              {assignment
-                .split(":")
-                .slice(1)
-                .map((src, i) => (
-                  <Text key={i} size="lg">
-                    {src}
-                  </Text>
-                ))}
-            </>
-          ) : (
-            <p
-              style={{ color: colors.text, fontSize: "16px", letterSpacing: 1 }}
-            >
-              {assignment}
-            </p>
-          )}
-        </Box>
-        <Box mr={25}>
-          <NextLectureCard nextLecture={nextLecture} />
-        </Box>
-      </SimpleGrid>
-    </Box>
+    <Card
+      withBorder
+      style={{
+        width: "92%",
+        margin: "auto",
+        backgroundColor: colors.background1,
+      }}
+    >
+      {assignment.slice(0, 7) === "Sources" ? (
+        <>
+          <h2
+            style={{
+              margin: 0,
+              padding: 0,
+              fontWeight: "lighter",
+              letterSpacing: 1,
+            }}
+          >
+            Sources
+          </h2>
+          {assignment
+            .split(":")
+            .slice(1)
+            .map((src, i) => (
+              <Text key={i}>{src}</Text>
+            ))}
+        </>
+      ) : (
+        <p style={{ color: colors.text, fontSize: "16px", letterSpacing: 1 }}>
+          {assignment}
+        </p>
+      )}
+    </Card>
   );
 }

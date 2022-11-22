@@ -1,93 +1,103 @@
 import { keyTerms } from "../../../config/normalized-data/key-terms";
-import {
-  Button,
-  Text,
-  useMantineTheme,
-  createStyles,
-  Title,
-} from "@mantine/core";
-import { useState } from "react";
+
+import React, { useState, useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { Box, Button, Card, SimpleGrid } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
 
-const useStyles = createStyles((theme) => ({
-  title: {
-    padding: 16,
-    marginBottom: 0,
-    letterSpacing: 1,
-    fontWeight: "bold",
-    display: "inline-block",
-    backgroundColor: colors.background1,
-    borderTop: `1px solid ${theme.colors.red[1]}`,
-    borderRight: `1px solid ${theme.colors.red[1]}`,
-    borderTopRightRadius: 5,
-    paddingLeft: "50px",
-    paddingRight: "50px",
-    color: colors.text
-  },
-  card: {
-    padding: 16,
-    backgroundColor: colors.background1
-  },
-  desktopWidth: {
-    width: "65%",
-  },
-  button: {
-    fontSize: "1.2rem",
-    letterSpacing: "1px",
-    margin: "10px",
-    "&:focus": {
-      background: theme.colors.violet,
-      color: "white",
-    },
-  },
-}));
-
-export default function KeyTerms({ ids }) {
-  const { classes } = useStyles();
-  const theme = useMantineTheme();
-  const [selectedTerm, setSelectedTerm] = useState({
-    title: keyTerms[ids[0]].title,
-    definition: keyTerms[ids[0]].definition,
+const Carousel = ({ ids }) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [mainViewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
+  const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
+    containScroll: "keepSnaps",
+    dragFree: true,
   });
-
   const keyTermsArray = ids.map((kt) => ({
     key: kt,
     title: keyTerms[kt].title,
     definition: keyTerms[kt].definition,
   }));
 
-  return (
-    <>
-      <div style={{ backgroundColor: colors.background1 }}>
-        <h2 className={classes.title}>Key Terms</h2>
-      </div>
+  const mediaByIndex = (index) => keyTermsArray[index % keyTermsArray.length];
 
-      <div style={{ padding: "25px" }}>
-        {keyTermsArray.map((keyTerm) => (
+  const onThumbClick = useCallback(
+    (index) => {
+      if (!embla || !emblaThumbs) return;
+      if (emblaThumbs.clickAllowed()) embla.scrollTo(index);
+    },
+    [embla, emblaThumbs]
+  );
+
+  const onSelect = useCallback(() => {
+    if (!embla || !emblaThumbs) return;
+    setSelectedIndex(embla.selectedScrollSnap());
+    emblaThumbs.scrollTo(embla.selectedScrollSnap());
+  }, [embla, emblaThumbs, setSelectedIndex]);
+
+  useEffect(() => {
+    if (!embla) return;
+    onSelect();
+    embla.on("select", onSelect);
+  }, [embla, onSelect]);
+
+  return (
+    <Card withBorder style={{backgroundColor: colors.background1}}>
+      <h2
+        style={{
+          color: colors.text,
+          letterSpacing: 1,
+          margin: 0,
+          padding: 0,
+          marginBottom: 10,
+        }}
+      >
+        Key Terms
+      </h2>
+      <Box ref={thumbViewportRef} mb={25}>
+        {keyTermsArray.map((kt, index) => (
           <Button
-            key={keyTerm.key}
+            m={5}
+            key={index}
+            onClick={() => onThumbClick(index)}
             color="violet"
-            variant="outline"
-            radius="xs"
-            className={classes.button}
-            onClick={() =>
-              setSelectedTerm({
-                title: keyTerm.title,
-                definition: keyTerm.definition,
-              })
-            }
+            variant={index === selectedIndex ? "filled" : "outline"}
           >
-            {keyTerm.title}
+            {mediaByIndex(index).title}
           </Button>
         ))}
-      </div>
+      </Box>
+      <Box style={{ overflow: "hidden", width: "100%" }} ref={mainViewportRef}>
+        <CarouselViewPort
+          keyTermsArray={keyTermsArray}
+          mediaByIndex={mediaByIndex}
+        />
+      </Box>
+    </Card>
+  );
+};
 
-      <div style={{ padding: "0px 50px" }}>
-        <h2 style={{ padding: 0, margin: 0, letterSpacing: 1, color: colors.text }}>
-          {selectedTerm.title}
-        </h2>
-        <Text>{selectedTerm.definition}</Text>
-      </div>
-    </>
+function CarouselViewPort({ keyTermsArray, mediaByIndex }) {
+  return (
+    <Box style={{ display: "flex", userSelect: "none" }}>
+      {keyTermsArray.map((kt, index) => (
+        <Box
+          style={{
+            marginLeft: 10,
+            minWidth: "100%",
+            position: "relative",
+          }}
+          key={index}
+        >
+          <h3 style={{ color: colors.text, margin: 0, padding: 0 }}>
+            {mediaByIndex(index).title}
+          </h3>
+          <p style={{ color: colors.text, margin: 0, padding: 0 }}>
+            {mediaByIndex(index).definition}
+          </p>
+        </Box>
+      ))}
+    </Box>
   );
 }
+
+export default Carousel;

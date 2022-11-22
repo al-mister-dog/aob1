@@ -1,4 +1,4 @@
-import { Box, Card, createStyles, SimpleGrid } from "@mantine/core";
+import { Box, Card, createStyles, Flex, SimpleGrid } from "@mantine/core";
 import KeyTerms from "./key-terms";
 import Article from "./article";
 
@@ -6,8 +6,9 @@ import LayoutDesktop from "./interactive-ui/layout";
 import { colors } from "../../../config/colorPalette";
 import NextLectureCard from "../../shared-ui/next-lecture-card";
 import Introduction from "./introduction";
+import PrevLectureCard from "../../shared-ui/prev-lecture-card";
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   interactiveUiContainer: {
     backgroundColor: colors.background3,
     paddingBottom: "25px",
@@ -51,31 +52,34 @@ export default function LecturePath({
           <div className={classes.interactiveUiContainer}>
             <LayoutDesktop />
           </div>
-          {keyTermsIds.length > 0 ? (
-            <SimpleGrid cols={2}>
-              <Card
-                mt={50}
-                mb={150}
-                ml={25}
-                
-                style={{
-                  maxWidth: "40vw",
-                  backgroundColor: colors.background1,
-                  cursor: "pointer",
-                }}
-              >
-                <KeyTerms ids={keyTermsIds} />
-              </Card>
-              <Box mt={50}>
-                <NextLectureCard nextLecture={nextLecture} />
-              </Box>
-            </SimpleGrid>
-          ) : (
-            <SimpleGrid cols={2}>
-              <div></div>
-              <NextLectureCard nextLecture={nextLecture} />
-            </SimpleGrid>
+
+          {keyTermsIds.length > 0 && (
+            <Box mt={100}>
+              <KeyTerms ids={keyTermsIds} />
+            </Box>
           )}
+
+          <Flex
+            mt={100}
+            direction={{ base: "column", sm: "row" }}
+            justify={{ base: "center", sm: "space-between" }}
+            align={{ base: "center", sm: "space-between" }}
+          >
+            <Box
+              style={{
+                marginRight: "auto",
+              }}
+            >
+              <PrevLectureCard prevLecture={nextLecture} />
+            </Box>
+            <Box
+              style={{
+                marginLeft: "auto",
+              }}
+            >
+              <NextLectureCard nextLecture={nextLecture} />
+            </Box>
+          </Flex>
         </>
       )}
     </>

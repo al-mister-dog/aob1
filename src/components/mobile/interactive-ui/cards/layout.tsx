@@ -19,8 +19,8 @@ export default function LayoutMobile({
           overflow: "auto",
         }}
       >
-        {array1.map((bank) => (
-          <div key={bank.id} style={{ marginBottom: "10px" }}>
+        {array1.map((bank, i) => (
+          <div key={i} style={{ marginBottom: "10px" }}>
             <Card key={bank.cardInfo.id} bank={bank} />
           </div>
         ))}
@@ -33,8 +33,8 @@ export default function LayoutMobile({
           overflow: "auto",
         }}
       >
-        {array2.map((bank) => (
-          <div key={bank.id} style={{ marginBottom: "10px" }}>
+        {array2.map((bank, i) => (
+          <div key={i} style={{ marginBottom: "10px" }}>
             <Card key={bank.cardInfo.id} bank={bank} />
           </div>
         ))}

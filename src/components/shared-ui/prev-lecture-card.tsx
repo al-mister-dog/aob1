@@ -1,12 +1,12 @@
-import { Box, Card, Text, useMantineTheme } from "@mantine/core";
+import { Box, Card, Text } from "@mantine/core";
 import Link from "next/link";
 import { colors } from "../../config/colorPalette";
-import { useNextPage } from "../../hooks/useNextPage";
+import { usePrevPage } from "../../hooks/usePrevPage";
 import { useHover } from "@mantine/hooks";
-import { ChevronRight } from "tabler-icons-react";
+import { ChevronLeft } from "tabler-icons-react";
 
-export default function NextLectureLink({ nextLecture }) {
-  let link = useNextPage(nextLecture);
+export default function NextLectureLink({ prevLecture }) {
+  let link = usePrevPage(prevLecture);
   const { hovered, ref } = useHover();
 
   return (
@@ -20,19 +20,6 @@ export default function NextLectureLink({ nextLecture }) {
         }}
       >
         <Box p={25} style={{ display: "flex" }}>
-          <Box style={{ flex: 1 }}>
-            <Text
-              size="xl"
-              weight="bold"
-              align="right"
-              style={{ letterSpacing: 1 }}
-            >
-              NEXT
-            </Text>
-            <Text size="xl" weight="bold" align="right" color="violet">
-              {link.title}
-            </Text>
-          </Box>
           <Box
             style={{
               padding: 10,
@@ -41,7 +28,20 @@ export default function NextLectureLink({ nextLecture }) {
               alignItems: "center",
             }}
           >
-            <ChevronRight color="black" />
+            <ChevronLeft color="black" />
+          </Box>
+          <Box style={{ flex: 1 }}>
+            <Text
+              size="xl"
+              weight="bold"
+              align="left"
+              style={{ letterSpacing: 1 }}
+            >
+              PREVIOUS
+            </Text>
+            <Text size="xl" weight="bold" align="right" color="violet">
+              {link.title}
+            </Text>
           </Box>
         </Box>
       </Card>

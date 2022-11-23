@@ -144,19 +144,15 @@ const data = [
     title: "Project",
     links: [
       {
+        label: "Lectures",
+        link: "#",
+      },
+      {
+        label: "Articles",
+        link: "#",
+      },
+      {
         label: "Contribute",
-        link: "#",
-      },
-      {
-        label: "Media assets",
-        link: "#",
-      },
-      {
-        label: "Changelog",
-        link: "#",
-      },
-      {
-        label: "Releases",
         link: "#",
       },
     ],

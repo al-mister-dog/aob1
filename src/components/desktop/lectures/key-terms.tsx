@@ -1,10 +1,13 @@
-import { keyTerms } from "../../../config/normalized-data/key-terms";
-
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { keyTerms } from "../../../config/normalized-data/key-terms";
 import { Box, Button, Card, SimpleGrid } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
 
+interface KeyTerm {
+  title: string;
+  definition: string;
+}
 const Carousel = ({ ids }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [mainViewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
@@ -12,16 +15,17 @@ const Carousel = ({ ids }) => {
     containScroll: "keepSnaps",
     dragFree: true,
   });
-  const keyTermsArray = ids.map((kt) => ({
-    key: kt,
-    title: keyTerms[kt].title,
-    definition: keyTerms[kt].definition,
+  const keyTermsArray = ids.map((key: string) => ({
+    key: key,
+    title: keyTerms[key].title,
+    definition: keyTerms[key].definition,
   }));
 
-  const mediaByIndex = (index) => keyTermsArray[index % keyTermsArray.length];
+  const mediaByIndex = (index: number) =>
+    keyTermsArray[index % keyTermsArray.length];
 
   const onThumbClick = useCallback(
-    (index) => {
+    (index: number) => {
       if (!embla || !emblaThumbs) return;
       if (emblaThumbs.clickAllowed()) embla.scrollTo(index);
     },
@@ -62,14 +66,13 @@ const Carousel = ({ ids }) => {
         </Box>
 
         <Box ref={thumbViewportRef}>
-          {keyTermsArray.map((kt, index) => (
+          {keyTermsArray.map((_kt: KeyTerm, index: number) => (
             <Button
               m={5}
               key={index}
               onClick={() => onThumbClick(index)}
               color="violet"
               variant={index === selectedIndex ? "filled" : "outline"}
-              // w={{ base: 100, sm: 150, lg: 250 }}
             >
               {mediaByIndex(index).title}
             </Button>
@@ -83,7 +86,7 @@ const Carousel = ({ ids }) => {
 function CarouselViewPort({ keyTermsArray, mediaByIndex }) {
   return (
     <Box style={{ display: "flex", userSelect: "none" }}>
-      {keyTermsArray.map((kt, index) => (
+      {keyTermsArray.map((_kt: KeyTerm, index: number) => (
         <Box
           style={{
             minWidth: "100%",

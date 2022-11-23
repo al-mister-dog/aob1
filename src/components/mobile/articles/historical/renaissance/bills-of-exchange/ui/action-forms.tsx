@@ -15,7 +15,7 @@ export default function ActionForms({
   if (action === null) {
     return <></>;
   }
-
+  
   if (action === "drawBill") {
     return <DrawBill selected={player} setOpened={setOpened}/>;
   } else if (action === "remitBill") {

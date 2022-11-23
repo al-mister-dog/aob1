@@ -1,16 +1,15 @@
-import { Box, createStyles, Divider, Flex } from "@mantine/core";
+import { Box, createStyles, Flex } from "@mantine/core";
 import Toolbar from "./interactive-ui/settings/toolbar";
 import Article from "./lectures/article";
 import KeyTerms from "./lectures/key-terms";
 import BalanceSheets from "./interactive-ui/cards/card-list";
 import Charts from "./charts";
-import NextLectureLink from "../shared-ui/next-lecture-link";
-
 import { colors } from "../../config/colorPalette";
 import Assignment from "./lectures/assignment";
 import Sources from "./lectures/sources";
 import PrevLectureCard from "../shared-ui/prev-lecture-card";
 import NextLectureCard from "../shared-ui/next-lecture-card";
+
 const useStyles = createStyles((theme) => ({
   interactiveUiContainer: {
     backgroundColor: colors.background1,

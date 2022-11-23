@@ -1,29 +1,8 @@
-import {
-  Box,
-  Card,
-  createStyles,
-  Flex,
-  SimpleGrid,
-  useMantineTheme,
-} from "@mantine/core";
+import { Box, Card, createStyles, Flex } from "@mantine/core";
 import { Text } from "@mantine/core";
-
 import { colors } from "../../../config/colorPalette";
 import NextLectureCard from "../../shared-ui/next-lecture-card";
-import NextLectureLink from "../../shared-ui/next-lecture-link";
 import PrevLectureCard from "../../shared-ui/prev-lecture-card";
-
-const useStyles = createStyles((theme) => ({
-  card: {
-    paddingTop: 25,
-    paddingBottom: 10,
-    paddingLeft: 50,
-    backgroundColor: colors.background3,
-    display: "flex",
-    justifyContent: "space-around",
-  },
-}));
-
 import Main from "../../shared-ui/SpoilerText";
 import Title from "./title";
 
@@ -43,6 +22,7 @@ export default function Introduction({
         }}
       >
         <Title slug={slug} title={title} />
+
         <div style={{ marginTop: "25px" }}>
           <Main text={text} />
         </div>

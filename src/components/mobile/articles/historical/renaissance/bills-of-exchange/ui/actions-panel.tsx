@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, Center, Stack, useMantineTheme, Select } from "@mantine/core";
+import { Text, Stack, Select } from "@mantine/core";
 
 import ActionForms from "./action-forms";
 import { cityColor } from "./utils/city-color";
@@ -32,7 +32,6 @@ const actionData = {
 };
 export default function ActionsPanel({ player, setOpened }) {
   const [action, setAction] = useState<string | null>(null);
-  const theme = useMantineTheme();
 
   return (
     <Stack spacing="xl">
@@ -49,7 +48,9 @@ export default function ActionsPanel({ player, setOpened }) {
         data={actionData[player.id]}
       />
 
-      {action && <ActionForms action={action} player={player} setOpened={setOpened}/>}
+      {action && (
+        <ActionForms action={action} player={player} setOpened={setOpened} />
+      )}
     </Stack>
   );
 }

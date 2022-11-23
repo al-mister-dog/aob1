@@ -1,11 +1,15 @@
-import { Text } from "@mantine/core";
+import { Box, Card, Text } from "@mantine/core";
+import { useHover } from "@mantine/hooks";
 import Link from "next/link";
+import { ChevronRight } from "tabler-icons-react";
 import Title from "../../components/shared-ui/texts/Title";
+import { colors } from "../../config/colorPalette";
 
 export default function LecturesPage() {
+  const { hovered, ref } = useHover();
   return (
     <>
-      <div style={{ padding: 16, marginTop: "150px" }}>
+      <div style={{ padding: 50, marginTop: "150px" }}>
         <Title>Lectures on Money and Banking</Title>
         <Text size="lg" mt={15} p="10">
           Here you will learn all about money and banking, using interactive
@@ -23,9 +27,44 @@ export default function LecturesPage() {
           familiarity with banking terminology and concepts so feel free to move
           to any chapter of the lectures.
         </Text>
-        <Text italic weight="bold" color="violet" mt={15}>
-          <Link href="/lectures/fundamentals">Start Here: Fundamentals</Link>
-        </Text>
+        <Link href="/lectures/fundamentals">
+          <Card
+            ref={ref}
+            style={{
+              backgroundColor: hovered
+                ? colors.background3
+                : colors.background1,
+              color: colors.text,
+              cursor: "pointer",
+            }}
+          >
+            <Box p={25} style={{ display: "flex" }}>
+              <Box style={{ flex: 1 }}>
+                <Text
+                  size="xl"
+                  weight="bold"
+                  align="right"
+                  style={{ letterSpacing: 1 }}
+                >
+                  START HERE
+                </Text>
+                <Text size="xl" weight="bold" align="right" color="violet">
+                  Fundamentals
+                </Text>
+              </Box>
+              <Box
+                style={{
+                  padding: 10,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <ChevronRight color="black" />
+              </Box>
+            </Box>
+          </Card>
+        </Link>
       </div>
     </>
   );

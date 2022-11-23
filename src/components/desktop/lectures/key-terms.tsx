@@ -8,6 +8,7 @@ interface KeyTerm {
   title: string;
   definition: string;
 }
+
 const Carousel = ({ ids }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [mainViewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
@@ -47,10 +48,11 @@ const Carousel = ({ ids }) => {
   return (
     <Card
       withBorder
+      shadow="xs"
       style={{
         width: "90%",
         margin: "auto",
-        backgroundColor: colors.background1,
+        backgroundColor: colors.background2,
       }}
     >
       <h1 style={{ color: colors.text, letterSpacing: 1 }}>Key Terms</h1>

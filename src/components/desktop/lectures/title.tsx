@@ -17,6 +17,7 @@ export default function LectureTitle({ slug, title }) {
           </Link>,
         ]}
       </Breadcrumbs>
+
       <Title>{title}</Title>
     </>
   );

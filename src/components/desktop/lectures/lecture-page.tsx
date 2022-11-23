@@ -1,6 +1,14 @@
-import { Box, Card, createStyles, Flex, SimpleGrid } from "@mantine/core";
+import {
+  Box,
+  Card,
+  Center,
+  createStyles,
+  Flex,
+  SimpleGrid,
+} from "@mantine/core";
 import KeyTerms from "./key-terms";
 import Article from "./article";
+
 
 import LayoutDesktop from "./interactive-ui/layout";
 import { colors } from "../../../config/colorPalette";

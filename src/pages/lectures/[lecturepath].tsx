@@ -7,7 +7,7 @@ export default function LecturePath({ id, title, nextPath }) {
 
   return (
     <>
-      <Landing title={title} text={text} nextPath={nextPath} />
+      <Landing title={title} text={text} nextPath={nextPath} id={id} />
     </>
   );
 }

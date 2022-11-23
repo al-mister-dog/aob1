@@ -39,7 +39,7 @@ export default function NextLectureLink({ prevLecture }) {
             >
               PREVIOUS
             </Text>
-            <Text size="xl" weight="bold" align="right" color="violet">
+            <Text size="xl" weight="bold" align="left" color="violet">
               {link.title}
             </Text>
           </Box>

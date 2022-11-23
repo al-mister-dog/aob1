@@ -55,8 +55,9 @@ const useStyles = createStyles((theme) => ({
     width: 160,
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    
     alignItems: "center",
+
     [theme.fn.smallerThan("sm")]: {
       paddingTop: 25,
       margin: "auto",

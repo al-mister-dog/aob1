@@ -1,20 +1,27 @@
-import { Box, Text, useMantineTheme } from "@mantine/core";
-import Link from "next/link";
-import Title from "../../../../../shared-ui/texts/Title";
-import ArticleText from "../../../../../shared-ui/texts/Text-Mobile";
-import { ChevronRight } from "tabler-icons-react";
+import { Box, Flex, Text, useMantineTheme } from "@mantine/core";
 import Board from "./ui/board";
-import { colors } from "../../../../../../config/colorPalette";
-import NextArticleLink from "../../../../../shared-ui/next-article-card";
+import ArticleText from "../../../../../shared-ui/texts/Text-Mobile";
 import ArticleTitle from "../../../../../shared-ui/components/bread-crumbs/articles";
-
+import { colors } from "../../../../../../config/colorPalette";
+import { NextLink, PrevLink } from "./ui/links";
+interface Props {
+  prevPath?: string;
+  prevLinkTitle?: string;
+  nextPath: string;
+  nextLinkTitle: string;
+  texts: any;
+  FlorencePlayers: any[];
+  LyonsPlayers: any[];
+}
 export default function PartTwo({
-  path,
-  linkTitle,
+  prevPath,
+  prevLinkTitle,
+  nextPath,
+  nextLinkTitle,
   texts,
   FlorencePlayers,
   LyonsPlayers,
-}) {
+}: Props) {
   const theme = useMantineTheme();
 
   return (
@@ -42,28 +49,35 @@ export default function PartTwo({
       </Box>
       <Board FlorencePlayers={FlorencePlayers} LyonsPlayers={LyonsPlayers} />
 
-      <Box p={25} style={{ display: "flex" }}>
-        <Box style={{ flex: 1 }}>
-          <Text weight="bold" align="right">
-            NEXT
-          </Text>
-          <Text weight="bold" align="right">
-            <Link href={path} style={{ color: theme.colors.violet[9] }}>
-              {linkTitle}
-            </Link>
-          </Text>
+      <Flex
+        mt={100}
+        direction={{ base: "column", sm: "row" }}
+        justify={{ base: "center", sm: "space-between" }}
+        align={{ base: "center", sm: "space-between" }}
+      >
+        <Box
+          style={{
+            marginRight: "auto",
+          }}
+        >
+          <Box
+            style={{
+              marginRight: "auto",
+            }}
+          >
+            {prevPath && (
+              <PrevLink prevPath={prevPath} prevLinkTitle={prevLinkTitle} />
+            )}
+          </Box>
         </Box>
         <Box
           style={{
-            padding: 10,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            marginLeft: "auto",
           }}
         >
-          <ChevronRight color="black" />
+          <NextLink nextPath={nextPath} nextLinkTitle={nextLinkTitle} />
         </Box>
-      </Box>
+      </Flex>
     </>
   );
 }

@@ -49,16 +49,16 @@ export default function BillsOfExchange() {
   const isMobile = useMediaQuery(mediaQuery);
   return isMobile ? (
     <ArticlePageMobile
-      path="remitting-bills"
-      linkTitle="Remitting Bills"
+      nextPath="remitting-bills"
+      nextLinkTitle="Remitting Bills"
       texts={texts}
       FlorencePlayers={FlorencePlayers}
       LyonsPlayers={LyonsPlayers}
     />
   ) : (
     <ArticlePageDesktop
-      path="remitting-bills"
-      linkTitle="Remitting Bills"
+      nextPath="remitting-bills"
+      nextLinkTitle="Remitting Bills"
       texts={texts}
       FlorencePlayers={FlorencePlayers}
       LyonsPlayers={LyonsPlayers}

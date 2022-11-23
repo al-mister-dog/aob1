@@ -43,16 +43,20 @@ export default function RemittingBills() {
 
   return isMobile ? (
     <ArticlePageMobile
-      path="rechange-1"
-      linkTitle="Rechange: Part 1"
+      prevPath="bills-of-exchange-and-units-of-account"
+      prevLinkTitle="Bills of Exchange and Units of Account"
+      nextPath="rechange-1"
+      nextLinkTitle="Rechange: Part 1"
       texts={texts}
       FlorencePlayers={FlorencePlayers}
       LyonsPlayers={LyonsPlayers}
     />
   ) : (
     <ArticlePageDesktop
-      path="rechange-1"
-      linkTitle="Rechange: Part 1"
+      prevPath="bills-of-exchange-and-units-of-account"
+      prevLinkTitle="Bills of Exchange and Units of Account"
+      nextPath="rechange-1"
+      nextLinkTitle="Rechange: Part 1"
       texts={texts}
       FlorencePlayers={FlorencePlayers}
       LyonsPlayers={LyonsPlayers}

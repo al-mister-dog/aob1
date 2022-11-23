@@ -43,7 +43,6 @@ export const texts = {
 };
 
 export default function RemittingBills() {
-  
   const { me, Salviati, Federigo, Piero } = useAppSelector(selectTraders);
   const { you, Tommaso } = useAppSelector(selectBankers);
 
@@ -54,16 +53,20 @@ export default function RemittingBills() {
 
   return isMobile ? (
     <ArticlePageMobile
-      path="rechange-2"
-      linkTitle="Rechange: Part 2"
+      prevPath="remitting-bills"
+      prevLinkTitle="Remitting Bills"
+      nextPath="rechange-2"
+      nextLinkTitle="Rechange: Part 2"
       texts={texts}
       FlorencePlayers={FlorencePlayers}
       LyonsPlayers={LyonsPlayers}
     />
   ) : (
     <ArticlePageDesktop
-      path="rechange-2"
-      linkTitle="Rechange: Part 2"
+      prevPath="remitting-bills"
+      prevLinkTitle="Remitting Bills"
+      nextPath="rechange-2"
+      nextLinkTitle="Rechange: Part 2"
       texts={texts}
       FlorencePlayers={FlorencePlayers}
       LyonsPlayers={LyonsPlayers}

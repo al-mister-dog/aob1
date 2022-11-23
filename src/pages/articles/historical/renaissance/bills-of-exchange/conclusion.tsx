@@ -34,16 +34,20 @@ export default function RemittingBills() {
 
   return isMobile ? (
     <ArticlePageMobile
-      path="conclusion"
-      linkTitle="Conclusion"
+      prevPath="rechange-2"
+      prevLinkTitle="Rechange: Part 2"
+      nextPath="/lectures/towards-a-central-bank/correspondent-banking"
+      nextLinkTitle="Learn More About Correspondent Banking"
       texts={texts}
       FlorencePlayers={FlorencePlayers}
       LyonsPlayers={LyonsPlayers}
     />
   ) : (
     <ArticlePageDesktop
-      path="/lectures/towards-a-central-bank/correspondent-banking"
-      linkTitle="Learn More About Correspondent Banking"
+      prevPath="rechange-2"
+      prevLinkTitle="Rechange: Part 2"
+      nextPath="/lectures/towards-a-central-bank/correspondent-banking"
+      nextLinkTitle="Learn More About Correspondent Banking"
       texts={texts}
       FlorencePlayers={FlorencePlayers}
       LyonsPlayers={LyonsPlayers}

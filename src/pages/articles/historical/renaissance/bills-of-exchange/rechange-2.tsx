@@ -37,16 +37,20 @@ export default function RemittingBills() {
 
   return isMobile ? (
     <ArticlePageMobile
-      path="conclusion"
-      linkTitle="Conclusion"
+      prevPath="rechange-1"
+      prevLinkTitle="Rechange: Part 1"
+      nextPath="conclusion"
+      nextLinkTitle="Conclusion"
       texts={texts}
       FlorencePlayers={FlorencePlayers}
       LyonsPlayers={LyonsPlayers}
     />
   ) : (
     <ArticlePageDesktop
-      path="conclusion"
-      linkTitle="Conclusion"
+      prevPath="rechange-1"
+      prevLinkTitle="Rechange: Part 1"
+      nextPath="conclusion"
+      nextLinkTitle="Conclusion"
       texts={texts}
       FlorencePlayers={FlorencePlayers}
       LyonsPlayers={LyonsPlayers}

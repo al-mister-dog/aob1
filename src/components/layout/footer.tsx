@@ -1,6 +1,4 @@
-import { createStyles, Text, Container, Group, Box } from "@mantine/core";
-import { text } from "stream/consumers";
-
+import { createStyles, Text, Container, Box } from "@mantine/core";
 import { CurrencyDollar } from "tabler-icons-react";
 import { colors } from "../../config/colorPalette";
 
@@ -62,6 +60,7 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.smallerThan("sm")]: {
       paddingTop: 25,
       margin: "auto",
+      marginTop: 0
     },
   },
 

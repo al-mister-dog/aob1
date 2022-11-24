@@ -13,21 +13,6 @@ import { Bank } from "../../../../domain/structures/types";
 import { Balancesheets } from "../../../../domain/analytics/balancesheets-beta";
 import Toolbar from "./settings/toolbar";
 
-const useStyles = createStyles(() => ({
-  parent: {
-    display: "grid",
-    gridTemplateColumns: "repeat(6, 1fr)",
-    gridTemplateRows: "repeat(6, 1fr)",
-    gridColumnGap: "0px",
-    gridRowGap: "0px",
-  },
-
-  div1: { gridArea: "1 / 1 / 5 / 5" },
-  div2: { gridArea: "5 / 1 / 7 / 5" },
-  div3: { gridArea: "1 / 5 / 4 / 7" },
-  div4: { gridArea: "4 / 5 / 7 / 7" },
-}));
-
 interface Colors {
   [index: string]: any;
 }
@@ -36,10 +21,10 @@ export default function LayoutDesktop() {
   const { currentLectureId } = useAppSelector(selectActions);
   const { banks } = useAppSelector(selectBanks);
   const colors: Colors = {
-    customer: "pink",
-    bank: "orange",
-    centralbank: "teal",
-    clearinghouse: "teal",
+    customer: "grape",
+    bank: "indigo",
+    centralbank: "cyan",
+    clearinghouse: "cyan",
   };
 
   function getCardInfo(bank: Bank): CardInfo {
@@ -64,8 +49,8 @@ export default function LayoutDesktop() {
   }, []);
   return (
     <>
-      <Grid gutter="sm" grow style={{ margin: 0, paddingBottom: 5 }}>
-        <Grid.Col span={6}>
+      <Grid gutter="sm" grow p={5}>
+        <Grid.Col span={5}>
           <CardGrid
             group={banksArray}
             handleSetBankDetail={handleSetBankDetail}
@@ -88,5 +73,55 @@ export default function LayoutDesktop() {
         </Grid.Col>
       </Grid>
     </>
+  );
+}
+
+import {
+  Container,
+  SimpleGrid,
+  Skeleton,
+  useMantineTheme,
+} from "@mantine/core";
+import Link from "next/link";
+
+const PRIMARY_COL_HEIGHT = 300;
+
+export function LeadGrid() {
+  const theme = useMantineTheme();
+  const SECONDARY_COL_HEIGHT = PRIMARY_COL_HEIGHT / 2 - theme.spacing.md / 2;
+
+  return (
+    <Container my="md">
+      <SimpleGrid
+        cols={2}
+        spacing="md"
+        breakpoints={[{ maxWidth: "sm", cols: 1 }]}
+      >
+        <Skeleton height={PRIMARY_COL_HEIGHT} radius="md" animate={false} />
+        <Grid gutter="md">
+          <Grid.Col>
+            <Skeleton
+              height={SECONDARY_COL_HEIGHT}
+              radius="md"
+              animate={false}
+            />
+          </Grid.Col>
+          <Grid.Col span={6}>
+            <Skeleton
+              height={SECONDARY_COL_HEIGHT}
+              radius="md"
+              animate={false}
+            />
+          </Grid.Col>
+          <Grid.Col span={6}>
+            <Skeleton
+              height={SECONDARY_COL_HEIGHT}
+              radius="md"
+              animate={false}
+            />
+          </Grid.Col>
+        </Grid>
+      </SimpleGrid>
+    </Container>
   );
 }

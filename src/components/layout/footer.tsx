@@ -10,6 +10,7 @@ const useStyles = createStyles((theme) => ({
     borderTop: `1px solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,
+    height: 395,
   },
 
   logo: {
@@ -55,13 +56,13 @@ const useStyles = createStyles((theme) => ({
     width: 160,
     display: "flex",
     flexDirection: "column",
-    
+
     alignItems: "center",
 
     [theme.fn.smallerThan("sm")]: {
       paddingTop: 25,
       margin: "auto",
-      marginTop: 0
+      marginTop: 0,
     },
   },
 

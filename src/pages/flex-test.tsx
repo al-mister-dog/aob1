@@ -2,27 +2,24 @@ import { Box, Flex, Text } from "@mantine/core";
 
 export default function FlexTest() {
   return (
-    <Flex
-      mt={200}
-      direction={{ base: "column", sm: "row" }}
-      justify={{ base: "center", sm: "space-between" }}
-      align={{ base: "center", sm: "space-between" }}
-      style={{ backgroundColor: "gray" }}
-    >
+    <Box style={{zIndex: 0}}>
+      <Box style={{ background: "lightblue", height: "100vh" }}></Box>
       <Box
-        style={{
-          marginRight: "auto",
-        }}
+        style={{ background: "lightred", height: "100vh", zIndex: 2}}
       >
-        <Text align="left">Left</Text>
+        <h1>Box 2</h1>
       </Box>
       <Box
         style={{
-          marginLeft: "auto",
+          background: "lightgreen",
+          height: "100vh",
+          position: "fixed",
+          
+          zIndex: 1
         }}
       >
-        <Text align="right">Right</Text>
+        <h1>Hello</h1>
       </Box>
-    </Flex>
+    </Box>
   );
 }

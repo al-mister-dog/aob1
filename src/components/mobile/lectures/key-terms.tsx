@@ -41,7 +41,7 @@ const Carousel = ({ ids }) => {
   }, [embla, onSelect]);
 
   return (
-    <Card withBorder style={{backgroundColor: colors.background1}}>
+    <Card withBorder style={{backgroundColor: colors.background2}}>
       <h2
         style={{
           color: colors.text,

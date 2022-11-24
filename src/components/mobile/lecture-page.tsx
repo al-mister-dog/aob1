@@ -13,12 +13,19 @@ import NextLectureCard from "../shared-ui/next-lecture-card";
 const useStyles = createStyles((theme) => ({
   interactiveUiContainer: {
     backgroundColor: colors.background1,
-    // paddingBottom: "200px",
+    paddingBottom: "50px",
+    borderBottom: `1px solid ${colors.muiGray}`,
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5,
+    boxShadow:
+      "0 1px 3px rgb(0 0 0 / 5%), rgb(0 0 0 / 5%) 0px 10px 15px -5px, rgb(0 0 0 / 4%) 0px 7px 7px -5px",
   },
   keyTermsContainer: {
     backgroundColor: colors.background1,
     margin: 10,
-    paddingBottom: "50px",
+    // paddingBottom: "50px",
+    position: "sticky",
+    bottom: -500,
   },
   balanceSheets: {
     padding: 16,
@@ -46,25 +53,28 @@ export default function LecturePageMobile({
         </>
       ) : (
         <>
-          <Article slug={slug} title={title} text={text} />
-          <Box mt={100}>
-            <Assignment assignment={assignment} />
+          <Box style={{ position: "relative", zIndex: 1, backgroundColor: colors.background1 }}>
+            <Article slug={slug} title={title} text={text} />
+            <Box mt={100}>
+              <Assignment assignment={assignment} />
+            </Box>
+
+            <Box className={classes.interactiveUiContainer}>
+              <Box
+                style={{
+                  marginTop: "25px",
+                  padding: "5px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Toolbar />
+              </Box>
+              <BalanceSheets />
+              <Charts />
+            </Box>
           </Box>
 
-          <Box className={classes.interactiveUiContainer}>
-            <Box
-              style={{
-                marginTop: "25px",
-                padding: "5px",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <Toolbar />
-            </Box>
-            <BalanceSheets />
-            <Charts />
-          </Box>
           <Box mt={100} className={classes.keyTermsContainer}>
             <KeyTerms ids={keyTermsIds} />
             <Flex

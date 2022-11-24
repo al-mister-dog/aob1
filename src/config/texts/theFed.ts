@@ -3,8 +3,6 @@ export const theFedText = {
     lectureTitle: `The Fed`,
     title: `The Fed: Final Settlement`,
     paragraphs: [
-      `The following lecture is under construction. Feel free to carry on reading it in its less
-      than final form!`,
       `We have begun to understand how the banking system consists of many banks that try to act as
       if they were all part of one big bank. The reason behind this is that a healthy bank is a bank
       that can meet its daily requirements, and in order to facilitate this it is crucial that all
@@ -26,6 +24,23 @@ export const theFedText = {
       sheet to balance sheet as we explore further how exactly banking works.`,
     ],
     assignment: `Sources: Stigum's Money Market - Marcia Stigum: The Federal Funds Market since the Financial Crisis - Ben Craig: New York Fed - Domestic Market Operations`,
+    sources: [
+      {
+        author: "Marcia Stigum",
+        title: "Stigum's Money Market",
+        link: "",
+      },
+      {
+        author: "Ben Craig",
+        title: "The Federal Funds Market since the Financial Crisis",
+        link: "",
+      },
+      {
+        author: "New York Fed",
+        title: " Domestic Market Operations",
+        link: "",
+      },
+    ],
   },
 
   step2: {

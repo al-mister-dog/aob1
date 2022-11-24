@@ -22,6 +22,18 @@ export const fundamentalsText = {
     Times without having to get the dictionary out.`,
     ],
     assignment: `Sources: Allyn Young - The Mystery of Money: Money and Banking - Perry Mehrling`,
+    sources: [
+      {
+        author: "Allyn Young",
+        title: "The Mystery of Money",
+        link: "",
+      },
+      {
+        author: "Money and Banking",
+        title: "Perry Mehrling",
+        link: "",
+      },
+    ],
   },
 
   step2: {

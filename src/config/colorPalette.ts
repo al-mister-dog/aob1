@@ -33,4 +33,6 @@ export const colors = {
       6: "#542788",
     },
   },
+  shadow:
+    "0 1px 3px rgb(0 0 0 / 5%), rgb(0 0 0 / 5%) 0px 10px 15px -5px, rgb(0 0 0 / 4%) 0px 7px 7px -5px",
 };

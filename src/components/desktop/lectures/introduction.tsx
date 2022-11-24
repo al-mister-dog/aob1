@@ -1,4 +1,4 @@
-import { Box, Card, createStyles, Flex } from "@mantine/core";
+import { Box, createStyles, Flex, Group } from "@mantine/core";
 import { Text } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
 import NextLectureCard from "../../shared-ui/next-lecture-card";
@@ -6,11 +6,35 @@ import PrevLectureCard from "../../shared-ui/prev-lecture-card";
 import Main from "../../shared-ui/SpoilerText";
 import Title from "./title";
 
+const useStyles = createStyles((theme) => ({
+  item: {
+    "& + &": {
+      cursor: "pointer",
+      color: colors.text,
+      paddingTop: theme.spacing.sm,
+      marginTop: theme.spacing.sm,
+      borderTop: `1px solid ${
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[4]
+          : theme.colors.gray[2]
+      }`,
+    },
+    "&:hover": {
+      backgroundColor: theme.colors.violet[0],
+    },
+  },
+
+  title: {
+    lineHeight: 1,
+    color: colors.text,
+  },
+}));
+
 export default function Introduction({
   slug,
   title,
   text,
-  assignment,
+  sources,
   nextLecture,
 }) {
   return (
@@ -24,15 +48,26 @@ export default function Introduction({
         <Title slug={slug} title={title} />
 
         <div style={{ marginTop: "25px" }}>
-          <Main text={text} />
+          {text.map((t) => (
+            <p
+              key={t}
+              style={{
+                letterSpacing: "1px",
+                marginBottom: "25px",
+                color: colors.text,
+                fontSize: 14,
+              }}
+            >
+              {t}
+            </p>
+          ))}
         </div>
       </div>
 
       <div style={{ marginTop: "25px" }}>
-        <Sources assignment={assignment} />
+        <Sources sources={sources} />
       </div>
       <Flex
-        mt={100}
         direction={{ base: "column", sm: "row" }}
         justify={{ base: "center", sm: "space-between" }}
         align={{ base: "center", sm: "space-between" }}
@@ -56,40 +91,30 @@ export default function Introduction({
   );
 }
 
-function Sources({ assignment }) {
+export function Sources({ sources }) {
+  const { classes } = useStyles();
+
+  const items = sources.map((item) => (
+    <Group position="apart" className={classes.item} noWrap spacing="xl">
+      <div>
+        <Text>{item.author}</Text>
+        <a href={item.link} target="_blank"></a>
+        <Text size="xs" style={{ color: colors.textColor }}>
+          {item.title}
+        </Text>
+      </div>
+    </Group>
+  ));
+
   return (
-    <Card
-      withBorder
-      style={{
-        width: "92%",
-        margin: "auto",
-        backgroundColor: colors.background1,
-      }}
-    >
-      {assignment.slice(0, 7) === "Sources" ? (
-        <>
-          <h2
-            style={{
-              margin: 0,
-              padding: 0,
-              fontWeight: "lighter",
-              letterSpacing: 1,
-            }}
-          >
-            Sources
-          </h2>
-          {assignment
-            .split(":")
-            .slice(1)
-            .map((src, i) => (
-              <Text key={i}>{src}</Text>
-            ))}
-        </>
-      ) : (
-        <p style={{ color: colors.text, fontSize: "16px", letterSpacing: 1 }}>
-          {assignment}
-        </p>
-      )}
-    </Card>
+    <Box p={50}>
+      <Text size="lg" className={classes.title} weight="bold">
+        Sources
+      </Text>
+      <Text size="xs" color="dimmed" mt={3} mb="xl">
+        Suggestions for Further Reading
+      </Text>
+      {items}
+    </Box>
   );
 }

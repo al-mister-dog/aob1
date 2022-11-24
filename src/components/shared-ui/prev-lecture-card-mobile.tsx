@@ -19,7 +19,7 @@ export default function NextLectureLink({ prevLecture }) {
           cursor: "pointer",
         }}
       >
-        <Box p={25} style={{ display: "flex" }}>
+        <Box style={{ display: "flex" }}>
           <Box
             style={{
               padding: 10,
@@ -31,20 +31,10 @@ export default function NextLectureLink({ prevLecture }) {
             <ChevronLeft color="black" />
           </Box>
           <Box style={{ flex: 1 }}>
-            <Text
-              size="xl"
-              weight="bold"
-              align="left"
-              style={{ letterSpacing: 1, color: colors.text }}
-            >
+            <Text weight="bold" align="left" style={{ letterSpacing: 1 }}>
               PREVIOUS
             </Text>
-            <Text
-              size="xl"
-              weight="bold"
-              align="left"
-              style={{ color: colors.textColor }}
-            >
+            <Text weight="bold" align="left" style={{color: colors.textColor}}>
               {link.title}
             </Text>
           </Box>

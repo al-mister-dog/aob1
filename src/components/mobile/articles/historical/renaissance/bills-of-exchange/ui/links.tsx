@@ -32,11 +32,16 @@ export function PrevLink({ prevPath, prevLinkTitle }) {
               size="xl"
               weight="bold"
               align="left"
-              style={{ letterSpacing: 1 }}
+              style={{ letterSpacing: 1, color: colors.text }}
             >
               PREVIOUS
             </Text>
-            <Text size="xl" weight="bold" align="left" color="violet">
+            <Text
+              size="xl"
+              weight="bold"
+              align="left"
+              style={{ color: colors.textColor }}
+            >
               {prevLinkTitle}
             </Text>
           </Box>

@@ -32,11 +32,16 @@ export function PrevLink({ prevPath, prevLinkTitle }) {
               size="xl"
               weight="bold"
               align="left"
-              style={{ letterSpacing: 1 }}
+              style={{ letterSpacing: 1, color: colors.text }}
             >
               PREVIOUS
             </Text>
-            <Text size="xl" weight="bold" align="left" color="violet">
+            <Text
+              size="xl"
+              weight="bold"
+              align="left"
+              style={{ color: colors.textColor }}
+            >
               {prevLinkTitle}
             </Text>
           </Box>
@@ -64,11 +69,16 @@ export function NextLink({ nextPath, nextLinkTitle }) {
               size="xl"
               weight="bold"
               align="right"
-              style={{ letterSpacing: 1 }}
+              style={{ letterSpacing: 1, color: colors.text }}
             >
               NEXT
             </Text>
-            <Text size="xl" weight="bold" align="right" color="violet">
+            <Text
+              size="xl"
+              weight="bold"
+              align="right"
+              style={{ color: colors.textColor }}
+            >
               {nextLinkTitle}
             </Text>
           </Box>

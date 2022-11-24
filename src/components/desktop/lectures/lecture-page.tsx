@@ -14,14 +14,14 @@ const useStyles = createStyles(() => ({
     paddingBottom: "25px",
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
-    boxShadow:
-      "0 1px 3px rgb(0 0 0 / 5%), rgb(0 0 0 / 5%) 0px 10px 15px -5px, rgb(0 0 0 / 4%) 0px 7px 7px -5px",
+    boxShadow: colors.shadow,
   },
 }));
 
 export default function LecturePath({
   slug,
   title,
+  sources,
   text,
   assignment,
   keyTermsIds,
@@ -36,7 +36,7 @@ export default function LecturePath({
           slug={slug}
           title={title}
           text={text}
-          assignment={assignment}
+          sources={sources}
           nextLecture={nextLecture}
         />
       ) : (

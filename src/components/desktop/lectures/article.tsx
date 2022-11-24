@@ -1,8 +1,6 @@
 import Assignment from "./assignment";
 import Main from "../../shared-ui/SpoilerText";
-import NextLectureLink from "../../shared-ui/next-lecture-link";
 import Title from "./title";
-import { colors } from "../../../config/colorPalette";
 
 export default function Article({
   slug,

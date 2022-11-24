@@ -17,6 +17,25 @@ export const clearinghouseText = {
     ],
     assignment: `Sources: CF Dunbar - Chapters on the Theory and History of Banking: Christopher Hoag - Clearinghouse loan certificates as interbank loans in the United States, 1860–1913: 
     James Graham Cannon - Clearing House Loan Certificates and Substitutes for Money Used During the Panic of 1907`,
+    sources: [
+      {
+        author: "CF Dunbar",
+        title: "Chapters on the Theory and History of Banking",
+        link: "",
+      },
+      {
+        author: "Christopher Hoag",
+        title:
+          "Clearinghouse Loan Certificates as Interbank Loans in the United States, 1860-13",
+        link: "",
+      },
+      {
+        author: "James Graham Cannon",
+        title:
+          "Clearing House Loan Certificates and Substitutes for Money Used During the Panic of 1907",
+        link: "",
+      },
+    ],
   },
 
   step2: {

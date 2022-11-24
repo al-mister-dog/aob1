@@ -21,7 +21,7 @@ export default function LecturePath({
   introductoryTexts,
   keyTermsIds,
 }) {
-  const { paragraphs, assignment } = introductoryTexts;
+  const { paragraphs, assignment, sources } = introductoryTexts;
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(setup({ id }));
@@ -37,6 +37,7 @@ export default function LecturePath({
       <LecturePageMobile
         slug={slug}
         title={title}
+        sources={sources}
         text={paragraphs}
         assignment={assignment}
         keyTermsIds={keyTermsIds}
@@ -46,6 +47,7 @@ export default function LecturePath({
       <LecturePageDesktop
         slug={slug}
         title={title}
+        sources={sources}
         text={paragraphs}
         assignment={assignment}
         keyTermsIds={keyTermsIds}

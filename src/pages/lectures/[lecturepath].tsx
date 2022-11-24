@@ -1,13 +1,22 @@
 import { lectureRoutes } from "../../config/routes/lectureRoutes";
 import { homeTexts } from "../../config/homeTexts";
-import Landing from "../../components/desktop/lectures/landing";
+import LandingDesktop from "../../components/desktop/lectures/landing";
+import { useLoaded } from "../../hooks/useLoaded";
+import { mediaQuery } from "../../config/media-query";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function LecturePath({ id, title, nextPath }) {
   const { text } = homeTexts[id];
 
+  const loaded = useLoaded();
+  const isMobile = useMediaQuery(mediaQuery);
+
+  // if (loaded) {
+  //   return isMobile ? : <LandingDesktop title={title} text={text} nextPath={nextPath} id={id} />
+  // }
   return (
     <>
-      <Landing title={title} text={text} nextPath={nextPath} id={id} />
+      <LandingDesktop title={title} text={text} nextPath={nextPath} id={id} />
     </>
   );
 }

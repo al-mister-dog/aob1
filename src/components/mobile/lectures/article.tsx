@@ -7,8 +7,7 @@ export default function Article({ slug, title, text }) {
     <div
       id="article-container"
       style={{
-        padding: `0px 10px 0px 10px`,
-        marginTop: "100px",
+        marginTop: 135,
       }}
     >
       <Title slug={slug} title={title} />

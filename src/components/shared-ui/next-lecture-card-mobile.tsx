@@ -1,4 +1,4 @@
-import { Box, Card, Text, useMantineTheme } from "@mantine/core";
+import { Box, Card, Text } from "@mantine/core";
 import Link from "next/link";
 import { colors } from "../../config/colorPalette";
 import { useNextPage } from "../../hooks/useNextPage";
@@ -19,10 +19,9 @@ export default function NextLectureLink({ nextLecture }) {
           cursor: "pointer",
         }}
       >
-        <Box p={25} style={{ display: "flex" }}>
+        <Box style={{ display: "flex" }}>
           <Box style={{ flex: 1 }}>
             <Text
-              size="xl"
               weight="bold"
               align="right"
               style={{ letterSpacing: 1, color: colors.text }}
@@ -30,7 +29,6 @@ export default function NextLectureLink({ nextLecture }) {
               NEXT
             </Text>
             <Text
-              size="xl"
               weight="bold"
               align="right"
               style={{ color: colors.textColor }}

@@ -9,6 +9,7 @@ import Assignment from "./lectures/assignment";
 import Sources from "./lectures/sources";
 import PrevLectureCard from "../shared-ui/prev-lecture-card";
 import NextLectureCard from "../shared-ui/next-lecture-card";
+import ArticleIntro from "./lectures/article-intro";
 
 const useStyles = createStyles((theme) => ({
   interactiveUiContainer: {
@@ -17,13 +18,11 @@ const useStyles = createStyles((theme) => ({
     borderBottom: `1px solid ${colors.muiGray}`,
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
-    boxShadow:
-      "0 1px 3px rgb(0 0 0 / 5%), rgb(0 0 0 / 5%) 0px 10px 15px -5px, rgb(0 0 0 / 4%) 0px 7px 7px -5px",
+    boxShadow: colors.shadow,
   },
   keyTermsContainer: {
     backgroundColor: colors.background1,
     margin: 10,
-    // paddingBottom: "50px",
     position: "sticky",
     bottom: -500,
   },
@@ -32,10 +31,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+
 export default function LecturePageMobile({
   slug,
   title,
   text,
+  sources,
   assignment,
   keyTermsIds,
   nextLecture,
@@ -46,16 +47,27 @@ export default function LecturePageMobile({
     <>
       {title === "Introduction" ? (
         <>
-          <Article slug={slug} title={title} text={text} />
-          <Box mt={100}>
-            <Sources assignment={assignment} nextLecture={nextLecture} />
+          <Box p={25}>
+            <ArticleIntro slug={slug} title={title} text={text} />
+          </Box>
+          <Box mt={25}>
+            <Sources sources={sources} nextLecture={nextLecture} />
           </Box>
         </>
       ) : (
         <>
-          <Box style={{ position: "relative", zIndex: 1, backgroundColor: colors.background1 }}>
-            <Article slug={slug} title={title} text={text} />
-            <Box mt={100}>
+          <Box
+            style={{
+              position: "relative",
+              zIndex: 1,
+              backgroundColor: colors.background1,
+            }}
+          >
+            <Box p={25}>
+              <Article slug={slug} title={title} text={text} />
+            </Box>
+
+            <Box mt={50}>
               <Assignment assignment={assignment} />
             </Box>
 

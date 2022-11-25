@@ -55,7 +55,7 @@ export default function Introduction({
                 letterSpacing: "1px",
                 marginBottom: "25px",
                 color: colors.text,
-                fontSize: 14,
+                fontSize: 16,
               }}
             >
               {t}

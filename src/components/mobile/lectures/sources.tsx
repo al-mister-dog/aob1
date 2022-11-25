@@ -1,7 +1,7 @@
 import { Text, Group, Box, Flex, createStyles } from "@mantine/core";
-import { colors } from "../../../config/colorPalette";
 import NextLectureCardMobile from "../../shared-ui/next-lecture-card-mobile";
 import PrevLectureCardMobile from "../../shared-ui/prev-lecture-card-mobile";
+import { colors } from "../../../config/colorPalette";
 
 const useStyles = createStyles((theme) => ({
   item: {
@@ -59,13 +59,14 @@ export function SourcesCard({ sources }) {
 
   const items = sources.map((item) => (
     <Group position="apart" className={classes.item} noWrap spacing="xl">
-      <div>
-        <Text>{item.author}</Text>
-        <a href={item.link} target="_blank"></a>
-        <Text size="xs" style={{ color: colors.textColor }}>
-          {item.title}
-        </Text>
-      </div>
+      <a href={item.link} target="_blank">
+        <div>
+          <Text>{item.author}</Text>
+          <Text size="xs" style={{ color: colors.textColor }}>
+            {item.title}
+          </Text>
+        </div>
+      </a>
     </Group>
   ));
 

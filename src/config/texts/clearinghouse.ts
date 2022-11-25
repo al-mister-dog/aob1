@@ -21,19 +21,19 @@ export const clearinghouseText = {
       {
         author: "CF Dunbar",
         title: "Chapters on the Theory and History of Banking",
-        link: "",
+        link: "https://d396qusza40orc.cloudfront.net/money/readings/Dunbar.pdf",
       },
       {
         author: "Christopher Hoag",
         title:
           "Clearinghouse Loan Certificates as Interbank Loans in the United States, 1860-13",
-        link: "",
+        link: "https://www.cambridge.org/core/journals/financial-history-review/article/clearinghouse-loan-certificates-as-interbank-loans-in-the-united-states-18601913/761D544D65E48CC0CB9A9C395DD362DA",
       },
       {
         author: "James Graham Cannon",
         title:
           "Clearing House Loan Certificates and Substitutes for Money Used During the Panic of 1907",
-        link: "",
+        link: "https://fraser.stlouisfed.org/files/docs/publications/books/cannon_clearing_house_loans_1910.pdf",
       },
     ],
   },

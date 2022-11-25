@@ -28,17 +28,17 @@ export const theFedText = {
       {
         author: "Marcia Stigum",
         title: "Stigum's Money Market",
-        link: "",
+        link: "https://www.goodreads.com/book/show/1889541.Stigum_s_Money_Market",
       },
       {
         author: "Ben Craig",
         title: "The Federal Funds Market since the Financial Crisis",
-        link: "",
+        link: "https://www.clevelandfed.org/publications/economic-commentary/2017/ec-201707-the-federal-funds-market-since-the-financial-crisis",
       },
       {
         author: "New York Fed",
-        title: " Domestic Market Operations",
-        link: "",
+        title: "Domestic Market Operations",
+        link: "https://www.newyorkfed.org/markets/domestic-market-operations",
       },
     ],
   },

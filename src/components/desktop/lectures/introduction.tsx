@@ -1,5 +1,6 @@
 import { Box, createStyles, Flex, Group } from "@mantine/core";
 import { Text } from "@mantine/core";
+import Link from "next/link";
 import { colors } from "../../../config/colorPalette";
 import NextLectureCard from "../../shared-ui/next-lecture-card";
 import PrevLectureCard from "../../shared-ui/prev-lecture-card";
@@ -96,13 +97,14 @@ export function Sources({ sources }) {
 
   const items = sources.map((item) => (
     <Group position="apart" className={classes.item} noWrap spacing="xl">
-      <div>
-        <Text>{item.author}</Text>
-        <a href={item.link} target="_blank"></a>
-        <Text size="xs" style={{ color: colors.textColor }}>
-          {item.title}
-        </Text>
-      </div>
+      <a href={item.link} target="_blank">
+        <div>
+          <Text>{item.author}</Text>
+          <Text size="xs" style={{ color: colors.textColor }}>
+            {item.title}
+          </Text>
+        </div>
+      </a>
     </Group>
   ));
 

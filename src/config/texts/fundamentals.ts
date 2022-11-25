@@ -26,12 +26,12 @@ export const fundamentalsText = {
       {
         author: "Allyn Young",
         title: "The Mystery of Money",
-        link: "",
+        link: "https://d396qusza40orc.cloudfront.net/money/readings/Allyn%20Young.pdf",
       },
       {
         author: "Money and Banking",
         title: "Perry Mehrling",
-        link: "",
+        link: "https://www.youtube.com/playlist?list=PLSuwqsAnJMtwZEwkJgHZCod2xP9b7skF5",
       },
     ],
   },

@@ -1,19 +1,9 @@
 import { Box, Text } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
-import { colors } from "../../config/colorPalette";
-import { mediaQuery } from "../../config/media-query";
-import { useLoaded } from "../../hooks/useLoaded";
-
-import IndexDesktop from "../../components/desktop/articles";
-import IndexMobile from "../../components/mobile/articles";
+import { colors } from "../../../config/colorPalette";
 
 export default function ArticlesIndexPage() {
-  const loaded = useLoaded();
-  const isMobile = useMediaQuery(mediaQuery);
-  if (loaded) {
-    return isMobile ? <IndexMobile /> : <IndexDesktop />;
-  }
   return (
+    
     <div style={{ marginTop: 100 }}>
       <Box ml={50} mr={200}>
         <h1 style={{ color: colors.text }}>Articles</h1>

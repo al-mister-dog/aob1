@@ -1,3 +1,4 @@
+import { Box } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
 import Title from "./title";
 
@@ -10,7 +11,7 @@ export default function Article({ slug, title, text }) {
       }}
     >
       <Title slug={slug} title={title} />
-      <div style={{ marginTop: "25px" }}>
+      <Box mt={25}>
         {text.map((t) => (
           <p
             key={t}
@@ -24,7 +25,7 @@ export default function Article({ slug, title, text }) {
             {t}
           </p>
         ))}
-      </div>
+      </Box>
     </div>
   );
 }

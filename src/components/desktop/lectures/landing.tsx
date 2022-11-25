@@ -16,7 +16,7 @@ export default function Intro({ title, text, nextPath, id }) {
   const isMobile = useMediaQuery(mediaQuery);
   const { hovered, ref } = useHover();
 
-  const imagesSizes = useResizeImage(424, 640, isMobile ? 5: 7);
+  const imagesSizes = useResizeImage(424, 640, isMobile ? 5 : 7);
 
   const images = [
     { img: image1, alt: "Image of a Bank by Viktor Forgacs" },
@@ -97,8 +97,7 @@ export default function Intro({ title, text, nextPath, id }) {
                       size="xl"
                       weight="bold"
                       align="right"
-                      style={{ letterSpacing: 1 }}
-                      color="violet"
+                      style={{ letterSpacing: 1, color: colors.textColor }}
                     >
                       Continue. . .
                     </Text>

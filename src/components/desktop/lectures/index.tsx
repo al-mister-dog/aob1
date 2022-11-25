@@ -1,21 +1,12 @@
 import { Box, Card, Text } from "@mantine/core";
-import { useHover, useMediaQuery } from "@mantine/hooks";
+import { useHover } from "@mantine/hooks";
 import Link from "next/link";
 import { ChevronRight } from "tabler-icons-react";
-import { colors } from "../../config/colorPalette";
-import { mediaQuery } from "../../config/media-query";
-import { useLoaded } from "../../hooks/useLoaded";
-
-import IndexMobile from "../../components/mobile/lectures/index";
-import IndexDesktop from "../../components/desktop/lectures/index";
+import { colors } from "../../../config/colorPalette";
 
 export default function LecturesPage() {
   const { hovered, ref } = useHover();
-  const loaded = useLoaded();
-  const isMobile = useMediaQuery(mediaQuery);
-  if (loaded) {
-    return isMobile ? <IndexMobile /> : <IndexDesktop />;
-  }
+
   return (
     <>
       <div style={{ marginTop: 100 }}>
@@ -59,11 +50,16 @@ export default function LecturesPage() {
                   size="xl"
                   weight="bold"
                   align="right"
-                  style={{ letterSpacing: 1 }}
+                  style={{ letterSpacing: 1, color: colors.text }}
                 >
                   START HERE
                 </Text>
-                <Text size="xl" weight="bold" align="right" color="violet">
+                <Text
+                  size="xl"
+                  weight="bold"
+                  align="right"
+                  style={{ color: colors.textColor }}
+                >
                   Fundamentals
                 </Text>
               </Box>

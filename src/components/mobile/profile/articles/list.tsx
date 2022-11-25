@@ -4,7 +4,7 @@ import { colors } from "../../../../config/colorPalette";
 
 export default function ArticlesList() {
   return (
-    <Box mt={25}>
+    <Box mt={25} p={25}>
       <Box
         style={{
           width: "100%",

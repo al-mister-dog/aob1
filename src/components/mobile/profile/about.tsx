@@ -44,7 +44,7 @@ export default function About({ user }) {
     });
   }
   return (
-    <Box mt={25}>
+    <Box mt={25} p={25}>
       <Box
         style={{
           display: "flex",

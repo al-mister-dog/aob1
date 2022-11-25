@@ -1,11 +1,10 @@
 import {
   createStyles,
-  HoverCard,
+  Menu,
   Group,
   Button,
   Text,
   SimpleGrid,
-  Anchor,
   Divider,
   Center,
   Box,
@@ -14,17 +13,10 @@ import {
   ThemeIcon,
 } from "@mantine/core";
 
-import {
-  IconNotification,
-  IconBook,
-  IconChartPie3,
-  IconCoin,
-  IconChevronDown,
-} from "@tabler/icons";
-import { Books, Abacus, Friends } from "tabler-icons-react";
-
+import { IconChevronDown } from "@tabler/icons";
 import Link from "next/link";
-import { colors } from "../../../config/colorPalette";
+import { useState } from "react";
+
 import { features } from "./features-data";
 
 const useStyles = createStyles((theme) => ({
@@ -92,10 +84,16 @@ const useStyles = createStyles((theme) => ({
 
 export default function HeaderGroup() {
   const { classes } = useStyles();
+  const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
+
   const links = features.map((item) => (
     <Link key={item.title} href={item.path}>
-      <UnstyledButton className={classes.subLink} key={item.title}>
+      <UnstyledButton
+        className={classes.subLink}
+        key={item.title}
+        onClick={() => setOpened(false)}
+      >
         <Group noWrap align="flex-start">
           <ThemeIcon size={34} variant="default" radius="md">
             <item.icon size={22} color="purple" />
@@ -117,14 +115,15 @@ export default function HeaderGroup() {
       <a href="/" className={classes.link}>
         Home
       </a>
-      <HoverCard
+      <Menu
         width={600}
         position="bottom"
         radius="md"
         shadow="md"
-        withinPortal
+        opened={opened}
+        onChange={setOpened}
       >
-        <HoverCard.Target>
+        <Menu.Target>
           <a href="#" className={classes.link}>
             <Center inline>
               <Box component="span" mr={5}>
@@ -133,9 +132,9 @@ export default function HeaderGroup() {
               <IconChevronDown size={16} color="purple" />
             </Center>
           </a>
-        </HoverCard.Target>
+        </Menu.Target>
 
-        <HoverCard.Dropdown sx={{ overflow: "hidden" }}>
+        <Menu.Dropdown sx={{ overflow: "hidden" }}>
           <Group position="apart" px="md">
             <Text weight={500}>Features</Text>
           </Group>
@@ -147,6 +146,7 @@ export default function HeaderGroup() {
           />
 
           <SimpleGrid cols={2} spacing={0}>
+            {/* <Features onClick={() => setOpened(false)} /> */}
             {links}
           </SimpleGrid>
 
@@ -163,8 +163,8 @@ export default function HeaderGroup() {
               <Button variant="default">Get started</Button>
             </Group>
           </div>
-        </HoverCard.Dropdown>
-      </HoverCard>
+        </Menu.Dropdown>
+      </Menu>
       <a href="/lectures" className={classes.link}>
         Learn
       </a>

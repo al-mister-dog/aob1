@@ -6,8 +6,14 @@ import { mediaQuery } from "../../config/media-query";
 import ProfileDesktop from "../../components/desktop/profile";
 import ProfileMobile from "../../components/mobile/profile";
 //navbar:290 //profile760
-export default function Index(props) {
-  const { user } = props;
+export default function Index() {
+  const user = {
+    name: "Alex Hunter",
+    email: "almrdog@gmail.com",
+    tite: "Liquidity Kills You Quick",
+    bio: "I love coding and learning new technologies and ideas. My passion is creating educational software that make complex topics accessible to as many people as possible. As a self taught developer since 2020 I've become proficient using languages such as Typescript, Javascript, Python and SQL, as well as frameworks like React, Next-JS, Redux, Node/Express, Django and Vue. For most of my career I have been a professional musician, and have toured internationally playing folk, jazz and other styles. In my spare time I enjoy reading and sports.",
+    image: "https://avatars.githubusercontent.com/u/63908354?v=4",
+  };
 
   const loaded = useLoaded();
   const isMobile = useMediaQuery(mediaQuery);
@@ -18,30 +24,6 @@ export default function Index(props) {
     ) : (
       <ProfileDesktop user={user} />
     );
-  }
-}
-
-export async function getServerSideProps(context) {
-  const prisma = new PrismaClient();
-  const session = await getSession(context);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/registration/signin",
-      },
-    };
-  }
-  const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
-  });
-  if (user) {
-    return {
-      props: {
-        session,
-        user,
-      },
-    };
   }
 }
 

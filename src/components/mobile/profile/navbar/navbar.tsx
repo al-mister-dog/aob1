@@ -193,7 +193,7 @@ export default function NavbarSearch({ user }) {
 
   return (
     <Box
-      style={{ height: "100%", width: "325px", top: 0, left: 0 }}
+      style={{ height: "100%", width: "22.5vw", top: 0, left: 0 }}
       w={{ sm: 300 }}
       p="md"
       className={classes.navbar}

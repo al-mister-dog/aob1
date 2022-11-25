@@ -17,7 +17,7 @@ import { colors } from "../../../../config/colorPalette";
 
 export default function AvatarComponent({ user }) {
   const [editting, setEditting] = useState(false);
-  const [updatedTag, setUpdatedTag] = useState("Liquidity Kills You Quick");
+  const [updatedTag, setUpdatedTag] = useState("");
   const [updatedBio, setUpdatedBio] = useState("");
 
   function handleSuccess(tag, bio) {
@@ -49,45 +49,53 @@ export default function AvatarComponent({ user }) {
   }
   return (
     <>
-      <Center>
-        <Avatar src={user.image} alt={user.name} size={200} radius={200} />
-      </Center>
-      <Center>
-        <h2 style={{ marginBottom: 0, color: colors.textColor }}>
-          {user.name}
-        </h2>
-      </Center>
-      <Center>
-        <Text color="dimmed">{updatedTag || user.title}</Text>
-      </Center>
-      <Center>
-        <Spoiler
-          maxHeight={120}
-          showLabel={
-            <Text size="sm" color="violet" ml={15}>
-              Read More
+      <Box
+        mt={70}
+        style={{
+          height: 70,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Group ml={25}>
+          <Avatar src={user.image} radius="xl" size="lg" />
+          <Box>
+            <h2 style={{ margin: 0, padding: 0, color: colors.text }}>
+              {user.name}
+            </h2>
+            <Text mt={-10} color="dimmed">
+              Liquidity Kills You Quick
             </Text>
-          }
-          hideLabel={
-            <Text size="sm" color="violet" ml={15}>
-              Hide
-            </Text>
-          }
-          transitionDuration={100}
-        >
-          <Text
-            p={15}
-            pb={0}
-            size="sm"
-            mt={0}
-            mb={0}
-            color={colors.textColor}
-            align="justify"
-          >
-            {updatedBio || user.bio}
+          </Box>
+        </Group>
+      </Box>
+      <Spoiler
+        mt={30}
+        maxHeight={100}
+        showLabel={
+          <Text size="sm" color="violet" ml={15}>
+            Read More
           </Text>
-        </Spoiler>
-      </Center>
+        }
+        hideLabel={
+          <Text size="sm" color="violet" ml={15}>
+            Hide
+          </Text>
+        }
+        transitionDuration={100}
+      >
+        <Text
+          p={15}
+          pb={0}
+          size="sm"
+          mt={0}
+          mb={0}
+          color={colors.textColor}
+          align="justify"
+        >
+          {user.bio}
+        </Text>
+      </Spoiler>
       <Center>
         {!editting && (
           <Button

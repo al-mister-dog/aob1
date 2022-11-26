@@ -1,10 +1,11 @@
 import { Box } from "@mantine/core";
 import example1 from "../../../public/aob_example2_cropped.png";
 import example2 from "../../../public/aob_example3.png";
-import SlideInOne from "./mobile/slide-in-one";
 import { colors } from "../../config/colorPalette";
-import HeroTitle from "./mobile/title";
-import HeroSubTitle from "./mobile/subtitle";
+import HeroTitle from "./desktop/title";
+import HeroSubTitle from "./desktop/subtitle";
+import Example from "./example";
+
 
 export default function HeroMobile() {
   const examples = {
@@ -28,29 +29,30 @@ export default function HeroMobile() {
       <Box
         style={{
           background: colors.background1,
-          height: "130vh",
+          height: "100vh",
         }}
       >
-        <SlideInOne
+        <Example
           title={examples.example1.title}
-          text={examples.example1.text}
-          image={example1}
-        />
-        <Box mt={100} />
-        <SlideInOne
-          title={examples.example2.title}
-          text={examples.example2.text}
+          body={examples.example1.text}
           image={example2}
+          direction="right"
+        />
+        <div style={{ height: "100px" }} />
+        <Example
+          title={examples.example2.title}
+          body={examples.example2.text}
+          image={example1}
+          direction="left"
         />
       </Box>
 
-      <Box mt={100}></Box>
-
+      <Box mt={250}></Box>
       <HeroSubTitle />
       <Box
         style={{
           background: `url(/basquiat-graph.png) center / cover`,
-          height: 420,
+          height: "200vh",
           width: "100%",
         }}
         className="hero-headline"

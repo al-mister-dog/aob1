@@ -59,7 +59,7 @@ export default function TextEditor({ email }) {
     editor !== null ? editor.getText().slice(0, 250) : "";
 
   return (
-    <Box>
+    <Box style={{width: "95"}}>
       <Box mt={25}>
         <TextInput
           label="Title"

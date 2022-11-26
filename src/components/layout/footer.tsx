@@ -1,5 +1,6 @@
 import { createStyles, Text, Container, Box } from "@mantine/core";
 import { CurrencyDollar } from "tabler-icons-react";
+import Logo from "../shared-ui/logo";
 import { colors } from "../../config/colorPalette";
 
 const useStyles = createStyles((theme) => ({
@@ -209,10 +210,16 @@ export default function FooterLinks() {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <Box style={{ display: "flex" }}>
-            <CurrencyDollar size={30} />
-
+          <Box
+            style={{
+              display: "flex",
+              
+            }}
+          >
+            {/* <CurrencyDollar size={30} /> */}
+            <Logo />
             <Text
+            ml={20}
               size="lg"
               className={classes.description}
               styles={{ color: colors.text }}

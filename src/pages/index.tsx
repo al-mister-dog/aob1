@@ -2,7 +2,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import { mediaQuery } from "../config/media-query";
 import { useLoaded } from "../hooks/useLoaded";
 import type { NextPage } from "next";
-import HeroDesktop from "../components/hero/hero-desktop";
+import HeroDesktop from "../components/hero/hero-test";
 import HeroMobile from "../components/hero/hero-mobile";
 
 const IndexPage: NextPage = () => {

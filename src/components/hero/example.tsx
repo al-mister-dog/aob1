@@ -36,23 +36,21 @@ export default function Example({ title, body, image, direction }) {
           </div>
         </SlideIn>
         <SlideIn direction={direction}>
-          <Title
+          <h1
             style={{
               color: colors.textColor,
               letterSpacing: "3px",
-              
+              textAlign: "center",
+              fontSize: 45,
             }}
-            size={50}
-            align="center"
           >
             {title}
-          </Title>
+          </h1>
           <Text
             align="center"
             style={{
               color: colors.textColor,
               letterSpacing: "3px",
-              
             }}
           >
             {body}
@@ -73,23 +71,21 @@ export default function Example({ title, body, image, direction }) {
         }}
       >
         <SlideIn direction={direction}>
-          <Title
+          <h1
             style={{
               color: colors.textColor,
               letterSpacing: "3px",
-              
+              textAlign: "center",
+              fontSize: 45,
             }}
-            size={50}
-            align="center"
           >
             {title}
-          </Title>
+          </h1>
           <Text
             align="center"
             style={{
               color: colors.textColor,
               letterSpacing: "3px",
-              
             }}
           >
             {body}

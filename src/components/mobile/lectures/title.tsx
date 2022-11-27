@@ -28,7 +28,6 @@ export default function LectureTitle({ slug, title }) {
           letterSpacing: 1.5,
           padding: 0,
           margin: 0,
-          // marginRight: 100,
           marginTop: 5,
         }}
       >

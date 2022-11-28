@@ -1,12 +1,10 @@
-import RefreshBalanceSheets from "./refresh-button";
-import { Box, Card, Center, Text, useMantineTheme } from "@mantine/core";
-import Pill from "../../../../shared-ui/components/Pill";
-import OverdraftSlider from "./sliders/slider-overdraft";
-import ReserveRequirementSlider from "./sliders/slider-reserve-requirement";
-import { useAppSelector } from "../../../../../app/hooks";
-import { selectActions } from "../../../../../features/actions/actionsSlice";
-import { sliderSettings } from "../../../../../features/settings/initialState";
-import { colors } from "../../../../../config/colorPalette";
+import { Box, Card, Center, useMantineTheme } from "@mantine/core";
+import OverdraftSlider from "../bank-settings/sliders/slider-overdraft";
+import ReserveRequirementSlider from "../bank-settings/sliders/slider-reserve-requirement";
+import { useAppSelector } from "../../../../../../app/hooks";
+import { selectActions } from "../../../../../../features/actions/actionsSlice";
+import { sliderSettings } from "../../../../../../features/settings/initialState";
+import { colors } from "../../../../../../config/colorPalette";
 export default function Toolbar() {
   const { currentLectureId } = useAppSelector(selectActions);
   const theme = useMantineTheme();
@@ -19,25 +17,20 @@ export default function Toolbar() {
       style={{
         backgroundColor: colors.background2,
         overflow: "visible",
-        
-        // height: "24.5rem",
       }}
     >
       <Card.Section
         mb="xs"
         p="xs"
-        style={{ borderBottom: `1px solid ${theme.colors.violet[2]}` }}
+        style={{ borderBottom: `1px solid ${colors.textColor}` }}
       >
         <Center>
-          <h4 style={{ margin: 0, padding: 0, color: theme.colors.violet[9] }}>
+          <h4 style={{ margin: 0, padding: 0, color: colors.textColor }}>
             Board Settings
           </h4>
         </Center>
       </Card.Section>
       <div>
-        <Box>
-          <RefreshBalanceSheets />
-        </Box>
         <Box>
           <OverdraftSlider
             disabled={slidersDisabled.overdraft}

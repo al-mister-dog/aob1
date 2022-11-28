@@ -1,21 +1,25 @@
-import { Box, createStyles, Flex } from "@mantine/core";
-import KeyTerms from "./key-terms";
+import { Box, createStyles } from "@mantine/core";
+import IntroductionPage from "./introduction";
 import Article from "./article";
-
-import LayoutDesktop from "./interactive-ui/layout";
+import Toolbar from "./interactive-ui/toolbar/toolbar";
+import InteractiveUI from "./interactive-ui/layout";
+import KeyTerms from "./key-terms";
+import Links from "./links";
 import { colors } from "../../../config/colorPalette";
-import NextLectureCard from "../../shared-ui/next-lecture-card";
-import Introduction from "./introduction";
-import PrevLectureCard from "../../shared-ui/prev-lecture-card";
 
 const useStyles = createStyles(() => ({
+  articleContainer: {
+    position: "relative",
+    zIndex: 1,
+    backgroundColor: colors.background1,
+  },
   interactiveUiContainer: {
-    backgroundColor: colors.background3,
-    paddingBottom: "25px",
+    marginTop: 25,
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
     boxShadow: colors.shadow,
   },
+  articleFooterContainer: { marginTop: 100, position: "sticky", bottom: 0 },
 }));
 
 export default function LecturePath({
@@ -32,7 +36,7 @@ export default function LecturePath({
   return (
     <>
       {title === "Introduction" ? (
-        <Introduction
+        <IntroductionPage
           slug={slug}
           title={title}
           text={text}
@@ -41,48 +45,21 @@ export default function LecturePath({
         />
       ) : (
         <>
-          <Box
-            style={{
-              position: "relative",
-              zIndex: 1,
-              backgroundColor: colors.background1,
-            }}
-          >
+          <Box className={classes.articleContainer}>
             <Article
               slug={slug}
               title={title}
               text={text}
               assignment={assignment}
-              nextLecture={nextLecture}
             />
-            <div className={classes.interactiveUiContainer}>
-              <LayoutDesktop />
-            </div>
+            <Box className={classes.interactiveUiContainer}>
+              <Toolbar />
+              <InteractiveUI />
+            </Box>
           </Box>
-          <Box mt={100} style={{ position: "sticky", bottom: 0 }}>
+          <Box className={classes.articleFooterContainer}>
             {keyTermsIds.length > 0 && <KeyTerms ids={keyTermsIds} />}
-
-            <Flex
-              mt={100}
-              direction={{ base: "column", sm: "row" }}
-              justify={{ base: "center", sm: "space-between" }}
-              align={{ base: "center", sm: "space-between" }}
-            >
-              <Box
-                style={{
-                  marginRight: "auto",
-                }}
-              >
-                <PrevLectureCard prevLecture={nextLecture} />
-              </Box>
-              <Box
-                style={{
-                  marginLeft: "auto",
-                }}
-              >
-                <NextLectureCard nextLecture={nextLecture} />
-              </Box>
-            </Flex>
+            <Links lecture={nextLecture} />
           </Box>
         </>
       )}

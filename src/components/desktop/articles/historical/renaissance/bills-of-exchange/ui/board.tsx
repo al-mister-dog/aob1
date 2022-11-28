@@ -1,19 +1,19 @@
-import { Box, Grid, Group, Header, useMantineTheme } from "@mantine/core";
-import { useState } from "react";
-
 import { useAppDispatch, useAppSelector } from "../../../../../../../app/hooks";
-import { colors } from "../../../../../../../config/colorPalette";
 import {
   reset,
   selectBankers,
   selectTraders,
 } from "../../../../../../../features/renaissance/renaissanceSlice";
+import { useState } from "react";
+import { Box, Grid, Group, Header } from "@mantine/core";
+
+import { colors } from "../../../../../../../config/colorPalette";
+
 import RefreshButton from "../../../../../../shared-ui/components/RefreshButton";
 import BankDetail from "./bank-detail";
 import CardGrid from "./card-grid";
 
 export default function Board({ FlorencePlayers, LyonsPlayers }) {
-  const theme = useMantineTheme();
   const dispatch = useAppDispatch();
   const { me, Salviati, Federigo, Piero } = useAppSelector(selectTraders);
   const { you, Tommaso } = useAppSelector(selectBankers);
@@ -39,7 +39,7 @@ export default function Board({ FlorencePlayers, LyonsPlayers }) {
         </Group>
       </Header>
 
-      <Grid grow p={10} >
+      <Grid grow p={10}>
         <Grid.Col span={5}>
           <CardGrid
             FlorencePlayers={FlorencePlayers}

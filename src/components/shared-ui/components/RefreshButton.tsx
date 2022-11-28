@@ -1,24 +1,12 @@
-import { Button } from "@mantine/core";
 import { RefreshDot } from "tabler-icons-react";
-import { colors } from "../../../config/colorPalette";
+import SettingsButton from "../settings-button";
 
 export default function RefreshButton({ onClick }) {
   return (
-    <Button
-      size="xs"
-      leftIcon={<RefreshDot strokeWidth={1} />}
-      styles={{
-        root: {
-          color: colors.textColor,
-          border: `1px solid ${colors.muiGray}`,
-          backgroundColor: colors.background2,
-          fontWeight: "lighter",
-        },
-      }}
-      variant="outline"
+    <SettingsButton
       onClick={onClick}
-    >
-      Refresh
-    </Button>
+      icon={<RefreshDot strokeWidth={1.5} />}
+      label="Refresh"
+    />
   );
 }

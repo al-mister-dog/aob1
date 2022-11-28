@@ -89,7 +89,8 @@ export default function CardUI({ bank, handleSetBankDetail }: Props) {
           >
             <div
               style={{
-                borderRight: `1px solid ${theme.colors[bank.color][2]}`, paddingBottom: "5px"
+                borderRight: `1px solid ${theme.colors[bank.color][2]}`,
+                paddingBottom: "5px",
               }}
             >
               {bank.balanceSheet.assets.map((asset: any) => {

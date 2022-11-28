@@ -7,11 +7,11 @@ import CardGrid from "./cards/card/card-grid";
 import BankDetail from "./bank-detail/panel";
 import { CardInfo } from "./types";
 import Charts from "./charts/charts";
-import Settings from "./settings/container";
+import Settings from "./toolbar/display-settings/container";
 import { selectBanks } from "../../../../features/banks/banksSlice";
 import { Bank } from "../../../../domain/structures/types";
 import { Balancesheets } from "../../../../domain/analytics/balancesheets-beta";
-import Toolbar from "./settings/toolbar";
+import Toolbar from "./toolbar/bank-settings/container";
 
 interface Colors {
   [index: string]: any;
@@ -49,7 +49,7 @@ export default function LayoutDesktop() {
   }, []);
   return (
     <>
-      <Grid gutter="sm" grow p={5}>
+      <Grid  grow p={10}>
         <Grid.Col span={5}>
           <CardGrid
             group={banksArray}
@@ -67,8 +67,6 @@ export default function LayoutDesktop() {
             }}
           >
             <BankDetail key={bankDetail.cardInfo.id} bank={bankDetail} />
-            <Toolbar />
-            <Settings />
           </div>
         </Grid.Col>
       </Grid>
@@ -82,7 +80,6 @@ import {
   Skeleton,
   useMantineTheme,
 } from "@mantine/core";
-import Link from "next/link";
 
 const PRIMARY_COL_HEIGHT = 300;
 

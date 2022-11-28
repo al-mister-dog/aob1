@@ -1,9 +1,10 @@
-import { useAppSelector, useAppDispatch } from "../../../../../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../../../../../../app/hooks";
 import {
   selectSettings,
   setReserveRequirement,
-} from "../../../../../../features/settings/settingsSlice";
+} from "../../../../../../../features/settings/settingsSlice";
 import { Box, Slider, Text } from "@mantine/core";
+import { colors } from "../../../../../../../config/colorPalette";
 
 export default function ReserveRequirementSlider({
   disabled,
@@ -18,7 +19,9 @@ export default function ReserveRequirementSlider({
   }
   return (
     <Box>
-      <Text size="xs" color="violet">Reserve Requirement</Text>
+      <Text size="xs" style={{ color: colors.textColor }}>
+        Reserve Requirement
+      </Text>
       <Slider
         color="violet"
         size="md"

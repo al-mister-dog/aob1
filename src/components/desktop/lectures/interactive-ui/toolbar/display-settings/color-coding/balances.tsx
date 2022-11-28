@@ -1,34 +1,45 @@
-import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../../../app/hooks";
 import {
-  setColors,
   selectSettings,
-} from "../../../../../features/settings/settingsSlice";
+  setColors,
+} from "../../../../../../../features/settings/settingsSlice";
 import { useState } from "react";
-import { Box, Button, Modal, Radio, Text } from "@mantine/core";
-import AboutColors from "./about/about-colors";
-import { useRadioSettings } from "../../../../../hooks/useRadioSettings";
-import { useMantineTheme } from "@mantine/core";
 
-export default function ColorsMenu({ setOpened }) {
+import {
+  Box,
+  Button,
+  Modal,
+  Radio,
+  Stack,
+  Text,
+  useMantineTheme,
+} from "@mantine/core";
+import AboutColors from "../about/about-colors";
+
+import { useRadioSettings } from "../../../../../../../hooks/useRadioSettings";
+import { colors } from "../../../../../../../config/colorPalette";
+
+export default function ColorsMenu() {
   const dispatch = useAppDispatch();
-  const theme = useMantineTheme();
   const { colorSettings } = useAppSelector(selectSettings);
   const [aboutOpened, setAboutOpened] = useState(false);
   const colorCoding = useRadioSettings(colorSettings);
+  const theme = useMantineTheme();
 
   function handleOnChangeRadioColors(value: string) {
     dispatch(setColors({ key: value }));
-    setOpened(false);
   }
 
   return (
     <Box>
+      <Text size="sm" style={{ color: colors.textColor, fontWeight: "bold" }}>
+        Balancesheet Colors
+      </Text>
       <Radio.Group
         value={colorCoding}
         orientation="vertical"
         onChange={(value) => handleOnChangeRadioColors(value)}
         name="Transactions"
-        label="Balances Color Coding"
       >
         <Radio
           styles={{ labelWrapper: { display: "flex" } }}
@@ -55,20 +66,22 @@ export default function ColorsMenu({ setOpened }) {
           label={<Text size="xs">Off</Text>}
         />
       </Radio.Group>
-
-      <Button
-        color="violet"
-        mt="md"
-        variant="light"
-        onClick={() => setAboutOpened(true)}
-      >
-        About Credit-Notation
-      </Button>
+      <Stack>
+        <Button
+          size="xs"
+          color="violet"
+          mt="md"
+          variant="filled"
+          onClick={() => setAboutOpened(true)}
+        >
+          About Credit-Notation
+        </Button>
+      </Stack>
 
       <Modal
         opened={aboutOpened}
         onClose={() => setAboutOpened(false)}
-        title="About Credit-Notation"
+        title="Credit-Notation"
         styles={{
           modal: {
             backgroundColor: theme.colors.red[0],

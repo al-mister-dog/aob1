@@ -1,11 +1,11 @@
 import { Box, Radio, Text } from "@mantine/core";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../../app/hooks";
 import {
   selectSettings,
   setDisplay,
-} from "../../../../../features/settings/settingsSlice";
-import { useRadioSettings } from "../../../../../hooks/useRadioSettings";
+} from "../../../../../../features/settings/settingsSlice";
+import { useRadioSettings } from "../../../../../../hooks/useRadioSettings";
 
 export default function DisplayRadioGroup() {
   const dispatch = useAppDispatch();
@@ -17,9 +17,9 @@ export default function DisplayRadioGroup() {
   }
 
   // this sets display back to "balances" on page change
-  useEffect(() => {
-    dispatch(setDisplay({ key: "balances" }));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(setDisplay({ key: "balances" }));
+  // }, []);
 
   return (
     <Box>
@@ -35,13 +35,6 @@ export default function DisplayRadioGroup() {
           value="balances"
           label={<Text size="xs">Balances</Text>}
         />
-
-        {/* <Radio
-          styles={{ labelWrapper: { display: "flex" } }}
-          color="violet"
-          value="taccounts"
-          label={<Text size="xs">T-Accounts</Text>}
-        /> */}
 
         <Radio
           styles={{ labelWrapper: { display: "flex" } }}

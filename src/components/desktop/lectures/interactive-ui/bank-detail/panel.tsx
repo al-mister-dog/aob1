@@ -38,9 +38,10 @@ function SidePanel({ bank }: { bank: CardInfo }) {
       p="sm"
       radius="xs"
       shadow="sm"
+      withBorder
       style={{
         paddingBottom: "0px",
-        height: "26.35rem",
+        height: "30rem",
         backgroundColor: colors.background2,
         
       }}

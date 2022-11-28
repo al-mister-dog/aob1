@@ -8,13 +8,14 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../../../app/hooks";
+import { colors } from "../../../../../../../config/colorPalette";
 import {
   selectSettings,
   setClaveroDisplay,
-} from "../../../../../../features/settings/settingsSlice";
-import { useRadioSettings } from "../../../../../../hooks/useRadioSettings";
-import Spreadsheet from "../../../displays/spreadsheet";
+} from "../../../../../../../features/settings/settingsSlice";
+import { useRadioSettings } from "../../../../../../../hooks/useRadioSettings";
+import Spreadsheet from "../../../../displays/spreadsheet";
 import SpreadsheetAbout from "../about/about-spreadsheet";
 
 export default function SpreadsheetMenu() {
@@ -34,8 +35,8 @@ export default function SpreadsheetMenu() {
 
   return (
     <>
-      <Box>
-        <Text size="sm" color="violet">
+      <Box mt={15}>
+        <Text size="sm" weight="bold" style={{color: colors.textColor}}>
           Spreadsheet Colors
         </Text>
         <Radio.Group
@@ -89,7 +90,7 @@ export default function SpreadsheetMenu() {
           setAboutOpened(false);
         }}
         title="Color-Coded Payment Notation"
-        styles={{ modal: { backgroundColor: theme.colors.red[0] } }}
+        // styles={{ modal: { backgroundColor: theme.colors.red[0] } }}
       >
         <SpreadsheetAbout />
       </Modal>

@@ -136,7 +136,7 @@ export default function HeaderGroup() {
 
         <Menu.Dropdown sx={{ overflow: "hidden" }}>
           <Group position="apart" px="md">
-            <Text weight={500}>Features</Text>
+            <Text weight={500} pt={5}>Features</Text>
           </Group>
 
           <Divider

@@ -7,11 +7,9 @@ import {
   createStyles,
   useMantineTheme,
 } from "@mantine/core";
-import { CardInfo } from "../types";
-import ActionsPanel from "./actions/panel";
+
 import React from "react";
-import RecordsPanel from "./records/panel";
-import AccountsPanel from "./accounts/panel";
+import FlowsPanel from "./flow-of-funds-matrix.tsx/table";
 import { colors } from "../../../../../config/colorPalette";
 
 const useStyles = createStyles((theme) => ({
@@ -29,8 +27,7 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colors.blue[8],
   },
 }));
-
-function SidePanel({ bank }: { bank: CardInfo }) {
+function Analytics() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   return (
@@ -41,6 +38,7 @@ function SidePanel({ bank }: { bank: CardInfo }) {
       withBorder
       style={{
         paddingBottom: "0px",
+        marginTop: 25,
         minHeight: "30rem",
         backgroundColor: colors.background2,
       }}
@@ -49,40 +47,40 @@ function SidePanel({ bank }: { bank: CardInfo }) {
         <Center>
           <h2
             style={{
-              color: theme.colors[bank.color][9],
+              color: colors.text,
               margin: 0,
               padding: 0,
             }}
           >
-            {bank.cardInfo.name}
+            Analytics
           </h2>
         </Center>
       </Card.Section>
-      <Tabs color={`${bank.color}`} defaultValue="actions">
+      <Tabs color="violet" defaultValue="actions">
         <Tabs.List grow>
-          <Tabs.Tab value="records">
-            <Text color={theme.colors[bank.color][9]}>Records</Text>
+          <Tabs.Tab value="relations">
+            <Text color={colors.text}>Relations</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="actions">
-            <Text color={theme.colors[bank.color][9]}>Actions</Text>
+          <Tabs.Tab value="statistics">
+            <Text color={colors.text}>Statistics</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="accounts">
-            <Text color={theme.colors[bank.color][9]}>Accounts</Text>
+          <Tabs.Tab value="flows">
+            <Text color={colors.text}>Flows</Text>
           </Tabs.Tab>
         </Tabs.List>
-        <Tabs.Panel value="records" pt="xs">
-          <RecordsPanel bank={bank} />
+        <Tabs.Panel value="relations" pt="xs">
+          {/* <RecordsPanel bank={bank} /> */}
         </Tabs.Panel>
-        <Tabs.Panel value="actions" pt="xs">
-          <ActionsPanel bank={bank} />
+        <Tabs.Panel value="statistics" pt="xs">
+          {/* <ActionsPanel bank={bank} /> */}
         </Tabs.Panel>
 
-        <Tabs.Panel value="accounts" pt="xs">
-          <AccountsPanel bank={bank} />
+        <Tabs.Panel value="flows" pt="xs">
+          <FlowsPanel />
         </Tabs.Panel>
       </Tabs>
     </Card>
   );
 }
 
-export default React.memo(SidePanel);
+export default React.memo(Analytics);

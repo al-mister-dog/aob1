@@ -21,7 +21,7 @@ export default function Logo({ size }: { size?: number }) {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_1_21)" filter="url(#filter0_f_1_21)">
+        <g clipPath="url(#clip0_1_21)" filter="url(#filter0_f_1_21)">
           <path
             d="M226.973 1H303.973L86.4728 558.5H1L226.973 1Z"
             fill="#330164"
@@ -38,9 +38,9 @@ export default function Logo({ size }: { size?: number }) {
             width="505"
             height="562"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               mode="normal"
               in="SourceGraphic"

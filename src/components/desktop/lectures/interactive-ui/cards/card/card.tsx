@@ -7,6 +7,7 @@ import { CardInfo } from "../../types";
 import { Record } from "../../../../../../domain/services/records";
 import BalanceSheetRowHeading from "../balances/balance-sheet-heading";
 import SpreadsheetList from "../balances/balance-displays/spreadsheet-list";
+import { colors } from "../../../../../../config/colorPalette";
 
 interface Props {
   bank: CardInfo;
@@ -34,6 +35,7 @@ export default function CardUI({ bank, handleSetBankDetail }: Props) {
       cardKey={bank.cardInfo.id}
       height="13.5rem"
       hoverBorder={`2px solid ${theme.colors[bank.color][2]}`}
+      
       onClick={() => onSelectBank(bank)}
     >
       <Card.Section style={{ padding: "3px", cursor: "pointer" }}>

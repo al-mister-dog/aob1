@@ -28,7 +28,6 @@ export default function Index({ user }) {
           <Box ml={50} mt={100} style={{ maxWidth: "700px" }}>
             <h1 style={{ color: colors.textColor }}>{user.name}</h1>
             <HeaderTabs user={user} />
-            {/* <MyArticles email={user.email} /> */}
           </Box>
         </Box>
       </Box>
@@ -139,7 +138,7 @@ function HeaderTabs({ user }) {
       </Tabs.List>
 
       <Tabs.Panel value="first" pt="xs">
-        <ArticlesList user={user}/>
+        <ArticlesList user={user} />
       </Tabs.Panel>
 
       <Tabs.Panel value="second" pt="xs">

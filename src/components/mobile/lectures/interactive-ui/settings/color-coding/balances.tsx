@@ -1,10 +1,10 @@
-import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../../app/hooks";
 import {
   setColors,
   selectSettings,
-} from "../../../../../features/settings/settingsSlice";
+} from "../../../../../../features/settings/settingsSlice";
 import { useState } from "react";
-import { useRadioSettings } from "../../../../../hooks/useRadioSettings";
+import { useRadioSettings } from "../../../../../../hooks/useRadioSettings";
 import {
   Box,
   Button,

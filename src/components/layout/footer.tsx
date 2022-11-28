@@ -1,5 +1,4 @@
 import { createStyles, Text, Container, Box } from "@mantine/core";
-import { CurrencyDollar } from "tabler-icons-react";
 import Logo from "../shared-ui/logo";
 import { colors } from "../../config/colorPalette";
 import Link from "next/link";

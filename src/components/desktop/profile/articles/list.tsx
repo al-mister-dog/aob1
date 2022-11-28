@@ -29,10 +29,10 @@ function ArticlesList({ email }) {
   const { data, error } = useSWR(`/api/article/?email=${email}`, fetcher);
 
   if (!data) {
-    return <>...loading</>;
+    return <>there are currently no articles here</>;
   }
   if (error) {
-    return <>error</>;
+    return <>there was an error retrieving articles</>;
   }
   return (
     <Box>

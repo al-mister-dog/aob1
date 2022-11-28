@@ -1,8 +1,11 @@
 import { Box, Text, Button, Divider } from "@mantine/core";
 import Link from "next/link";
+import { userAgent } from "next/server";
+import useSWR from "swr";
 import { colors } from "../../../../config/colorPalette";
+import { fetcher } from "../../../../lib/fetcher";
 
-export default function ArticlesList() {
+export default function Articles({ user }) {
   return (
     <Box mt={25}>
       <Box
@@ -18,7 +21,7 @@ export default function ArticlesList() {
           </Button>
         </Link>
       </Box>
-      <Box>
+      {/* <Box>
         <Text color="dimmed" mb={10}>
           3 Days ago
         </Text>
@@ -47,7 +50,57 @@ export default function ArticlesList() {
           is determined by finding the volume-weighted median rate of all fed
           funds loans. . .
         </p>
-      </Box>
+      </Box> */}
+      <ArticlesList email={user.email} />
+    </Box>
+  );
+}
+
+function ArticlesList({ email }) {
+  const { data, error } = useSWR(`/api/article/?email=${email}`, fetcher);
+
+  if (!data) {
+    return <>...loading</>;
+  }
+  if (error) {
+    return <>error</>;
+  }
+  return (
+    <Box>
+      {data.map((article) => {
+        return (
+          <Box key={article.id}>
+            <Link
+              href={{
+                pathname: `/articles/${article.id}`,
+                query: { id: article.id },
+              }}
+              as={`/articles/${article.title.split(" ").join("-")}/${
+                article.id
+              }`}
+              passHref
+            >
+              <Box>
+                <Text color="dimmed" mb={10}>
+                  {article.createdAt}
+                </Text>
+                <h3
+                  style={{
+                    margin: 0,
+                    marginBottom: 10,
+                    color: colors.textColor,
+                  }}
+                >
+                  {article.title}
+                </h3>
+                <p style={{ color: colors.textColor }}>{article.preview}</p>
+              </Box>
+            </Link>
+
+            <Divider mt={50} />
+          </Box>
+        );
+      })}
     </Box>
   );
 }

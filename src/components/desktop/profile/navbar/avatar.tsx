@@ -17,7 +17,7 @@ import { colors } from "../../../../config/colorPalette";
 
 export default function AvatarComponent({ user }) {
   const [editting, setEditting] = useState(false);
-  const [updatedTag, setUpdatedTag] = useState("Liquidity Kills You Quick");
+  const [updatedTag, setUpdatedTag] = useState("");
   const [updatedBio, setUpdatedBio] = useState("");
 
   function handleSuccess(tag, bio) {

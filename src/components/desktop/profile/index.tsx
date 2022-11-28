@@ -27,8 +27,8 @@ export default function Index({ user }) {
         <Box style={{ width: "100%" }}>
           <Box ml={50} mt={100} style={{ maxWidth: "700px" }}>
             <h1 style={{ color: colors.textColor }}>{user.name}</h1>
-            {/* <HeaderTabs user={user} /> */}
-            <MyArticles email={user.email} />
+            <HeaderTabs user={user} />
+            {/* <MyArticles email={user.email} /> */}
           </Box>
         </Box>
       </Box>
@@ -46,10 +46,8 @@ function MyArticles({ email }) {
     return <>error</>;
   }
   return (
-    <Card
-      shadow="sm"
+    <Box
       style={{
-        backgroundColor: colors.background2,
         cursor: "pointer",
       }}
     >
@@ -73,7 +71,7 @@ function MyArticles({ email }) {
           </Box>
         );
       })}
-    </Card>
+    </Box>
   );
 }
 function PostForm({ email }) {
@@ -141,7 +139,7 @@ function HeaderTabs({ user }) {
       </Tabs.List>
 
       <Tabs.Panel value="first" pt="xs">
-        <ArticlesList />
+        <ArticlesList user={user}/>
       </Tabs.Panel>
 
       <Tabs.Panel value="second" pt="xs">

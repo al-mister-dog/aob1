@@ -19,7 +19,7 @@ async function post(req, res) {
     res.status(401).json({ error: "Unauthorized" });
     return;
   }
-
+  console.log(prismaUser.id);
   const path = `articles/${title}`;
   const post = await prisma.post.create({
     data: {
@@ -46,8 +46,11 @@ async function get(req, res) {
       preview: true,
     },
   });
-  const posts = data.map(d => ({ ...d, createdAt: parseDate(`${d.createdAt}`) }))
-  console.log(posts)
+  const posts = data.map((d) => ({
+    ...d,
+    createdAt: parseDate(`${d.createdAt}`),
+  }));
+
   return res.status(201).json(posts);
 }
 

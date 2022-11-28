@@ -64,7 +64,7 @@ export default function AvatarComponent({ user }) {
               {user.name}
             </h2>
             <Text mt={-10} color="dimmed">
-              Liquidity Kills You Quick
+              {user.title}
             </Text>
           </Box>
         </Group>

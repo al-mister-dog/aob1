@@ -1,0 +1,28 @@
+user logs in
+
+user has profile page (protected components such as edit buttons)
+
+user has articles
+
+there is a user articles page
+
+there is an individual articles page
+
+userPage: {
+    userArticlesList: {
+        article: {}
+    }
+}
+
+articlesPage: {
+    allArticlesList: {
+        article: {}    
+    }
+    articlesByUserList: {
+        article: {}
+    }
+}
+
+/articles = articlesPage
+/articles/user = articlesByUser
+/articles/user/id = articleByUser

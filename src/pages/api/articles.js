@@ -1,7 +1,6 @@
 import { unstable_getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 import { prisma } from "../../lib/prisma";
-import { parseDate } from "../../helpers/parseDate";
 
 async function post(req, res) {
   const session = await unstable_getServerSession(req, res, authOptions);
@@ -9,7 +8,7 @@ async function post(req, res) {
     res.status(401).json({ error: "Unauthorized" });
     return;
   }
-  const { title, preview, body, email } = req.body;
+  const { title, body, email } = req.body;
 
   const prismaUser = await prisma.user.findUnique({
     where: { email: email },
@@ -24,7 +23,6 @@ async function post(req, res) {
   const post = await prisma.post.create({
     data: {
       title,
-      preview,
       body,
       path,
       userId: prismaUser.id,
@@ -35,19 +33,7 @@ async function post(req, res) {
 }
 
 async function get(req, res) {
-  const id = req.query.id;
-
-  const data = await prisma.post.findMany({
-    where: { id },
-    select: {
-      id: true,
-      title: true,
-      createdAt: true,
-      preview: true,
-    },
-  });
-  const posts = data.map(d => ({ ...d, createdAt: parseDate(`${d.createdAt}`) }))
-  console.log(posts)
+  const posts = await prisma.post.findMany();
   return res.status(201).json(posts);
 }
 

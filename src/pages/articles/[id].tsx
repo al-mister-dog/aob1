@@ -1,29 +1,39 @@
-import useSWR from "swr";
-import { fetcher } from "../../lib/fetcher";
-import { useRouter } from "next/router";
+import { PrismaClient } from "@prisma/client";
 import parse from "html-react-parser";
+import { parseDate } from "../../helpers/parseDate";
+import { Box, Text } from "@mantine/core";
+import { colors } from "../../config/colorPalette";
 
-export default function Article() {
-  const router = useRouter();
-  const { id } = router.query;
-  const articleId = "clan27iqy0005pf134oz3tol3";
-  const { data, error } = useSWR(
-    `/api/article/?email=almrdog@gmail.com`,
-    fetcher
-  );
 
-  if (!data) {
-    return <>...loading</>;
-  }
-  if (error) {
-    return <>error</>;
-  }
-  const result = data.filter((d) => d.title === "Money and Banking");
-  const article = parse(result[0].body);
+export default function Article({ article }) {
   return (
-    <>
-      <h1>{result[0].title}</h1>
-      {article}
-    </>
+    <Box p={50} pr={200}>
+      <h1 style={{ margin: 0, padding: 0, color: colors.text }}>
+        {article.title}
+      </h1>
+      <Text style={{ margin: 0, padding: 0, color: colors.text, fontSize: 20 }}>
+        {article.user.name}: {article.createdAt}
+      </Text>
+      {parse(article.body)}
+    </Box>
   );
+}
+
+export async function getServerSideProps(context) {
+  const prisma = new PrismaClient();
+
+  const data = await prisma.post.findUnique({
+    where: { id: context.query.id },
+    include: {
+      user: true,
+    },
+  });
+
+  const article = {
+    ...data,
+    createdAt: parseDate(`${data.createdAt}`),
+    updatedAt: parseDate(`${data.updatedAt}`),
+  };
+
+  return { props: { article } };
 }

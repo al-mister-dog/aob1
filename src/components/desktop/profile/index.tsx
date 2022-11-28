@@ -3,9 +3,10 @@ import {
   Button,
   Group,
   Box,
-  Title,
+  Text,
   Card,
   Tabs,
+  Divider,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
@@ -26,7 +27,8 @@ export default function Index({ user }) {
         <Box style={{ width: "100%" }}>
           <Box ml={50} mt={100} style={{ maxWidth: "700px" }}>
             <h1 style={{ color: colors.textColor }}>{user.name}</h1>
-            <HeaderTabs user={user} />
+            {/* <HeaderTabs user={user} /> */}
+            <MyArticles email={user.email} />
           </Box>
         </Box>
       </Box>
@@ -56,8 +58,18 @@ function MyArticles({ email }) {
       {data.map((article) => {
         return (
           <Box key={article.id}>
-            <Title size="sm">{article.title}</Title>
-            <p>{article.body}</p>
+            <Box>
+              <Text color="dimmed" mb={10}>
+                {article.createdAt}
+              </Text>
+              <h3
+                style={{ margin: 0, marginBottom: 10, color: colors.textColor }}
+              >
+                {article.title}
+              </h3>
+              <p style={{ color: colors.textColor }}>{article.preview}</p>
+            </Box>
+            <Divider mt={50} />
           </Box>
         );
       })}

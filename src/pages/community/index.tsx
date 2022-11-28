@@ -5,6 +5,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import { mediaQuery } from "../../config/media-query";
 import ProfileDesktop from "../../components/desktop/profile";
 import ProfileMobile from "../../components/mobile/profile";
+import { parseDate } from "../../helpers/parseDate";
 //navbar:290 //profile760
 export default function Index(props) {
   const { user } = props;
@@ -35,6 +36,8 @@ export async function getServerSideProps(context) {
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
   });
+
+
   if (user) {
     return {
       props: {

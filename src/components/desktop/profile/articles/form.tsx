@@ -24,6 +24,7 @@ export default function TextEditor({ email }) {
   const theme = useMantineTheme();
   const [article, setArticle] = useState("");
   const [title, setTitle] = useState("");
+  const [preview, setPreview] = useState("");
 
   const editor = useEditor({
     extensions: [
@@ -50,6 +51,7 @@ export default function TextEditor({ email }) {
     const body = editor.getHTML();
     const { data } = await axios.post("/api/article", {
       title,
+      preview,
       body,
       email,
     });
@@ -118,7 +120,7 @@ export default function TextEditor({ email }) {
           maxLength={240}
           rows={3}
           placeholder={previewPlaceholder}
-          onChange={(val) => setTitle(val.target.value)}
+          onChange={(val) => setPreview(val.target.value)}
         />
       </Box>
       <Box

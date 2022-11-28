@@ -55,6 +55,7 @@ export default function TextEditor({ email }) {
       body,
       email,
     });
+    alert(data);
   }
 
   const previewPlaceholder =

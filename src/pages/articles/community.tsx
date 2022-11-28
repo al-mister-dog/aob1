@@ -14,8 +14,6 @@ export default function Article() {
     return <>error</>;
   }
 
-  // const result = data.filter((d) => d.title === "Money and Banking");
-  // const article = parse(result[0].body);
   const articles = data.map((d) => {
     return {
       ...d,

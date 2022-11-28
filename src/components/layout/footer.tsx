@@ -2,6 +2,7 @@ import { createStyles, Text, Container, Box } from "@mantine/core";
 import { CurrencyDollar } from "tabler-icons-react";
 import Logo from "../shared-ui/logo";
 import { colors } from "../../config/colorPalette";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -123,6 +124,7 @@ interface FooterLinksProps {
 const data = [
   {
     title: "About",
+    link: "/about",
     links: [
       {
         label: "Features",
@@ -144,6 +146,7 @@ const data = [
   },
   {
     title: "Project",
+    link: "/lectures",
     links: [
       {
         label: "Lectures",
@@ -161,6 +164,7 @@ const data = [
   },
   {
     title: "Community",
+    link: "/community",
     links: [
       {
         label: "Join Discord",
@@ -200,7 +204,10 @@ export default function FooterLinks() {
 
     return (
       <div className={classes.wrapper} key={group.title}>
-        <Text className={classes.title}>{group.title}</Text>
+        <Link href={group.link}>
+          <Text className={classes.title}>{group.title}</Text>
+        </Link>
+
         {links}
       </div>
     );
@@ -213,13 +220,11 @@ export default function FooterLinks() {
           <Box
             style={{
               display: "flex",
-              
             }}
           >
-            {/* <CurrencyDollar size={30} /> */}
             <Logo />
             <Text
-            ml={20}
+              ml={20}
               size="lg"
               className={classes.description}
               styles={{ color: colors.text }}

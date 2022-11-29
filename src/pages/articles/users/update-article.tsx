@@ -6,6 +6,7 @@ export default function NewArticle(props) {
   const { article, user, error } = props;
   if (error) {
     alert(JSON.stringify(error));
+    return <></>
   }
   return (
     <Box style={{ minHeight: "100vh" }}>

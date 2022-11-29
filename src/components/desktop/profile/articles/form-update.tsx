@@ -15,13 +15,11 @@ import SubScript from "@tiptap/extension-subscript";
 import { Box, Text, TextInput, Button, Textarea } from "@mantine/core";
 
 //<sub> <sup>
-export default function TextEditor({ user }) {
+export default function TextEditor({ user, article }) {
   const { email } = user;
   const router = useRouter();
-  const [error, setError] = useState(false);
-  const [article, setArticle] = useState("");
-  const [title, setTitle] = useState("");
-  const [preview, setPreview] = useState("");
+  const [title, setTitle] = useState(article.title);
+  const [preview, setPreview] = useState(article.preview);
 
   const editor = useEditor({
     extensions: [
@@ -33,19 +31,13 @@ export default function TextEditor({ user }) {
       Highlight,
       TextAlign.configure({ types: ["heading", "paragraph"] }),
     ],
+    content: article.body,
   });
 
-  // const addImage = () => {
-  //   const url = window.prompt("URL");
-
-  //   if (url) {
-  //     editor.chain().focus().setImage({ src: url }).run();
-  //   }
-  // };
-
-  async function saveArticle() {
+  async function updateArticle() {
     const body = editor.getHTML();
-    const { status, data } = await axios.post("/api/article", {
+    const { status, data } = await axios.put("/api/article", {
+      id: article.id,
       title,
       preview,
       body,
@@ -70,15 +62,12 @@ export default function TextEditor({ user }) {
     }
   }
 
-  const previewPlaceholder =
-    editor !== null ? editor.getText().slice(0, 250) : "";
-
   return (
     <Box>
       <Box mt={25}>
         <TextInput
           label="Title"
-          placeholder="Title"
+          value={title}
           onChange={(val) => setTitle(val.target.value)}
         />
         <Text mt={10} size="sm">
@@ -132,7 +121,7 @@ export default function TextEditor({ user }) {
           description="Write a small opening paragraph. This could be the first few lines of your article."
           maxLength={240}
           rows={3}
-          placeholder={previewPlaceholder}
+          value={preview}
           onChange={(val) => setPreview(val.target.value)}
         />
       </Box>
@@ -141,11 +130,10 @@ export default function TextEditor({ user }) {
         pb={10}
         style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
       >
-        <Button color="violet" onClick={saveArticle}>
+        <Button color="violet" onClick={updateArticle}>
           Save
         </Button>
       </Box>
-      <Output article={article} />
       <ToastContainer />
     </Box>
   );
@@ -154,9 +142,3 @@ export default function TextEditor({ user }) {
 import parse from "html-react-parser";
 import { colors } from "../../../../config/colorPalette";
 import Router from "next/router";
-
-function Output({ article }) {
-  const reactElement = parse(article);
-
-  return <>{reactElement}</>;
-}

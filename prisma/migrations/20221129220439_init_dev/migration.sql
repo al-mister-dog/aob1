@@ -42,8 +42,10 @@ CREATE TABLE "Profile" (
 CREATE TABLE "Post" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "preview" TEXT NOT NULL,
     "body" TEXT NOT NULL,
     "path" TEXT NOT NULL,
+    "published" BOOLEAN NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "userId" TEXT NOT NULL,

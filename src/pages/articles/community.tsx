@@ -26,6 +26,9 @@ export default function Article() {
   return (
     <Box p={50} pr={200}>
       <h1>Articles</h1>
+      <Box>
+        
+      </Box>
       {articles.map((article) => {
         return (
           <Box key={article.id} onClick={() => alert(article.id)}>

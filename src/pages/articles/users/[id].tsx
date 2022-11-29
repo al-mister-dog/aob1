@@ -3,6 +3,7 @@ import { parseDate } from "../../../helpers/parseDate";
 import { Box, Text } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
 import Link from "next/link";
+import { getSession } from "next-auth/react";
 
 interface Article {
   id: string;
@@ -11,7 +12,7 @@ interface Article {
   createdAt: string;
   user: {};
 }
-export default function UserArticle({ articles }) {
+export default function UserArticles({ articles }) {
   return (
     <>
       {articles.map((article) => {
@@ -49,12 +50,23 @@ export default function UserArticle({ articles }) {
 
 export async function getServerSideProps(context) {
   const prisma = new PrismaClient();
-  console.log(context.query);
-  // const userId = "clb0xjfu60000pfu2u4e4ku11";
+  const session = await getSession(context);
+  let isUser = false;
+  if (session) {
+    isUser = true;
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+  });
+  
   const data = await prisma.post.findMany({
     where: { userId: context.query.id },
     include: {
       user: true,
+    },
+    orderBy: {
+      createdAt: "desc",
     },
   });
 

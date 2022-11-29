@@ -1,12 +1,6 @@
 user logs in
 
-user has profile page (protected components such as edit buttons)
 
-user has articles
-
-there is a user articles page
-
-there is an individual articles page
 
 userPage: {
     userArticlesList: {
@@ -26,3 +20,16 @@ articlesPage: {
 /articles = articlesPage
 /articles/user = articlesByUser
 /articles/user/id = articleByUser
+
+
+
+user has profile page (protected components such as edit buttons)
+
+user has articles
+
+there is a user articles page
+
+there is an individual articles page
+
+you could send user to profile...
+make sure articles are visible on redirect

@@ -1,9 +1,43 @@
+import { getSession } from "next-auth/react";
 import { PrismaClient } from "@prisma/client";
-import parse from "html-react-parser";
-import { Box, Group, Text } from "@mantine/core";
-import { colors } from "../../config/colorPalette";
 import { parseDate } from "../../helpers/parseDate";
-import Link from "next/link";
+
+import ArticleDesktop from "../../components/desktop/articles/users/article";
+import ArticleMobile from "../../components/mobile/articles/users/article";
+import { useLoaded } from "../../hooks/useLoaded";
+import { useMediaQuery } from "@mantine/hooks";
+import { mediaQuery } from "../../config/media-query";
+
+export async function getServerSideProps(context) {
+  const prisma = new PrismaClient();
+  const id = context.query.id[1];
+
+  const session = await getSession(context);
+  const data = await prisma.post.findUnique({
+    where: { id },
+    include: {
+      user: true,
+    },
+  });
+
+  const article = {
+    id: data.id,
+    title: data.title,
+    body: data.body,
+    createdAt: parseDate(`${data.createdAt}`),
+    user: data.user,
+  };
+
+  if (session) {
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
+    });
+
+    return { props: { article, user } };
+  } else {
+    return { props: { article, user: null } };
+  }
+}
 
 interface Article {
   id: string;
@@ -21,59 +55,38 @@ interface Article {
   };
 }
 
-export default function UserArticle({ article }: { article: Article }) {
-  return (
-    <Box p={50} pr={200}>
-      <h1 style={{ margin: 0, padding: 0, color: colors.text }}>
-        {article.title}
-      </h1>
-      <Group>
-        <Link href={`/community/users/${article.user.id}`}>
-          <Text
-            style={{
-              margin: 0,
-              padding: 0,
-              color: colors.text,
-              fontSize: 20,
-            }}
-          >
-            {article.user.name}: {article.createdAt}
-          </Text>
-        </Link>
-        <Link href={`/articles/users/${article.user.id}`}>
-          <Text
-            style={{
-              color: colors.text,
-            }}
-          >
-            More Articles by {article.user.name}
-          </Text>
-        </Link>
-      </Group>
-
-      {parse(article.body)}
-    </Box>
-  );
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  title: null | string;
+  bio: null | string;
+  emailVerified: null | boolean;
+  image: string;
 }
 
-export async function getServerSideProps(context) {
-  const prisma = new PrismaClient();
-  const id = context.query.id[1];
+function getReadTime(string) {
+  let eachWord = [];
+  let divided = eachWord.length / 200;
+  let int = Math.round(divided);
+  let decimal = (divided - int) / 0.6;
+}
 
-  const data = await prisma.post.findUnique({
-    where: { id },
-    include: {
-      user: true,
-    },
-  });
-
-  const article = {
-    id: data.id,
-    title: data.title,
-    body: data.body,
-    createdAt: parseDate(`${data.createdAt}`),
-    user: data.user,
-  };
-
-  return { props: { article } };
+export default function UserArticle({
+  article,
+  user,
+}: {
+  article: Article;
+  user: User | null;
+}) {
+  const loaded = useLoaded();
+  const isMobile = useMediaQuery(mediaQuery);
+  if (loaded) {
+    return isMobile ? (
+      <ArticleMobile article={article} user={user} />
+    ) : (
+      <ArticleDesktop article={article} user={user} />
+    );
+  }
+  return null;
 }

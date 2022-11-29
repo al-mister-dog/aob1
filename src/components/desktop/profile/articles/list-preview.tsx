@@ -14,7 +14,7 @@ export default function Articles({ user }) {
           justifyContent: "flex-end",
         }}
       >
-        <Link href="community/new-article">
+        <Link href="/articles/users/new-article">
           <Button variant="outline" color="violet">
             Write New Article
           </Button>

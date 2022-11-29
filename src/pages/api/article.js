@@ -19,7 +19,7 @@ async function post(req, res) {
     res.status(401).json({ error: "Unauthorized" });
     return;
   }
-  console.log(prismaUser.id);
+
   const path = `articles/${title}`;
   const post = await prisma.post.create({
     data: {
@@ -27,11 +27,11 @@ async function post(req, res) {
       preview,
       body,
       path,
+      published: true, //change this later
       userId: prismaUser.id,
     },
   });
-
-  res.status(201).json(post);
+  return res.status(201).json();
 }
 
 async function get(req, res) {
@@ -45,6 +45,9 @@ async function get(req, res) {
       createdAt: true,
       preview: true,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   });
   const posts = data.map((d) => ({
     ...d,
@@ -52,6 +55,45 @@ async function get(req, res) {
   }));
 
   return res.status(201).json(posts);
+}
+
+async function put(req, res) {
+  const session = await unstable_getServerSession(req, res, authOptions);
+  if (!session) {
+    res.status(401).json({ error: "Unauthorized" });
+    return;
+  }
+  const { id, title, preview, body, email } = req.body;
+
+  const updatedPost = await prisma.post.update({
+    where: {
+      id: id,
+    },
+    data: {
+      title,
+      preview,
+      body,
+    },
+  });
+
+  return res.status(201).json(updatedPost);
+}
+
+async function deleteArticle(req, res) {
+  const session = await unstable_getServerSession(req, res, authOptions);
+  if (!session) {
+    res.status(401).json({ error: "Unauthorized" });
+    return;
+  }
+  const { id } = req.body;
+
+  const deletedPost = await prisma.post.delete({
+    where: {
+      id: id,
+    },
+  });
+
+  return res.status(201).json(deletedPost);
 }
 
 export default async function handler(req, res) {
@@ -63,6 +105,12 @@ export default async function handler(req, res) {
       break;
     case "GET":
       get(req, res);
+      break;
+    case "PUT":
+      put(req, res);
+      break;
+    case "DELETE":
+      deleteArticle(req, res);
       break;
     default:
       res.setHeader("Allow", ["POST"]);

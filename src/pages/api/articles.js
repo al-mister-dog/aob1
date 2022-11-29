@@ -33,7 +33,11 @@ async function post(req, res) {
 }
 
 async function get(req, res) {
-  const posts = await prisma.post.findMany();
+  const posts = await prisma.post.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
   return res.status(201).json(posts);
 }
 

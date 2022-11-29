@@ -17,7 +17,7 @@ import Navbar from "./navbar/navbar";
 import { colors } from "../../../config/colorPalette";
 import { fetcher } from "../../../lib/fetcher";
 import About from "./about";
-import ArticlesList from "./articles/list";
+import ArticlesList from "./articles/list-preview";
 
 export default function Index({ user }) {
   return (
@@ -32,93 +32,6 @@ export default function Index({ user }) {
         </Box>
       </Box>
     </>
-  );
-}
-
-function MyArticles({ email }) {
-  const { data, error } = useSWR(`/api/article/?email=${email}`, fetcher);
-
-  if (!data) {
-    return <>...loading</>;
-  }
-  if (error) {
-    return <>error</>;
-  }
-  return (
-    <Box
-      style={{
-        cursor: "pointer",
-      }}
-    >
-      <h2>Articles</h2>
-
-      {data.map((article) => {
-        return (
-          <Box key={article.id}>
-            <Box>
-              <Text color="dimmed" mb={10}>
-                {article.createdAt}
-              </Text>
-              <h3
-                style={{ margin: 0, marginBottom: 10, color: colors.textColor }}
-              >
-                {article.title}
-              </h3>
-              <p style={{ color: colors.textColor }}>{article.preview}</p>
-            </Box>
-            <Divider mt={50} />
-          </Box>
-        );
-      })}
-    </Box>
-  );
-}
-function PostForm({ email }) {
-  const [response, setResponse] = useState("");
-  const form = useForm({
-    initialValues: {
-      title: "",
-      body: "",
-    },
-
-    validate: {
-      title: (value) => (value.length > 1 ? null : "Invalid title"),
-      body: (value) => (value.length > 1 ? null : "Invalid title"),
-    },
-  });
-
-  async function submitArticle(values) {
-    const { title, body } = values;
-    const { data } = await axios.post("/api/article", {
-      title,
-      body,
-      email,
-    });
-    setResponse(JSON.stringify(data));
-  }
-
-  return (
-    <Box sx={{ maxWidth: 300 }} mx="auto">
-      <form onSubmit={form.onSubmit((values) => submitArticle(values))}>
-        <TextInput
-          withAsterisk
-          label="title"
-          placeholder="title"
-          {...form.getInputProps("title")}
-        />
-        <TextInput
-          withAsterisk
-          label="body"
-          placeholder="body"
-          {...form.getInputProps("body")}
-        />
-
-        <Group position="right" mt="md">
-          <Button type="submit">Submit</Button>
-        </Group>
-      </form>
-      <p>{response}</p>
-    </Box>
   );
 }
 

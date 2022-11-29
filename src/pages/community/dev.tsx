@@ -1,5 +1,3 @@
-import { getSession } from "next-auth/react";
-import { PrismaClient } from "@prisma/client";
 import { useLoaded } from "../../hooks/useLoaded";
 import { useMediaQuery } from "@mantine/hooks";
 import { mediaQuery } from "../../config/media-query";

@@ -1,3 +1,4 @@
+import { prisma } from "../../../lib/prisma";
 import { Box, Button, Group, Text } from "@mantine/core";
 import axios from "axios";
 import { getSession } from "next-auth/react";

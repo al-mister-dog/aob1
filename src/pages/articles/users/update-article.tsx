@@ -18,7 +18,7 @@ export default function NewArticle(props) {
           marginTop: 50,
         }}
       >
-        <ArticleForm user={user} article={article} />
+        {/* <ArticleForm user={user} article={article} /> */}
       </Box>
     </Box>
   );
@@ -35,24 +35,28 @@ export async function getServerSideProps(context) {
       };
     }
 
-    const data = await prisma.post.findUnique({
-      where: { id: context.query.articleId },
-      include: {
-        user: true,
-      },
-    });
+    // const data = await prisma.post.findUnique({
+    //   where: { id: context.query.articleId },
+    //   include: {
+    //     user: true,
+    //   },
+    // });
 
-    const article = {
-      id: data.id,
-      title: data.title,
-      preview: data.preview,
-      body: data.body,
-      path: data.path,
-      userId: data.userId,
-    };
-    const user = data.user;
+    // const article = {
+    //   id: data.id,
+    //   title: data.title,
+    //   preview: data.preview,
+    //   body: data.body,
+    //   path: data.path,
+    //   userId: data.userId,
+    // };
+    // const user = data.user;
     return {
-      props: { article, user },
+      props: { 
+        // article, 
+        // user 
+        user: JSON.stringify(session)
+    },
     };
   } catch (error) {
     return {

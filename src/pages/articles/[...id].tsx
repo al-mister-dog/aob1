@@ -7,6 +7,7 @@ import ArticleMobile from "../../components/mobile/articles/users/article";
 import { useLoaded } from "../../hooks/useLoaded";
 import { useMediaQuery } from "@mantine/hooks";
 import { mediaQuery } from "../../config/media-query";
+import { Loader } from "tabler-icons-react";
 
 export async function getServerSideProps(context) {
   const prisma = new PrismaClient();
@@ -88,5 +89,5 @@ export default function UserArticle({
       <ArticleDesktop article={article} user={user} />
     );
   }
-  return null;
+  return <Loader />;
 }

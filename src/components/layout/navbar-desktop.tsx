@@ -1,4 +1,4 @@
-import { createStyles, Navbar } from "@mantine/core";
+import { createStyles, Loader, Navbar } from "@mantine/core";
 import { useRouter } from "next/router";
 
 import LecturesContent from "../navigation/nav-learn-content/lectures-list-desktop";
@@ -29,5 +29,5 @@ export default function NavbarUi() {
       </Navbar>
     );
   }
-  return null;
+  return <Loader />;
 }

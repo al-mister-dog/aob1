@@ -20,7 +20,7 @@ export default function About({ user }) {
   function handleSuccess(bio) {
     toast.success("Bio Updated", {
       position: "top-right",
-      autoClose: 2000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

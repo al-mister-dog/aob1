@@ -1,10 +1,18 @@
 import { useAppSelector } from "../../../app/hooks";
 import { selectActions } from "../../../features/actions/actionsSlice";
-import { createStyles, useMantineTheme } from "@mantine/core";
+import {
+  Box,
+  Center,
+  createStyles,
+  Group,
+  Tabs,
+  useMantineTheme,
+} from "@mantine/core";
 import { lectureRoutes } from "../../../config/routes/lectureRoutes";
 import { Accordion, List, Text } from "@mantine/core";
 import Link from "next/link";
 import { colors } from "../../../config/colorPalette";
+import { School } from "tabler-icons-react";
 
 const useStyles = createStyles((theme) => ({
   listItem: {
@@ -15,13 +23,59 @@ const useStyles = createStyles((theme) => ({
       borderLeft: "1px solid blue",
     },
   },
+  navbar: {
+    paddingTop: 0,
+    borderRight: `1px solid ${colors.muiGray}`,
+    backgroundColor: "#fff",
+  },
+
+  section: {
+    marginLeft: -theme.spacing.md,
+    marginRight: -theme.spacing.md,
+    marginBottom: theme.spacing.md,
+
+    "&:not(:last-of-type)": {
+      borderBottom: `1px solid ${
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[4]
+          : theme.colors.gray[3]
+      }`,
+    },
+  },
 }));
 
-export default function LecturesContent({}: {}) {
+export default function LecturesContent() {
+  return (
+    <>
+      <Box mt={10}>
+        <Center>
+          <Group>
+            <School color="purple" />
+            <Text style={{ color: colors.text }}>Lectures</Text>
+          </Group>
+        </Center>
+      </Box>
+      <Tabs mt={10} color="violet" defaultValue="lectures">
+        <Tabs.List position="center">
+          <Tabs.Tab value="lectures">
+            <Link href="/lectures">Banking</Link>
+          </Tabs.Tab>
+          <Tabs.Tab value="finance">Finance</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="lectures" pt="xs">
+          <MoneyAndBankingLectures />
+        </Tabs.Panel>
+        <Tabs.Panel value="finance" pt="xs">
+          <Text>Finance Course Coming Soon...</Text>
+        </Tabs.Panel>
+      </Tabs>
+    </>
+  );
+}
+
+function MoneyAndBankingLectures() {
   const { currentLectureId } = useAppSelector(selectActions);
   const { classes } = useStyles();
-  const theme = useMantineTheme();
-
   return (
     <Accordion variant="filled">
       {lectureRoutes.routes.map((route) => {
@@ -52,9 +106,7 @@ export default function LecturesContent({}: {}) {
                         style={{
                           cursor: "pointer",
                           background:
-                            currentLectureId === id
-                              ? colors.background3
-                              : "",
+                            currentLectureId === id ? colors.background3 : "",
                         }}
                       >
                         <Link

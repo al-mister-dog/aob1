@@ -26,7 +26,7 @@ export default function Articles({ user }) {
 }
 
 function ArticlesList({ email }) {
-  const { data, error } = useSWR(`/api/article/?email=${email}`, fetcher);
+  const { data, error } = useSWR(`/api/user-article/?email=${email}`, fetcher);
 
   if (!data) {
     return <>there are currently no articles here</>;

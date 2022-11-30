@@ -15,10 +15,10 @@ export default function TabsUi({ defaultValue }) {
         </Tabs.Tab>
       </Tabs.List>
       <Tabs.Panel value="lectures" pt="xs">
-        <LecturesContent />
+        {/* <LecturesContent /> */}a
       </Tabs.Panel>
       <Tabs.Panel value="articles" pt="xs">
-        <ArticlesContent />
+        {/* <ArticlesContent /> */}
       </Tabs.Panel>
     </Tabs>
   );

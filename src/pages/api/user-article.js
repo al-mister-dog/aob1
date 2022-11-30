@@ -35,10 +35,16 @@ async function post(req, res) {
 }
 
 async function get(req, res) {
-  const id = req.query.id;
-
+  const session = await unstable_getServerSession(req, res, authOptions);
+  if (!session) {
+    res.status(401).json({ error: "Unauthorized" });
+    return;
+  }
+  const prismaUser = await prisma.user.findUnique({
+    where: { email: session.user.email },
+  });
   const data = await prisma.post.findMany({
-    where: { id },
+    where: { userId: prismaUser.id },
     select: {
       id: true,
       title: true,
@@ -98,7 +104,7 @@ async function deleteArticle(req, res) {
 
 export default async function handler(req, res) {
   const { method } = req;
-console.log(method)
+  console.log(method);
   switch (method) {
     case "POST":
       post(req, res);

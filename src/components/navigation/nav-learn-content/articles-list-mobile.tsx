@@ -1,9 +1,10 @@
-import { createStyles } from "@mantine/core";
+import { Box, Center, createStyles, Group, Tabs } from "@mantine/core";
 import { articleRoutes } from "../../../config/routes/articleRoutes";
 import { Accordion, List, Text } from "@mantine/core";
 
 import Link from "next/link";
-import { ListItem } from "@mantine/core/lib/List/ListItem/ListItem";
+import { Book } from "tabler-icons-react";
+import { colors } from "../../../config/colorPalette";
 
 const useStyles = createStyles((theme) => ({
   listItem: {
@@ -16,7 +17,50 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function LecturesContent({ closeDrawer }) {
+export default function ArticlesContent({ closeDrawer }) {
+  return (
+    <Box>
+      <Box
+        style={{
+          border: `1px solid ${colors.muiGray}`,
+          borderRadius: 5,
+          boxShadow: "inset 0 5px 8px -5px rgb(0 0 0 / 5%)",
+        }}
+      >
+        <Box mt={10}>
+          <Center>
+            <Group>
+              <Book color="purple" />
+              <Text style={{ color: colors.text }} weight="bold">
+                Articles
+              </Text>
+            </Group>
+          </Center>
+        </Box>
+        <Tabs mt={10} color="violet" variant="pills" defaultValue="lectures">
+          <Tabs.List position="center">
+            <Tabs.Tab value="lectures">
+              <Link href="/lectures">Dictionary</Link>
+            </Tabs.Tab>
+            <Tabs.Tab value="community">
+              {/* <Link href="/articles/users"> */}
+              Community
+              {/* </Link> */}
+            </Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel value="lectures" pt="xs">
+            <Dictionary closeDrawer={closeDrawer} />
+          </Tabs.Panel>
+          <Tabs.Panel value="community" pt="xs">
+            <Text>Under Construction...</Text>
+          </Tabs.Panel>
+        </Tabs>
+      </Box>
+    </Box>
+  );
+}
+
+function Dictionary({ closeDrawer }) {
   const { classes } = useStyles();
 
   return (
@@ -81,10 +125,7 @@ function NestedRoutes({ closeDrawer, title, path, id, routes }) {
   const { classes } = useStyles();
 
   return (
-    <div
-      key={id}
-      onClick={closeDrawer}
-    >
+    <div key={id} onClick={closeDrawer}>
       <List.Item className={classes.listItem} style={{ cursor: "pointer" }}>
         <Link
           href={{

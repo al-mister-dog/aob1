@@ -3,12 +3,13 @@ import {
   IconBook,
   IconChartPie3,
   IconCoin,
+  IconSchool,
 } from "@tabler/icons";
 import { Abacus, Friends } from "tabler-icons-react";
 
 export const features = [
   {
-    icon: Abacus,
+    icon: IconSchool,
     title: "Lectures",
     path: "/lectures",
     description:

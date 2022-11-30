@@ -166,7 +166,7 @@ export default function HeaderGroup() {
         </Menu.Dropdown>
       </Menu>
       <a href="/lectures" className={classes.link}>
-        Learn
+        Lectures
       </a>
       <a href="/articles" className={classes.link}>
         Articles

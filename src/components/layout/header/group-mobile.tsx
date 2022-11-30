@@ -1,7 +1,6 @@
 import {
   createStyles,
   Group,
-  Button,
   Text,
   Divider,
   Center,
@@ -125,7 +124,7 @@ export default function HeaderGroup({
         <UnstyledButton className={classes.link} onClick={toggleLectures}>
           <Center inline>
             <Box component="span" mr={5}>
-              Learn
+              Lectures
             </Box>
             <IconChevronDown size={16} color="purple" />
           </Center>

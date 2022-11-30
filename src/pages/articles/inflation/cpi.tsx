@@ -3,7 +3,6 @@ import { mediaQuery } from "../../../config/media-query";
 import { useLoaded } from "../../../hooks/useLoaded";
 import CpiPageMobile from "../../../components/mobile/articles/inflation/cpi/page";
 import CpiPageDesktop from "../../../components/desktop/articles/inflation/cpi/page";
-import Loader from "../../../components/shared-ui/loader";
 
 export default function CPI() {
   const loaded = useLoaded();
@@ -12,5 +11,5 @@ export default function CPI() {
   if (loaded) {
     return isMobile ? <CpiPageMobile /> : <CpiPageDesktop />;
   }
-  return <Loader />
+  return null;
 }

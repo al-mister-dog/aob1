@@ -104,19 +104,19 @@ async function deleteArticle(req, res) {
 
 export default async function handler(req, res) {
   const { method } = req;
-  console.log(method);
+
   switch (method) {
     case "POST":
-      post(req, res);
+      return post(req, res);
       break;
     case "GET":
-      get(req, res);
+      return get(req, res);
       break;
     case "PUT":
-      put(req, res);
+      return put(req, res);
       break;
     case "DELETE":
-      deleteArticle(req, res);
+      return deleteArticle(req, res);
       break;
     default:
       res.setHeader("Allow", ["POST"]);

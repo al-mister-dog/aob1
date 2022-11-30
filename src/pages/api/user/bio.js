@@ -34,7 +34,7 @@ export default async function handler(req, res) {
 
   switch (method) {
     case "POST":
-      post(req, res);
+      return post(req, res);
       break;
     // case "GET":
     //   get(req, res);

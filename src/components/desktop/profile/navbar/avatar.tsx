@@ -115,7 +115,11 @@ function EditProfileButton({
   const { data: session, status } = useSession();
   if (status === "loading") {
     return <></>;
-  } else if (session.user.email !== user.email) {
+  } 
+  else if (!session) {
+    return <></>
+  }
+  else if (session.user.email !== user.email) {
     return <></>;
   } else {
     return (

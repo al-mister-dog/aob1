@@ -4,6 +4,9 @@ import { Box, Tabs, createStyles, Divider } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
 import Link from "next/link";
 import ArticleToolbar from "../../../components/desktop/articles/users/article-toolbar";
+import useSWR from "swr";
+import { fetcher } from "../../../lib/fetcher";
+import Loader from "../../../components/shared-ui/loader";
 
 interface Article {
   id: string;
@@ -13,17 +16,18 @@ interface Article {
   user: {};
 }
 
-export default function Index({ articles }: { articles: Article[] }) {
+export default function Index() {
   return (
     <>
       <Box style={{ margin: "auto", marginTop: 100, maxWidth: 850 }}>
-        <HeaderTabs articles={articles} />
+        <HeaderTabs />
       </Box>
     </>
   );
 }
 
-function HeaderTabs({ articles }) {
+function HeaderTabs() {
+  const { data, error } = useSWR(`/api/articles/`, fetcher);
   return (
     <Tabs color="violet" defaultValue="first">
       <Tabs.List position="left">
@@ -34,42 +38,49 @@ function HeaderTabs({ articles }) {
 
       <Tabs.Panel value="first" pt="xs">
         <Box mt={25}>
-          {articles.map((article) => {
-            return (
-              <Box key={article.id}>
-                <ArticleToolbar article={article} />
-                <Link
-                  href={{
-                    pathname: `/articles/${article.id}`,
-                    query: { id: article.id },
-                  }}
-                  as={`/articles/${article.title.split(" ").join("-")}/${
-                    article.id
-                  }`}
-                  passHref
-                >
-                  <Box mt={10}>
-                    <h2
-                      style={{
-                        margin: 0,
-                        padding: 0,
-                        color: colors.textColor,
-                      }}
-                    >
-                      {article.title}
-                    </h2>
-                    <p
-                      style={{ color: colors.textColor, margin: 0, padding: 0 }}
-                    >
-                      {article.preview}. . .
-                    </p>
-                  </Box>
-                </Link>
+          {!data && <Loader />}
+          {error && <>Articles not found</>}
+          {data &&
+            data.map((article) => {
+              return (
+                <Box key={article.id}>
+                  <ArticleToolbar article={article} />
+                  <Link
+                    href={{
+                      pathname: `/articles/${article.id}`,
+                      query: { id: article.id },
+                    }}
+                    as={`/articles/${article.title.split(" ").join("-")}/${
+                      article.id
+                    }`}
+                    passHref
+                  >
+                    <Box mt={10}>
+                      <h2
+                        style={{
+                          margin: 0,
+                          padding: 0,
+                          color: colors.textColor,
+                        }}
+                      >
+                        {article.title}
+                      </h2>
+                      <p
+                        style={{
+                          color: colors.textColor,
+                          margin: 0,
+                          padding: 0,
+                        }}
+                      >
+                        {article.preview}. . .
+                      </p>
+                    </Box>
+                  </Link>
 
-                <Divider mt={50} />
-              </Box>
-            );
-          })}
+                  <Divider mt={50} />
+                </Box>
+              );
+            })}
         </Box>
       </Tabs.Panel>
 
@@ -82,33 +93,3 @@ function HeaderTabs({ articles }) {
     </Tabs>
   );
 }
-
-export async function getServerSideProps(context) {
-  const prisma = new PrismaClient();
-
-  const data = await prisma.post.findMany({
-    include: {
-      user: true,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
-
-  const articles = data.map((d) => {
-    return {
-      id: d.id,
-      title: d.title,
-      preview: d.preview,
-      createdAt: parseDate(`${d.createdAt}`),
-      user: d.user,
-    };
-  });
-
-  return { props: { articles } };
-}
-
-// export default function Home() {
-//   return <><div style={{marginTop: 150}}>
-//     Hello</div></>
-// }

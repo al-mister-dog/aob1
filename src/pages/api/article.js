@@ -98,20 +98,20 @@ async function deleteArticle(req, res) {
 
 export default async function handler(req, res) {
   const { method } = req;
-console.log(method)
+
   switch (method) {
     case "POST":
-      post(req, res);
-      break;
+      return post(req, res);
+
     case "GET":
-      get(req, res);
-      break;
+      return get(req, res);
+
     case "PUT":
-      put(req, res);
-      break;
+      return put(req, res);
+
     case "DELETE":
-      deleteArticle(req, res);
-      break;
+      return deleteArticle(req, res);
+
     default:
       res.setHeader("Allow", ["POST"]);
       res.status(405).end(`Method ${method} Not Allowed`);

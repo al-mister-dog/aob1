@@ -29,5 +29,5 @@ export default function NavbarUi() {
       </Navbar>
     );
   }
-  return <Loader />;
+  return null
 }

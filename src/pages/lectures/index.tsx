@@ -3,7 +3,6 @@ import { mediaQuery } from "../../config/media-query";
 import { useLoaded } from "../../hooks/useLoaded";
 import IndexMobile from "../../components/mobile/lectures/index";
 import IndexDesktop from "../../components/desktop/lectures/index";
-import Loader from "../../components/shared-ui/loader";
 
 export default function LecturesPage() {
   const loaded = useLoaded();
@@ -12,5 +11,5 @@ export default function LecturesPage() {
   if (loaded) {
     return isMobile ? <IndexMobile /> : <IndexDesktop />;
   }
-  return <Loader />;
+  return null;
 }

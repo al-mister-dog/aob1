@@ -1,6 +1,7 @@
 import { unstable_getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 import { prisma } from "../../lib/prisma";
+import { parseDate } from "../../helpers/parseDate";
 
 async function post(req, res) {
   const session = await unstable_getServerSession(req, res, authOptions);
@@ -33,26 +34,35 @@ async function post(req, res) {
 }
 
 async function get(req, res) {
-  const posts = await prisma.post.findMany({
+  const data = await prisma.post.findMany({
+    include: {
+      user: true,
+    },
     orderBy: {
       createdAt: "desc",
     },
+  });
+
+  const posts = data.map((d) => {
+    return {
+      id: d.id,
+      title: d.title,
+      preview: d.preview,
+      createdAt: parseDate(`${d.createdAt}`),
+      user: d.user,
+    };
   });
   return res.status(201).json(posts);
 }
 
 export default async function handler(req, res) {
   const { method } = req;
-
-  switch (method) {
-    case "POST":
-      post(req, res);
-      break;
-    case "GET":
-      get(req, res);
-      break;
-    default:
-      res.setHeader("Allow", ["POST"]);
-      res.status(405).end(`Method ${method} Not Allowed`);
+  if (method === "POST") {
+    return post(req, res);
+  } else if (method === "GET") {
+    return get(req, res);
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res.status(405).end(`Method ${method} Not Allowed`);
   }
 }

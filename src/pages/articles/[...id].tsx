@@ -7,38 +7,6 @@ import ArticleMobile from "../../components/mobile/articles/users/article";
 import { useLoaded } from "../../hooks/useLoaded";
 import { useMediaQuery } from "@mantine/hooks";
 import { mediaQuery } from "../../config/media-query";
-import { Loader } from "tabler-icons-react";
-
-export async function getServerSideProps(context) {
-  const prisma = new PrismaClient();
-  const id = context.query.id[1];
-
-  const session = await getSession(context);
-  const data = await prisma.post.findUnique({
-    where: { id },
-    include: {
-      user: true,
-    },
-  });
-
-  const article = {
-    id: data.id,
-    title: data.title,
-    body: data.body,
-    createdAt: parseDate(`${data.createdAt}`),
-    user: data.user,
-  };
-
-  if (session) {
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
-    });
-
-    return { props: { article, user } };
-  } else {
-    return { props: { article, user: null } };
-  }
-}
 
 interface Article {
   id: string;
@@ -89,5 +57,36 @@ export default function UserArticle({
       <ArticleDesktop article={article} user={user} />
     );
   }
-  return <Loader />;
+  return null;
+}
+
+export async function getServerSideProps(context) {
+  const prisma = new PrismaClient();
+  const id = context.query.id[1];
+
+  const session = await getSession(context);
+  const data = await prisma.post.findUnique({
+    where: { id },
+    include: {
+      user: true,
+    },
+  });
+
+  const article = {
+    id: data.id,
+    title: data.title,
+    body: data.body,
+    createdAt: parseDate(`${data.createdAt}`),
+    user: data.user,
+  };
+
+  if (session) {
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
+    });
+
+    return { props: { article, user } };
+  } else {
+    return { props: { article, user: null } };
+  }
 }

@@ -12,7 +12,8 @@ import { lectureRoutes } from "../../../config/routes/lectureRoutes";
 import { Accordion, List, Text } from "@mantine/core";
 import Link from "next/link";
 import { colors } from "../../../config/colorPalette";
-import { School } from "tabler-icons-react";
+import { Router, School } from "tabler-icons-react";
+import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   listItem: {
@@ -45,6 +46,14 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default function LecturesContent() {
+  const router = useRouter();
+  function onClickTab(val: string) {
+    if (val === "banking") {
+      router.replace("/lectures");
+    } else if (val === "finance") {
+      router.replace("/lectures/finance");
+    }
+  }
   return (
     <>
       <Box mt={10}>
@@ -55,16 +64,16 @@ export default function LecturesContent() {
           </Group>
         </Center>
       </Box>
-      <Tabs mt={10} color="violet" defaultValue="lectures">
+      <Tabs mt={10} color="violet" defaultValue="banking">
         <Tabs.List position="center">
-          <Tabs.Tab value="lectures">
-            <Link href="/lectures">Banking</Link>
+          <Tabs.Tab value="banking" onClick={() => onClickTab("banking")}>
+            Banking
           </Tabs.Tab>
-          <Tabs.Tab value="finance">
-            <Link href="/finance-t">Finance</Link>
+          <Tabs.Tab value="finance" onClick={() => onClickTab("finance")}>
+            Finance
           </Tabs.Tab>
         </Tabs.List>
-        <Tabs.Panel value="lectures" pt="xs">
+        <Tabs.Panel value="banking" pt="xs">
           <MoneyAndBankingLectures />
         </Tabs.Panel>
         <Tabs.Panel value="finance" pt="xs">

@@ -15,6 +15,7 @@ import Link from "next/link";
 import { colors } from "../../../config/colorPalette";
 import { Book } from "tabler-icons-react";
 import { IconSearch } from "@tabler/icons";
+import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   listItem: {
@@ -27,8 +28,16 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function LecturesContent() {
-  const { classes } = useStyles();
+export default function ArticlesContent() {
+  const router = useRouter();
+  function onClickTab(val: string) {
+
+    if (val === "dictionary") {
+      router.replace("/articles");
+    } else if (val === "community") {
+      router.replace("/articles/users/home");
+    }
+  }
 
   return (
     <>
@@ -42,11 +51,11 @@ export default function LecturesContent() {
       </Box>
       <Tabs mt={10} color="violet" defaultValue="dictionary">
         <Tabs.List position="center">
-          <Tabs.Tab value="dictionary">
-            <Link href="/articles">Dictionary</Link>
+          <Tabs.Tab value="dictionary" onClick={() => onClickTab("dictionary")}>
+            Dictionary
           </Tabs.Tab>
-          <Tabs.Tab value="community">
-            <Link href="/articles/users/home">Community</Link>
+          <Tabs.Tab value="community" onClick={() => onClickTab("community")}>
+            Community
           </Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="dictionary" pt="xs">
@@ -55,7 +64,7 @@ export default function LecturesContent() {
         <Tabs.Panel value="community" pt="xs">
           <Autocomplete
             icon={<IconSearch size={16} stroke={1.5} />}
-            data={['money', 'banking', 'alchemy']}
+            data={["money", "banking", "alchemy"]}
           />
           <Text>User Articles</Text>
         </Tabs.Panel>

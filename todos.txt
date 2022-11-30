@@ -39,3 +39,11 @@ article {
 }
 
 there is a border on the assignment section lectures
+
+
+
+
+change colors of full page
+search for user
+community page posts most recent articles/pagination/infinity scroll
+search by category

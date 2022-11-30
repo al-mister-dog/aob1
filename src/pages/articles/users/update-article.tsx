@@ -2,7 +2,7 @@ import { prisma } from "../../../lib/prisma";
 import { Box } from "@mantine/core";
 import { getSession } from "next-auth/react";
 import ArticleForm from "../../../components/desktop/profile/articles/form-update";
-import { colors } from "../../../config/colorPalette";
+
 export default function NewArticle({ article, user }) {
   return (
     <Box style={{ minHeight: "100vh" }}>
@@ -29,7 +29,7 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  
+
   const data = await prisma.post.findUnique({
     where: { id: context.query.articleId },
     include: {

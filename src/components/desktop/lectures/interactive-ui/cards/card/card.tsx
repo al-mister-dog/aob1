@@ -35,7 +35,6 @@ export default function CardUI({ bank, handleSetBankDetail }: Props) {
       cardKey={bank.cardInfo.id}
       height="13.5rem"
       hoverBorder={`2px solid ${theme.colors[bank.color][2]}`}
-      
       onClick={() => onSelectBank(bank)}
     >
       <Card.Section style={{ padding: "3px", cursor: "pointer" }}>

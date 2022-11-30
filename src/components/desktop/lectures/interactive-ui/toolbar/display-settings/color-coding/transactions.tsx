@@ -36,7 +36,7 @@ export default function SpreadsheetMenu() {
   return (
     <>
       <Box mt={15}>
-        <Text size="sm" weight="bold" style={{color: colors.textColor}}>
+        <Text size="sm" weight="bold" style={{ color: colors.textColor }}>
           Spreadsheet Colors
         </Text>
         <Radio.Group
@@ -100,11 +100,6 @@ export default function SpreadsheetMenu() {
           setSpreadSheetOpened(false);
         }}
         withCloseButton={false}
-        styles={{
-          modal: {
-            backgroundColor: theme.colors.red[0],
-          },
-        }}
         fullScreen
       >
         <div style={{ height: "60px" }}>

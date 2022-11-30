@@ -292,8 +292,11 @@ export const setupFunctions: SetupFunctions = {
     BankingSystem.createBank("Me", "customer");
     BankingSystem.createBank("You", "customer");
     Customer.createAccount(bankData.banks[4], bankData.banks[1]);
+    Record.setRound();
     Customer.createAccount(bankData.banks[5], bankData.banks[3]);
+    Record.setRound();
     Customer.getMortgage(bankData.banks[4], bankData.banks[1], 500000);
+    Record.setRound();
     GraphData.setCentralBankGraphData();
     Record.setRound();
   },

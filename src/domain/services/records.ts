@@ -675,6 +675,28 @@ export const Record = {
       ],
     };
   },
+  getLast(id) {
+    if (records.id === 0) {
+      return { assets: undefined, liabilities: undefined };
+    } else {
+      if (records.id) {
+        return this.getByRound(id);
+      }
+      return this.getByRound(id - 1);
+    }
+    const partyRecords1 = records.rounds[records.id];
+    const partyRecords2 = records.rounds[records.id];
+    return {
+      assets: [
+        ...partyRecords1.round[id].records.assets,
+        ...partyRecords2.round[id].records.assets,
+      ],
+      liabilities: [
+        ...partyRecords1.round[id].records.liabilities,
+        ...partyRecords2.round[id].records.liabilities,
+      ],
+    };
+  },
   getAllTransactions(id) {
     if (records.id === 0) {
       return { assets: undefined, liabilities: undefined };
@@ -682,10 +704,12 @@ export const Record = {
     if (records.id === 1) {
       return this.getByRound(id);
     }
+
     let allAssets = [];
     let allLiabilities = [];
     for (const round in records.rounds) {
       const rounds = records.rounds[round];
+
       allAssets.push(rounds.round[id].records.assets);
       allLiabilities.push(rounds.round[id].records.liabilities);
     }

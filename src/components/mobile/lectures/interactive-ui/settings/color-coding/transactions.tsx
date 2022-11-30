@@ -17,7 +17,8 @@ import {
   setClaveroDisplay,
 } from "../../../../../../features/settings/settingsSlice";
 import { useRadioSettings } from "../../../../../../hooks/useRadioSettings";
-import Spreadsheet from "../../../../../desktop/lectures/displays/spreadsheet";
+import Spreadsheet from "../../../../../mobile/lectures/displays/spreadsheet";
+import { colors } from "../../../../../../config/colorPalette";
 
 export default function SpreadsheetMenu({ setOpened }) {
   const dispatch = useAppDispatch();
@@ -88,7 +89,6 @@ export default function SpreadsheetMenu({ setOpened }) {
           setAboutOpened(false);
         }}
         title="Color-Coded Payment Notation"
-        styles={{ modal: { backgroundColor: theme.colors.red[0] } }}
       >
         <SpreadsheetAbout />
       </Modal>
@@ -99,19 +99,24 @@ export default function SpreadsheetMenu({ setOpened }) {
         }}
         withCloseButton={false}
         fullScreen
-        styles={{ modal: { backgroundColor: theme.colors.red[0] } }}
       >
-        <div style={{ height: "60px" }}>
+        <Box
+          mt={10}
+          style={{
+            height: "60px",
+            position: "fixed",
+            zIndex: 5,
+          }}
+        >
           <Button
             color="violet"
-            style={{ position: "fixed", margin: "5px" }}
             onClick={() => {
               setSpreadSheetOpened(false);
             }}
           >
             Close
           </Button>
-        </div>
+        </Box>
         <Spreadsheet />
       </Modal>
     </>

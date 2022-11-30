@@ -60,6 +60,7 @@ export default function RowCard({ bank }) {
 
   return (
     <Card
+    mt={10}
       withBorder
       shadow="sm"
       p="sm"

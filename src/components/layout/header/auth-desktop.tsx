@@ -1,10 +1,6 @@
 import { createStyles, Group, Button, Avatar } from "@mantine/core";
-import { PrismaClient } from "@prisma/client";
-import useSWR from "swr";
-import { useSession, signOut, getSession, signIn } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
-import { useEffect } from "react";
-import { fetcher } from "../../../lib/fetcher";
 
 const useStyles = createStyles((theme) => ({
   hiddenMobile: {
@@ -15,17 +11,17 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default function Auth() {
-  const { data: session } = useSession();
-
+  const { data: session, status } = useSession();
   const { classes } = useStyles();
 
-  useEffect(() => {}, []);
-  if (session) {
+  if (status === "loading") {
+    return <></>;
+  } else if (session) {
     return (
       <Group className={classes.hiddenMobile}>
         <Link
           href="/community/users"
-          as={`/community/users/@${session.user.name.split(' ').join('-')}`}
+          as={`/community/users/@${session.user.name.split(" ").join("-")}`}
           passHref
         >
           <Avatar

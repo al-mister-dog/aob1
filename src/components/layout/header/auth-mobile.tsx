@@ -3,9 +3,10 @@ import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
 export default function Auth({ closeDrawer }) {
-  const { data: session } = useSession();
-
-  if (session) {
+  const { data: session, status } = useSession();
+  if (status === "loading") {
+    return <></>;
+  } else if (session) {
     return (
       <Group position="center" grow pb="xl" px="md">
         <Link href="/community" passHref>

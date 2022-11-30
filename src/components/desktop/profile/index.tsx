@@ -1,21 +1,6 @@
-import {
-  TextInput,
-  Button,
-  Group,
-  Box,
-  Text,
-  Card,
-  Tabs,
-  Divider,
-} from "@mantine/core";
-import { useForm } from "@mantine/form";
-
-import axios from "axios";
-import { useState } from "react";
-import useSWR from "swr";
-import Navbar from "./navbar/navbar";
+import { Box, Tabs } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
-import { fetcher } from "../../../lib/fetcher";
+import Navbar from "./navbar/navbar";
 import About from "./about";
 import ArticlesList from "./articles/list-preview";
 

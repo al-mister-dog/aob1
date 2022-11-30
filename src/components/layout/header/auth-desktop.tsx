@@ -1,4 +1,4 @@
-import { createStyles, Group, Button, Avatar } from "@mantine/core";
+import { createStyles, Group, Button, Avatar, Skeleton } from "@mantine/core";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
@@ -15,7 +15,16 @@ export default function Auth() {
   const { classes } = useStyles();
 
   if (status === "loading") {
-    return <></>;
+    return (
+      <Group className={classes.hiddenMobile}>
+        <span>
+          <Skeleton height={40} circle />
+        </span>
+        <span>
+          <Skeleton height={30} width={100} />
+        </span>
+      </Group>
+    );
   } else if (session) {
     return (
       <Group className={classes.hiddenMobile}>

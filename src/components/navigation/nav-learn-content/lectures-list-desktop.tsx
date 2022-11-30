@@ -60,7 +60,9 @@ export default function LecturesContent() {
           <Tabs.Tab value="lectures">
             <Link href="/lectures">Banking</Link>
           </Tabs.Tab>
-          <Tabs.Tab value="finance">Finance</Tabs.Tab>
+          <Tabs.Tab value="finance">
+            <Link href="/finance-t">Finance</Link>
+          </Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="lectures" pt="xs">
           <MoneyAndBankingLectures />

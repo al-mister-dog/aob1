@@ -1,24 +1,16 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
   Box,
-  Button,
   UnstyledButton,
   Badge,
   Text,
   ActionIcon,
   Tooltip,
   Group,
-  Center,
-  Avatar,
-  TextInput,
   createStyles,
-  Textarea,
-  Spoiler,
 } from "@mantine/core";
 import { IconBulb, IconUser, IconCheckbox, IconPlus } from "@tabler/icons";
-import { useState } from "react";
+
 import AvatarComponent from "./avatar";
 import { colors } from "../../../../config/colorPalette";
 
@@ -146,15 +138,15 @@ const links = [
 ];
 
 const collections = [
-  { emoji: "👍", label: "Sales" },
-  { emoji: "🚚", label: "Deliveries" },
-  { emoji: "💸", label: "Discounts" },
+  { emoji: "👍", label: "Accumulation" },
+  { emoji: "🚚", label: "Chop Zone" },
+  { emoji: "💸", label: "Volume Index" },
   { emoji: "💰", label: "Profits" },
-  { emoji: "✨", label: "Reports" },
-  { emoji: "🛒", label: "Orders" },
+  { emoji: "✨", label: "Risk" },
+  { emoji: "🛒", label: "Liquidity" },
   { emoji: "📅", label: "Events" },
   { emoji: "🙈", label: "Debts" },
-  { emoji: "💁‍♀️", label: "Customers" },
+  { emoji: "💁‍♀️", label: "Volatility" },
 ];
 
 export default function NavbarSearch({ user }) {

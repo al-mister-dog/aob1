@@ -14,6 +14,7 @@ import {
 } from "@mantine/core";
 import { ToastContainer, toast } from "react-toastify";
 import { colors } from "../../../../config/colorPalette";
+import { useSession } from "next-auth/react";
 
 export default function AvatarComponent({ user }) {
   const [editting, setEditting] = useState(false);
@@ -88,34 +89,65 @@ export default function AvatarComponent({ user }) {
           </Text>
         </Spoiler>
       </Center>
-      <Center>
-        {!editting && (
-          <Button
-            mt="xl"
-            variant="outline"
-            mb="sm"
-            color="violet"
-            style={{ width: "95%" }}
-            onClick={() => setEditting(true)}
-          >
-            Edit Profile
-          </Button>
-        )}
-      </Center>
-      {editting && (
-        <ProfileForm
-          updatedTag={updatedTag}
-          updatedBio={updatedBio}
-          tag={user.title}
-          bio={user.bio}
-          setEditting={setEditting}
-          handleFailure={handleFailure}
-          handleSuccess={handleSuccess}
-        />
-      )}
+      <EditProfileButton
+        user={user}
+        updatedTag={updatedTag}
+        updatedBio={updatedBio}
+        editting={editting}
+        setEditting={setEditting}
+        handleFailure={handleFailure}
+        handleSuccess={handleSuccess}
+      />
       <ToastContainer />
     </>
   );
+}
+
+function EditProfileButton({
+  user,
+  updatedTag,
+  updatedBio,
+  editting,
+  setEditting,
+  handleFailure,
+  handleSuccess,
+}) {
+  const { data: session, status } = useSession();
+  if (status === "loading") {
+    return <></>;
+  } else if (session.user.email !== user.email) {
+    return <></>;
+  } else {
+    return (
+      <>
+        <Center>
+          {!editting && (
+            <Button
+              mt="xl"
+              variant="outline"
+              mb="sm"
+              color="violet"
+              style={{ width: "95%" }}
+              onClick={() => setEditting(true)}
+            >
+              Edit Profile
+            </Button>
+          )}
+        </Center>
+        {editting && (
+          <ProfileForm
+            updatedTag={updatedTag}
+            updatedBio={updatedBio}
+            tag={user.title}
+            bio={user.bio}
+            setEditting={setEditting}
+            handleFailure={handleFailure}
+            handleSuccess={handleSuccess}
+          />
+        )}
+      </>
+    );
+  }
 }
 
 function ProfileForm({

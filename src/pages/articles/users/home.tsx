@@ -1,31 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import { parseDate } from "../../../helpers/parseDate";
-import {
-  Box,
-  Text,
-  Tabs,
-  Grid,
-  Group,
-  createStyles,
-  Autocomplete,
-  Divider,
-} from "@mantine/core";
+import { Box, Tabs, createStyles, Divider } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
 import Link from "next/link";
-import { getSession } from "next-auth/react";
-import ArticleList from "../../../components/desktop/articles/users/article-list";
-import pic from "../../../../public/bosch-bank-2.jpeg";
-
-import { IconSearch } from "@tabler/icons";
 import ArticleToolbar from "../../../components/desktop/articles/users/article-toolbar";
-
-const useStyles = createStyles((theme) => ({
-  search: {
-    [theme.fn.smallerThan("xs")]: {
-      display: "none",
-    },
-  },
-}));
 
 interface Article {
   id: string;
@@ -35,26 +13,17 @@ interface Article {
   user: {};
 }
 
-export default function Index({ articles, user }) {
-  const { classes } = useStyles();
+export default function Index({ articles }: { articles: Article[] }) {
   return (
     <>
       <Box style={{ margin: "auto", marginTop: 100, maxWidth: 850 }}>
-        {/* <Group> */}
-        <HeaderTabs user={user} articles={articles} />
-        {/* <Autocomplete
-            className={classes.search}
-            placeholder="Search"
-            icon={<IconSearch size={16} stroke={1.5} />}
-            data={[]}
-          />
-        </Group> */}
+        <HeaderTabs articles={articles} />
       </Box>
     </>
   );
 }
 
-function HeaderTabs({ user, articles }) {
+function HeaderTabs({ articles }) {
   return (
     <Tabs color="violet" defaultValue="first">
       <Tabs.List position="left">
@@ -116,19 +85,6 @@ function HeaderTabs({ user, articles }) {
 
 export async function getServerSideProps(context) {
   const prisma = new PrismaClient();
-  const session = await getSession(context);
-
-    if (!session) {
-      return {
-        redirect: {
-          destination: "/registration/signin",
-        },
-      };
-    }
-
-  const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
-  });
 
   const data = await prisma.post.findMany({
     include: {
@@ -149,5 +105,10 @@ export async function getServerSideProps(context) {
     };
   });
 
-  return { props: { articles, user } };
+  return { props: { articles } };
 }
+
+// export default function Home() {
+//   return <><div style={{marginTop: 150}}>
+//     Hello</div></>
+// }

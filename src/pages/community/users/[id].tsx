@@ -5,11 +5,9 @@ import { useMediaQuery } from "@mantine/hooks";
 import { mediaQuery } from "../../../config/media-query";
 import ProfileDesktop from "../../../components/desktop/profile";
 import ProfileMobile from "../../../components/mobile/profile";
+import Loader from "../../../components/shared-ui/loader";
 
-//navbar:290 //profile760
-export default function Index(props) {
-  const { user } = props;
-
+export default function Index({ user }) {
   const loaded = useLoaded();
   const isMobile = useMediaQuery(mediaQuery);
 
@@ -20,27 +18,19 @@ export default function Index(props) {
       <ProfileDesktop user={user} />
     );
   }
+  return <Loader />;
 }
 
 export async function getServerSideProps(context) {
   const prisma = new PrismaClient();
-  const session = await getSession(context);
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/registration/signin",
-      },
-    };
-  }
   const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
+    where: { id: context.params.id },
   });
 
   if (user) {
     return {
       props: {
-        session,
         user,
       },
     };

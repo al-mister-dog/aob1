@@ -1,4 +1,5 @@
-import { Box, Text, Button, Divider } from "@mantine/core";
+import { Box, Text, Button, Divider, Skeleton } from "@mantine/core";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import useSWR from "swr";
 import { colors } from "../../../../config/colorPalette";
@@ -14,15 +15,33 @@ export default function Articles({ user }) {
           justifyContent: "flex-end",
         }}
       >
-        <Link href="/articles/users/new-article">
+        {/* <Link href="/articles/users/new-article">
           <Button variant="outline" color="violet">
             Write New Article
           </Button>
-        </Link>
+        </Link> */}
+        <WriteNewArticleButton user={user} />
       </Box>
       <ArticlesList email={user.email} />
     </Box>
   );
+}
+
+function WriteNewArticleButton({ user }) {
+  const { data: session, status } = useSession();
+  if (status === "loading") {
+    return <div style={{ height: 50 }}></div>;
+  } else if (!session) {
+    return <div style={{ height: 50 }}></div>;
+  } else if (session && session.user.email === user.email) {
+    return (
+      <Link href="/articles/users/new-article">
+        <Button variant="outline" color="violet">
+          Write New Article
+        </Button>
+      </Link>
+    );
+  }
 }
 
 function ArticlesList({ email }) {

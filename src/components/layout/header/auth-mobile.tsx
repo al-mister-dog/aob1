@@ -1,11 +1,17 @@
-import { Group, Button, Text } from "@mantine/core";
+import { Group, Button, Text, Skeleton } from "@mantine/core";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
 export default function Auth({ closeDrawer }) {
   const { data: session, status } = useSession();
+
   if (status === "loading") {
-    return <></>;
+    return (
+      <Group position="center" grow pb="xl" px="md">
+        <Skeleton height={10} width={100} />
+        <Skeleton height={30} width={100} />
+      </Group>
+    );
   } else if (session) {
     return (
       <Group position="center" grow pb="xl" px="md">

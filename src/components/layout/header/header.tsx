@@ -7,6 +7,7 @@ import { colors } from "../../../config/colorPalette";
 import GroupDesktop from "./group-desktop";
 import Auth from "./auth-desktop";
 import GroupMobile from "./group-mobile";
+import React from "react";
 
 const useStyles = createStyles((theme) => ({
   hiddenDesktop: {
@@ -17,13 +18,13 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function HeaderMenu() {
+function HeaderMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const [lecturesOpened, { toggle: toggleLectures }] = useDisclosure(false);
   const [articlesOpened, { toggle: toggleArticles }] = useDisclosure(false);
-  const { classes, theme } = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Box>
@@ -55,3 +56,8 @@ export default function HeaderMenu() {
     </Box>
   );
 }
+
+const HeaderMemo = React.memo(HeaderMenu);
+
+// in the layout
+export default HeaderMemo;

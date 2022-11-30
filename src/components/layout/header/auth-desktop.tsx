@@ -1,5 +1,5 @@
 import { createStyles, Group, Button, Avatar, Skeleton } from "@mantine/core";
-import { useSession, signOut } from "next-auth/react";
+import { useSession, signOut, getSession } from "next-auth/react";
 import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
@@ -12,6 +12,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function Auth() {
   const { data: session, status } = useSession();
+
   const { classes } = useStyles();
 
   if (status === "loading") {

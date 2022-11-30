@@ -9,12 +9,7 @@ export default function NavbarUi({ mobileOpen }) {
   if (currentPage === "lectures" || currentPage === "articles") {
     defaultValue = currentPage;
     return (
-      <Navbar
-        p="md"
-        hiddenBreakpoint="sm"
-        hidden={!mobileOpen}
-        width={{ sm: 200, lg: 300 }}
-      >
+      <Navbar p="md" hiddenBreakpoint="sm"  width={{ sm: 200, lg: 300 }}>
         <TabsUi defaultValue={defaultValue} />
       </Navbar>
     );

@@ -136,7 +136,9 @@ export default function HeaderGroup() {
 
         <Menu.Dropdown sx={{ overflow: "hidden" }}>
           <Group position="apart" px="md">
-            <Text weight={500} pt={5}>Features</Text>
+            <Text weight={500} pt={5}>
+              Features
+            </Text>
           </Group>
 
           <Divider
@@ -146,7 +148,6 @@ export default function HeaderGroup() {
           />
 
           <SimpleGrid cols={2} spacing={0}>
-            {/* <Features onClick={() => setOpened(false)} /> */}
             {links}
           </SimpleGrid>
 
@@ -165,12 +166,13 @@ export default function HeaderGroup() {
           </div>
         </Menu.Dropdown>
       </Menu>
-      <a href="/lectures" className={classes.link}>
+      <Link href="/lectures" className={classes.link}>
         Lectures
-      </a>
-      <a href="/articles" className={classes.link}>
+      </Link>
+
+      <Link href="/articles" className={classes.link}>
         Articles
-      </a>
+      </Link>
     </Group>
   );
 }

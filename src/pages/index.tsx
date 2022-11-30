@@ -4,6 +4,7 @@ import { useLoaded } from "../hooks/useLoaded";
 import type { NextPage } from "next";
 import HeroDesktop from "../components/hero/hero-test";
 import HeroMobile from "../components/hero/hero-mobile";
+import { Box } from "@mantine/core";
 
 const IndexPage: NextPage = () => {
   const loaded = useLoaded();
@@ -11,8 +12,13 @@ const IndexPage: NextPage = () => {
 
   if (loaded) {
     return isMobile ? <HeroMobile /> : <HeroDesktop />;
+  } else {
+    return (
+      <>
+        <Box style={{ height: "100vh" }}></Box>
+      </>
+    );
   }
-  return null;
 };
 
 export default IndexPage;

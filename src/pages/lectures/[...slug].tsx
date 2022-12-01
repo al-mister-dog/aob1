@@ -3,14 +3,14 @@ import { setActions } from "../../features/actions/actionsSlice";
 import { setup } from "../../features/banks/banksSlice";
 import { refreshSettings } from "../../features/settings/settingsSlice";
 import { useEffect } from "react";
-import { LoadingOverlay } from "@mantine/core";
+import { Box } from "@mantine/core";
 import { introductoryTexts } from "../../config/parts";
 import { getRouteObjectData } from "../../helpers/routeMethods";
 import { lectureRoutes } from "../../config/routes/lectureRoutes";
 import { useLoaded } from "../../hooks/useLoaded";
 import { mediaQuery } from "../../config/media-query";
 import { useMediaQuery } from "@mantine/hooks";
-import LecturePageDesktop from "../../components/desktop/lectures/lecture-page";
+import LecturePageDesktop from "../../components/desktop/lectures/banking/pages/lecture-page";
 import LecturePageMobile from "../../components/mobile/lectures/lecture-page";
 
 export default function LecturePath({
@@ -56,14 +56,7 @@ export default function LecturePath({
     );
   }
 
-  return (
-    <LoadingOverlay
-      loaderProps={{ size: "xl", color: "violet", variant: "dots" }}
-      overlayOpacity={0.3}
-      overlayColor="#c5c5c5"
-      visible
-    />
-  );
+  return <Box style={{ height: "100vh" }}></Box>;
 }
 
 export async function getStaticProps(context) {

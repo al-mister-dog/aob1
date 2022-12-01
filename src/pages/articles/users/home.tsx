@@ -1,12 +1,10 @@
-import { PrismaClient } from "@prisma/client";
-import { parseDate } from "../../../helpers/parseDate";
-import { Box, Tabs, createStyles, Divider } from "@mantine/core";
-import { colors } from "../../../config/colorPalette";
 import Link from "next/link";
-import ArticleToolbar from "../../../components/desktop/articles/users/article-toolbar";
 import useSWR from "swr";
 import { fetcher } from "../../../lib/fetcher";
+import { Box, Tabs, Divider } from "@mantine/core";
+import ArticleToolbar from "../../../components/desktop/articles/users/article-toolbar";
 import Loader from "../../../components/shared-ui/loader";
+import { colors } from "../../../config/colorPalette";
 
 interface Article {
   id: string;
@@ -43,7 +41,7 @@ function HeaderTabs() {
           {data &&
             data.map((article) => {
               return (
-                <Box key={article.id}>
+                <Box mt={10} key={article.id}>
                   <ArticleToolbar article={article} />
                   <Link
                     href={{
@@ -55,7 +53,7 @@ function HeaderTabs() {
                     }`}
                     passHref
                   >
-                    <Box mt={10}>
+                    <Box mt={10} style={{ cursor: "pointer" }}>
                       <h2
                         style={{
                           margin: 0,

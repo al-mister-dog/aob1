@@ -1,5 +1,5 @@
 import FixedAmount from "../compositions/fixed-amount";
-import { Text } from "@mantine/core";
+import { Center, Text, useMantineTheme } from "@mantine/core";
 import { useAppDispatch } from "../../../../../../../app/hooks";
 import { useState } from "react";
 import { Banks } from "../../../../../../../domain/services/bank";
@@ -12,7 +12,7 @@ export default function PayDues({ bank }: { bank: CardInfo }) {
   const dispatch = useAppDispatch();
   const [selectedBank, setSelectedBank] = useState<string | null>(null);
   const [amount, setAmount] = useState<number>(0);
-
+  const theme = useMantineTheme();
   function payDuesPayload() {
     const payload = {
       amount,
@@ -44,7 +44,11 @@ export default function PayDues({ bank }: { bank: CardInfo }) {
     owingBanks.length === 0 ||
     owingBanks[0].value === bank.cardInfo.id.toString()
   ) {
-    return <Text>No Dues To Pay</Text>;
+    return (
+      <Center>
+        <Text color={theme.colors[bank.color][9]}>No Dues to Net</Text>
+      </Center>
+    );
   }
   return (
     <FixedAmount

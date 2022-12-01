@@ -10,6 +10,7 @@ import { useState, forwardRef, useContext } from "react";
 import { System } from "../../../../../../../domain/system";
 import {
   Button,
+  Center,
   Group,
   Radio,
   Select,
@@ -55,7 +56,11 @@ export default function SettleDues({ bank }: { bank: CardInfo }) {
   });
 
   if (dues.length === 0) {
-    return <Text>No Dues to Settle</Text>;
+    return (
+      <Center>
+        <Text color={theme.colors[bank.color][9]}>No Dues to Settle</Text>
+      </Center>
+    );
   }
 
   return (

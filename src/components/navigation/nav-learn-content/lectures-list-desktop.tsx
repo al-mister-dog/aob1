@@ -1,18 +1,11 @@
 import { useAppSelector } from "../../../app/hooks";
 import { selectActions } from "../../../features/actions/actionsSlice";
-import {
-  Box,
-  Center,
-  createStyles,
-  Group,
-  Tabs,
-  useMantineTheme,
-} from "@mantine/core";
+import { Box, Center, createStyles, Group, Tabs } from "@mantine/core";
 import { lectureRoutes } from "../../../config/routes/lectureRoutes";
 import { Accordion, List, Text } from "@mantine/core";
 import Link from "next/link";
 import { colors } from "../../../config/colorPalette";
-import { Router, School } from "tabler-icons-react";
+import { School } from "tabler-icons-react";
 import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
@@ -117,7 +110,9 @@ function MoneyAndBankingLectures() {
                         style={{
                           cursor: "pointer",
                           background:
-                            currentLectureId === id ? colors.background3 : "",
+                            currentLectureId === id
+                              ? colors.background3
+                              : "inherit",
                         }}
                       >
                         <Link

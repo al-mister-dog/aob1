@@ -36,7 +36,7 @@ export const authOptions = {
     jwt: true,
   },
 
-  debug: true,
+  // debug: true,
 };
 
 export default NextAuth(authOptions);

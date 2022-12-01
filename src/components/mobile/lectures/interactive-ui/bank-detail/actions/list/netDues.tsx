@@ -6,13 +6,13 @@ import { netDues } from "../../../../../../../features/banks/banksSlice";
 import { useValidator } from "../../../../../../../hooks/useValidator/useValidator";
 import { CardInfo } from "../../../types";
 import FixedAction from "../compositions/fixed-action";
-import { Text } from "@mantine/core";
+import { Center, Text, useMantineTheme } from "@mantine/core";
 
 export default function NetDues({ bank }: { bank: CardInfo }) {
   const dispatch = useAppDispatch();
   const [selectedBank, setSelectedBank] = useState<string | null>(null);
   const [amount, setAmount] = useState<number>(0);
-
+  const theme = useMantineTheme();
   function netDuesPayload() {
     const payload = {
       amount,
@@ -45,7 +45,11 @@ export default function NetDues({ bank }: { bank: CardInfo }) {
     owingBanks.length === 0 ||
     owingBanks[0].value === bank.cardInfo.id.toString()
   ) {
-    return <Text>No Dues To Net</Text>;
+    return (
+      <Center>
+        <Text color={theme.colors[bank.color][9]}>No Dues To Net</Text>
+      </Center>
+    );
   }
   return (
     <FixedAction

@@ -5,6 +5,7 @@ import { mediaQuery } from "../../../config/media-query";
 import ProfileDesktop from "../../../components/desktop/profile";
 import ProfileMobile from "../../../components/mobile/profile";
 import Loader from "../../../components/shared-ui/loader";
+import { Box } from "@mantine/core";
 
 export default function Index() {
   const { data: session } = useSession();
@@ -21,10 +22,10 @@ export default function Index() {
         <ProfileDesktop user={user} />
       );
     } else {
-      return <>You are not authorized to visit this page</>;
+      return <></>;
     }
   } else {
-    return null
+    return <Box style={{ height: "100vh" }}></Box>;
   }
 }
 

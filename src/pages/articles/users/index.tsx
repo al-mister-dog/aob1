@@ -63,7 +63,7 @@ export async function getServerSideProps(context) {
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
   });
-  console.log(context.query.id);
+
   const data = await prisma.post.findMany({
     where: { userId: context.query.id },
     include: {

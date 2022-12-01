@@ -38,11 +38,14 @@ function ArticlesList({ email }) {
   const { data, error } = useSWR(`/api/user-article/?email=${email}`, fetcher); //fetches user articles
 
   if (!data) {
-    return <>there are currently no articles here</>;
+    return <Box></Box>;
   }
-  if (error) {
+  else if (error) {
     return <>there was a problem retrieving articles</>;
+  } else if (data.length === 0) {
+    <>There are Currently No Articles Here.</>;
   }
+  
   return (
     <Box>
       {data.map((article) => {

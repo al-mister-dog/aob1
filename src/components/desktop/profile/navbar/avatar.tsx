@@ -1,3 +1,5 @@
+import useSWR from "swr";
+import { fetcher } from "../../../../lib/fetcher";
 import { useState } from "react";
 import { useForm } from "@mantine/form";
 import axios, { AxiosRequestConfig } from "axios";
@@ -14,12 +16,16 @@ import {
 } from "@mantine/core";
 import { ToastContainer, toast } from "react-toastify";
 import { colors } from "../../../../config/colorPalette";
-import { useSession } from "next-auth/react";
+import SessionContainer from "../../../auth/registration/SessionContainer";
 
-export default function AvatarComponent({ user }) {
+export default function AvatarComponent({ user, updatedBio, setUpdatedBio }) {
+  const { data, error } = useSWR(
+    `/api/user/profile/?email=${user.email}`,
+    fetcher
+  );
+
   const [editting, setEditting] = useState(false);
   const [updatedTag, setUpdatedTag] = useState("");
-  const [updatedBio, setUpdatedBio] = useState("");
 
   function handleSuccess(tag, bio) {
     toast.success("Bio Updated", {
@@ -59,7 +65,9 @@ export default function AvatarComponent({ user }) {
         </h2>
       </Center>
       <Center>
-        <Text color="dimmed">{updatedTag || user.title}</Text>
+        <Text color="dimmed">
+          {updatedTag ? updatedTag : data ? data.title : " "}
+        </Text>
       </Center>
       <Center>
         <Spoiler
@@ -85,7 +93,7 @@ export default function AvatarComponent({ user }) {
             color={colors.textColor}
             align="justify"
           >
-            {updatedBio || user.bio}
+            {updatedBio ? updatedBio : data ? data.bio : " "}
           </Text>
         </Spoiler>
       </Center>
@@ -112,17 +120,8 @@ function EditProfileButton({
   handleFailure,
   handleSuccess,
 }) {
-  const { data: session, status } = useSession();
-  if (status === "loading") {
-    return <></>;
-  } 
-  else if (!session) {
-    return <></>
-  }
-  else if (session.user.email !== user.email) {
-    return <></>;
-  } else {
-    return (
+  return (
+    <SessionContainer user={user}>
       <>
         <Center>
           {!editting && (
@@ -150,8 +149,8 @@ function EditProfileButton({
           />
         )}
       </>
-    );
-  }
+    </SessionContainer>
+  );
 }
 
 function ProfileForm({

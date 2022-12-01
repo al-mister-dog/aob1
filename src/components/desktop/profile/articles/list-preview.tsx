@@ -1,9 +1,9 @@
-import { Box, Text, Button, Divider, Skeleton } from "@mantine/core";
-import { useSession } from "next-auth/react";
+import { Box, Text, Button, Divider } from "@mantine/core";
 import Link from "next/link";
 import useSWR from "swr";
 import { colors } from "../../../../config/colorPalette";
 import { fetcher } from "../../../../lib/fetcher";
+import SessionContainer from "../../../auth/registration/SessionContainer";
 
 export default function Articles({ user }) {
   return (
@@ -15,11 +15,6 @@ export default function Articles({ user }) {
           justifyContent: "flex-end",
         }}
       >
-        {/* <Link href="/articles/users/new-article">
-          <Button variant="outline" color="violet">
-            Write New Article
-          </Button>
-        </Link> */}
         <WriteNewArticleButton user={user} />
       </Box>
       <ArticlesList email={user.email} />
@@ -28,30 +23,25 @@ export default function Articles({ user }) {
 }
 
 function WriteNewArticleButton({ user }) {
-  const { data: session, status } = useSession();
-  if (status === "loading") {
-    return <div style={{ height: 50 }}></div>;
-  } else if (!session) {
-    return <div style={{ height: 50 }}></div>;
-  } else if (session && session.user.email === user.email) {
-    return (
+  return (
+    <SessionContainer user={user}>
       <Link href="/articles/users/new-article">
         <Button variant="outline" color="violet">
           Write New Article
         </Button>
       </Link>
-    );
-  }
+    </SessionContainer>
+  );
 }
 
 function ArticlesList({ email }) {
-  const { data, error } = useSWR(`/api/user-article/?email=${email}`, fetcher);
+  const { data, error } = useSWR(`/api/user-article/?email=${email}`, fetcher); //fetches user articles
 
   if (!data) {
     return <>there are currently no articles here</>;
   }
   if (error) {
-    return <>there was an error retrieving articles</>;
+    return <>there was a problem retrieving articles</>;
   }
   return (
     <Box>

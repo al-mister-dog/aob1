@@ -9,7 +9,7 @@ import {
   Group,
   createStyles,
 } from "@mantine/core";
-import { IconBulb, IconUser, IconCheckbox, IconPlus } from "@tabler/icons";
+import { IconBulb, IconUser, IconBook2, IconPlus } from "@tabler/icons";
 
 import AvatarComponent from "./avatar";
 import { colors } from "../../../../config/colorPalette";
@@ -133,8 +133,8 @@ const useStyles = createStyles((theme) => ({
 
 const links = [
   { icon: IconBulb, label: "Activity", notifications: 3 },
-  { icon: IconCheckbox, label: "Tasks", notifications: 4 },
-  { icon: IconUser, label: "Contacts" },
+  { icon: IconBook2, label: "Articles", notifications: 4 },
+  { icon: IconUser, label: "Following" },
 ];
 
 const collections = [
@@ -149,7 +149,7 @@ const collections = [
   { emoji: "💁‍♀️", label: "Volatility" },
 ];
 
-export default function NavbarSearch({ user }) {
+export default function Navbar({ user, updatedBio, setUpdatedBio }) {
   const { classes } = useStyles();
 
   const mainLinks = links.map((link) => (
@@ -191,7 +191,11 @@ export default function NavbarSearch({ user }) {
       className={classes.navbar}
     >
       <Box className={classes.section}>
-        <AvatarComponent user={user} />
+        <AvatarComponent
+          user={user}
+          updatedBio={updatedBio}
+          setUpdatedBio={setUpdatedBio}
+        />
       </Box>
 
       <Box className={classes.section}>

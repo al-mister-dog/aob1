@@ -21,7 +21,7 @@ async function post(req, res) {
   }
 
   const path = `articles/${title}`;
-  const post = await prisma.post.create({
+  await prisma.post.create({
     data: {
       title,
       preview,

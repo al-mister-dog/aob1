@@ -3,16 +3,26 @@ import { colors } from "../../../config/colorPalette";
 import Navbar from "./navbar/navbar";
 import About from "./about";
 import ArticlesList from "./articles/list-preview";
+import { useState } from "react";
 
 export default function Index({ user }) {
+  const [updatedBio, setUpdatedBio] = useState("");
   return (
     <>
       <Box style={{ minHeight: "100vh", display: "flex" }}>
-        <Navbar user={user} />
+        <Navbar
+          user={user}
+          updatedBio={updatedBio}
+          setUpdatedBio={setUpdatedBio}
+        />
         <Box style={{ width: "100%" }}>
           <Box ml={50} mt={100} style={{ maxWidth: "700px" }}>
-            <h1 style={{ color: colors.textColor }}>{user.name}</h1>
-            <HeaderTabs user={user} />
+            {/* <h1 style={{ color: colors.textColor }}>{user.name}</h1> */}
+            <HeaderTabs
+              user={user}
+              updatedBio={updatedBio}
+              setUpdatedBio={setUpdatedBio}
+            />
           </Box>
         </Box>
       </Box>
@@ -20,7 +30,7 @@ export default function Index({ user }) {
   );
 }
 
-function HeaderTabs({ user }) {
+function HeaderTabs({ user, updatedBio, setUpdatedBio }) {
   return (
     <Tabs
       mt={25}
@@ -40,7 +50,11 @@ function HeaderTabs({ user }) {
       </Tabs.Panel>
 
       <Tabs.Panel value="second" pt="xs">
-        <About user={user} />
+        <About
+          user={user}
+          updatedBio={updatedBio}
+          setUpdatedBio={setUpdatedBio}
+        />
       </Tabs.Panel>
     </Tabs>
   );

@@ -32,7 +32,7 @@
     "src/config/routes/lectureRoutes.js",
     "src/pages/api/index.js",
     ".next/types/**/*.ts"
-, "src/pages/api/users/bio.js", "src/pages/api/article.js", "src/pages/api/articles.js"  ],
+, "src/pages/api/users/bio.js", "src/pages/api/article.js", "src/pages/api/articles.js", "src/pages/api/user/profile.js", "src/pages/articles/users/user.js"  ],
   "exclude": [
     "node_modules"
   ]

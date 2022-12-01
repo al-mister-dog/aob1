@@ -30,8 +30,8 @@ export default function Auth() {
     return (
       <Group className={classes.hiddenMobile}>
         <Link
-          href="/community/users"
-          as={`/community/users/@${session.user.name.split(" ").join("-")}`}
+          href="/community/profile"
+          // as={`/community/users/@${session.user.name.split(" ").join("-")}`}
           passHref
         >
           <Avatar

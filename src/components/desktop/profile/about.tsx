@@ -1,23 +1,27 @@
 import { NextRouter, useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "@mantine/form";
-
 import { Box, Button, Group, Text, Textarea } from "@mantine/core";
 import axios, { AxiosRequestConfig } from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useSWR from "swr";
+import { fetcher } from "../../../lib/fetcher";
+import SessionContainer from "../../auth/registration/SessionContainer";
 
-export default function About({ user }) {
-  const { bio } = user;
+export default function About({ user, updatedBio, setUpdatedBio }) {
+  const { data, error } = useSWR(
+    `/api/user/profile/?email=${user.email}`,
+    fetcher
+  );
   const router: NextRouter = useRouter();
   const [editting, setEditting] = useState(false);
-  const [updatedBio, setUpdatedBio] = useState("");
 
   function onClickEdit() {
     setEditting(true);
   }
 
-  function handleSuccess(bio) {
+  function handleSuccess(bio: string) {
     toast.success("Bio Updated", {
       position: "top-right",
       autoClose: 1000,
@@ -43,6 +47,7 @@ export default function About({ user }) {
       theme: "light",
     });
   }
+
   return (
     <Box mt={25}>
       <Box
@@ -53,21 +58,34 @@ export default function About({ user }) {
           alignItems: "center",
         }}
       >
-        {!bio && <Text>This section is currently empty. . .</Text>}
-        <Button color="violet" variant="outline" onClick={onClickEdit}>
-          {bio ? "Edit Bio" : "Add Bio"}
-        </Button>
+        <SessionContainer
+          user={user}
+          content={data}
+          placeholder={<Text>This section is currently empty. . .</Text>}
+        >
+          {data && (
+            <>
+              {data.bio.length === 0 && (
+                <Text>This section is currently empty. . .</Text>
+              )}
+            </>
+          )}
+          <Button color="violet" variant="outline" onClick={onClickEdit}>
+            {data ? "Edit Bio" : "Add Bio"}
+          </Button>
+        </SessionContainer>
       </Box>
       <Box mt={25}>
         {editting ? (
           <ProfileForm
             router={router}
             setEditting={setEditting}
+            setUpdatedBio={setUpdatedBio}
             handleSuccess={handleSuccess}
             handleFailure={handleFailure}
           />
         ) : (
-          <p>{updatedBio || bio}</p>
+          <p>{updatedBio ? updatedBio : data ? data.bio : " "}</p>
         )}
       </Box>
       <ToastContainer />
@@ -78,6 +96,7 @@ export default function About({ user }) {
 type ProfileFormProps = {
   router: NextRouter;
   setEditting: (v: boolean) => void;
+  setUpdatedBio: (v: string) => void;
   handleSuccess: (v: string) => void;
   handleFailure: () => void;
 };
@@ -85,17 +104,13 @@ type ProfileFormProps = {
 function ProfileForm({
   router,
   setEditting,
+  setUpdatedBio,
   handleSuccess,
   handleFailure,
 }: ProfileFormProps) {
   const form = useForm({
     initialValues: {
       bio: "",
-    },
-
-    validate: {
-      bio: (value) =>
-        value.length > 5 ? null : "Bios need to be at least 5 characters long!",
     },
   });
 
@@ -120,13 +135,14 @@ function ProfileForm({
   }
   return (
     <form onSubmit={form.onSubmit((values) => onEditBio(values))}>
-      <Textarea minRows={6} placeholder="Bio" {...form.getInputProps("bio")} />
+      <Textarea
+        minRows={6}
+        placeholder="Bio"
+        onChange={(e) => setUpdatedBio(e.target.value)}
+        {...form.getInputProps("bio")}
+      />
       <Group position="right" mt="md">
-        <Button
-          color="violet"
-          type="submit"
-          disabled={form.values.bio.length < 5}
-        >
+        <Button color="violet" type="submit" variant="outline">
           Submit
         </Button>
         <Button color="violet" onClick={() => setEditting(false)}>
@@ -136,11 +152,3 @@ function ProfileForm({
     </form>
   );
 }
-
-/**
- *
- * current bio is on page
- * user edits bio
- * submit post request
- * page does not reload...
- */

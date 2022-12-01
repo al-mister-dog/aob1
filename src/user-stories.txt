@@ -1,35 +1,20 @@
-user logs in
+profile_links: "avatar top of navbar", "links to user profile when profile belongs to user"
+user_profile_links: "on top of articles", 
 
+/community
+    /user/id
+        /articles
+        /about
+        /discussion
+    /profile/id
+        /articles
+        /about
+        /discussion
 
-
-userPage: {
-    userArticlesList: {
-        article: {}
-    }
-}
-
-articlesPage: {
-    allArticlesList: {
-        article: {}    
-    }
-    articlesByUserList: {
-        article: {}
-    }
-}
-
-/articles = articlesPage
-/articles/user = articlesByUser
-/articles/user/id = articleByUser
-
-
-
-user has profile page (protected components such as edit buttons)
-
-user has articles
-
-there is a user articles page
-
-there is an individual articles page
-
-you could send user to profile...
-make sure articles are visible on redirect
+/articles
+    /community
+        /index (all articles)
+        /article
+        
+        
+articles retrieved by their ids

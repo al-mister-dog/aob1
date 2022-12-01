@@ -17,7 +17,7 @@ import {
   Textarea,
   Spoiler,
 } from "@mantine/core";
-import { IconBulb, IconUser, IconCheckbox, IconPlus } from "@tabler/icons";
+import { IconBulb, IconUser, IconBook2, IconPlus } from "@tabler/icons";
 import { useState } from "react";
 import AvatarComponent from "./avatar";
 import { colors } from "../../../../config/colorPalette";
@@ -141,8 +141,8 @@ const useStyles = createStyles((theme) => ({
 
 const links = [
   { icon: IconBulb, label: "Activity", notifications: 3 },
-  { icon: IconCheckbox, label: "Tasks", notifications: 4 },
-  { icon: IconUser, label: "Contacts" },
+  { icon: IconBook2, label: "Tasks", notifications: 4 },
+  { icon: IconUser, label: "Following" },
 ];
 
 const collections = [

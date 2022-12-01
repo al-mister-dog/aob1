@@ -7,7 +7,7 @@ import {
   createStyles,
   Group,
   Tabs,
-  Autocomplete,
+  Input,
 } from "@mantine/core";
 import { articleRoutes } from "../../../config/routes/articleRoutes";
 
@@ -16,6 +16,7 @@ import { colors } from "../../../config/colorPalette";
 import { Book } from "tabler-icons-react";
 import { IconSearch } from "@tabler/icons";
 import { useRouter } from "next/router";
+import ArticlesNav from "../../desktop/articles/users/navbar"
 
 const useStyles = createStyles((theme) => ({
   listItem: {
@@ -31,7 +32,6 @@ const useStyles = createStyles((theme) => ({
 export default function ArticlesContent() {
   const router = useRouter();
   function onClickTab(val: string) {
-
     if (val === "dictionary") {
       router.replace("/articles");
     } else if (val === "community") {
@@ -62,11 +62,7 @@ export default function ArticlesContent() {
           <Dictionary />
         </Tabs.Panel>
         <Tabs.Panel value="community" pt="xs">
-          <Autocomplete
-            icon={<IconSearch size={16} stroke={1.5} />}
-            data={["money", "banking", "alchemy"]}
-          />
-          <Text>User Articles</Text>
+          <ArticlesNav />
         </Tabs.Panel>
       </Tabs>
     </>

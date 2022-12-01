@@ -49,13 +49,19 @@ function Analytics() {
       <Tabs color="violet" defaultValue="actions">
         <Tabs.List grow>
           <Tabs.Tab value="relations">
-            <Text color={colors.text}>Relations</Text>
+            <Text color={colors.text} weight="bold">
+              Relations
+            </Text>
           </Tabs.Tab>
           <Tabs.Tab value="statistics">
-            <Text color={colors.text}>Statistics</Text>
+            <Text color={colors.text} weight="bold">
+              Statistics
+            </Text>
           </Tabs.Tab>
           <Tabs.Tab value="flows">
-            <Text color={colors.text}>Flows</Text>
+            <Text color={colors.text} weight="bold">
+              Flows
+            </Text>
           </Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="relations" pt="xs">

@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { parseDate } from "../../../helpers/parseDate";
+import { parseDate } from "../../../helpers/api/parseDate";
 import { Box, Text } from "@mantine/core";
 import { colors } from "../../../config/colorPalette";
 import Link from "next/link";

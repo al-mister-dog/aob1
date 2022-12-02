@@ -2,11 +2,11 @@ import useSWR from "swr";
 import { fetcher } from "../../lib/fetcher";
 import parse from "html-react-parser";
 import { Box, Button, Divider, Text } from "@mantine/core";
-import { parseDate } from "../../helpers/parseDate";
+import { parseDate } from "../../helpers/api/parseDate";
 import { colors } from "../../config/colorPalette";
 
-export default function Article() {
-  const { data, error } = useSWR(`/api/articles/`, fetcher);
+export default function Articles() {
+  const { data, error } = useSWR(`/api/articles`, fetcher);
   if (!data) {
     return <>...loading</>;
   }

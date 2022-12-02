@@ -1,5 +1,3 @@
-import useSWR from "swr";
-import { fetcher } from "../../../../lib/fetcher";
 import { useState } from "react";
 import { useForm } from "@mantine/form";
 import axios, { AxiosRequestConfig } from "axios";
@@ -19,11 +17,6 @@ import { colors } from "../../../../config/colorPalette";
 import SessionContainer from "../../../auth/registration/SessionContainer";
 
 export default function AvatarComponent({ user, updatedBio, setUpdatedBio }) {
-  const { data, error } = useSWR(
-    `/api/user/profile/?email=${user.email}`,
-    fetcher
-  );
-
   const [editting, setEditting] = useState(false);
   const [updatedTag, setUpdatedTag] = useState("");
 
@@ -66,7 +59,7 @@ export default function AvatarComponent({ user, updatedBio, setUpdatedBio }) {
       </Center>
       <Center>
         <Text color="dimmed">
-          {updatedTag ? updatedTag : data ? data.title : " "}
+          {updatedTag ? updatedTag : user ? user.title : " "}
         </Text>
       </Center>
       <Center>
@@ -93,7 +86,7 @@ export default function AvatarComponent({ user, updatedBio, setUpdatedBio }) {
             color={colors.textColor}
             align="justify"
           >
-            {updatedBio ? updatedBio : data ? data.bio : " "}
+            {updatedBio ? updatedBio : user ? user.bio : " "}
           </Text>
         </Spoiler>
       </Center>

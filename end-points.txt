@@ -1,0 +1,27 @@
+get user articles by user id
+get user articles by category
+
+any article searched for will be by a user
+
+get article by id
+get all articles
+get all users articles by user id
+
+
+/article/:id
+/articles
+/articles/:user-id
+
+user-stories
+
+folders
+
+/articles
+    /index (all articles)
+    /article
+        /[id] (article by article id)
+            get, post, update, delete
+        /user
+            /index (all articles by user id)
+            /[id] (article by user id)
+                

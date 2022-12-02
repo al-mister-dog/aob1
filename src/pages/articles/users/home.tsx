@@ -6,14 +6,6 @@ import ArticleToolbar from "../../../components/desktop/articles/users/article-t
 import Loader from "../../../components/shared-ui/loader";
 import { colors } from "../../../config/colorPalette";
 
-interface Article {
-  id: string;
-  title: string;
-  preview: string;
-  createdAt: string;
-  user: {};
-}
-
 export default function Index() {
   return (
     <>
@@ -26,6 +18,7 @@ export default function Index() {
 
 function HeaderTabs() {
   const { data, error } = useSWR(`/api/articles/`, fetcher);
+
   return (
     <Tabs color="violet" defaultValue="first">
       <Tabs.List position="left">
@@ -83,10 +76,10 @@ function HeaderTabs() {
       </Tabs.Panel>
 
       <Tabs.Panel value="second" pt="xs">
-        a
+        For You Section
       </Tabs.Panel>
       <Tabs.Panel value="third" pt="xs">
-        a
+        Explore Section
       </Tabs.Panel>
     </Tabs>
   );

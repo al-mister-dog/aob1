@@ -17,7 +17,7 @@ export default function Articles({ user }) {
       >
         <WriteNewArticleButton user={user} />
       </Box>
-      <ArticlesList email={user.email} />
+      <ArticlesList user={user} />
     </Box>
   );
 }
@@ -34,18 +34,17 @@ function WriteNewArticleButton({ user }) {
   );
 }
 
-function ArticlesList({ email }) {
-  const { data, error } = useSWR(`/api/user-article/?email=${email}`, fetcher); //fetches user articles
+function ArticlesList({ user }) {
+  const { data, error } = useSWR(`/api/articles/user/${user.id}`, fetcher);
 
   if (!data) {
-    return <Box></Box>;
-  }
-  else if (error) {
+    return <Box style={{ height: "100vh" }}></Box>;
+  } else if (error) {
     return <>there was a problem retrieving articles</>;
   } else if (data.length === 0) {
     <>There are Currently No Articles Here.</>;
   }
-  
+
   return (
     <Box>
       {data.map((article) => {

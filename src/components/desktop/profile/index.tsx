@@ -17,7 +17,6 @@ export default function Index({ user }) {
         />
         <Box style={{ width: "100%" }}>
           <Box ml={50} mt={100} style={{ maxWidth: "700px" }}>
-            {/* <h1 style={{ color: colors.textColor }}>{user.name}</h1> */}
             <HeaderTabs
               user={user}
               updatedBio={updatedBio}

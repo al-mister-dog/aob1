@@ -21,6 +21,9 @@ import {
 import { IconTrash, IconLink } from "@tabler/icons";
 import { colors } from "../../../../config/colorPalette";
 import parse from "html-react-parser";
+import { getReadTime } from "../../../../helpers/ux/getReadTime";
+import { copyLink } from "../../../../helpers/ux/copyLink";
+import Comments from "../comments";
 
 interface Article {
   id: string;
@@ -48,13 +51,6 @@ interface User {
   image: string;
 }
 
-function getReadTime(string) {
-  let eachWord = [];
-  let divided = eachWord.length / 200;
-  let int = Math.round(divided);
-  let decimal = (divided - int) / 0.6;
-}
-
 export default function UserArticle({
   article,
   user,
@@ -70,6 +66,7 @@ export default function UserArticle({
       </h1>
 
       {parse(article.body)}
+      {/* <Comments /> */}
     </Box>
   );
 }
@@ -112,6 +109,9 @@ function ArticleToolbar({
             <Text size="xs" color="dimmed">
               {article.createdAt}
             </Text>
+            <Text size="xs" color="dimmed">
+              {getReadTime(article.body)}
+            </Text>
           </Group>
         </Box>
       </Group>
@@ -122,7 +122,7 @@ function ArticleToolbar({
           label="Share on Twitter"
           withArrow
         >
-          <ActionIcon>
+          <ActionIcon onClick={shareOnTwitter}>
             <BrandTwitter size={19} />
           </ActionIcon>
         </Tooltip>
@@ -131,7 +131,7 @@ function ArticleToolbar({
           label="Share on Facebook"
           withArrow
         >
-          <ActionIcon>
+          <ActionIcon onClick={shareOnFaceBook}>
             <BrandFacebook size={19} />
           </ActionIcon>
         </Tooltip>
@@ -140,7 +140,7 @@ function ArticleToolbar({
           label="Share on LinkedIn"
           withArrow
         >
-          <ActionIcon>
+          <ActionIcon onClick={shareOnLinkedIn}>
             <BrandLinkedin size={19} />
           </ActionIcon>
         </Tooltip>
@@ -149,7 +149,7 @@ function ArticleToolbar({
           label="Copy Link"
           withArrow
         >
-          <ActionIcon>
+          <ActionIcon onClick={copyLink}>
             <IconLink size={19} />
           </ActionIcon>
         </Tooltip>
@@ -162,48 +162,83 @@ function ArticleToolbar({
             <FilePlus color={colors.textColor} />
           </ActionIcon>
         </Tooltip>
-        <Menu>
-          <Menu.Target>
-            <Tooltip
-              style={{ backgroundColor: colors.textColor }}
-              label="More"
-              withArrow
-            >
-              <ActionIcon variant="subtle">
-                <Dots color={colors.textColor} strokeWidth={3} />
-              </ActionIcon>
-            </Tooltip>
-          </Menu.Target>
-          <Menu.Dropdown>
-            {user.email === article.user.email && (
-              <>
-                <Link
-                  href={{
-                    pathname: `/articles/users/update-article`,
-                    query: { articleId: article.id },
-                  }}
-                >
-                  <Menu.Item icon={<Edit size={14} />}>
-                    Update Article
-                  </Menu.Item>
-                </Link>
-                <Link
-                  href={{
-                    pathname: `/articles/users/delete-article`,
-                    query: { articleId: article.id },
-                  }}
-                >
-                  <Menu.Item color="red" icon={<IconTrash size={14} />}>
-                    Delete Article
-                  </Menu.Item>
-                </Link>
-              </>
-            )}
-          </Menu.Dropdown>
-        </Menu>
+        {user && (
+          <Menu>
+            <Menu.Target>
+              <Tooltip
+                style={{ backgroundColor: colors.textColor }}
+                label="More"
+                withArrow
+              >
+                <ActionIcon variant="subtle">
+                  <Dots color={colors.textColor} strokeWidth={3} />
+                </ActionIcon>
+              </Tooltip>
+            </Menu.Target>
+            <Menu.Dropdown>
+              <UserMenuItems article={article} user={user} />
+            </Menu.Dropdown>
+          </Menu>
+        )}
       </Group>
     </Box>
   );
 }
+function UserMenuItems({ article, user }: { article: Article; user: User }) {
+  if (user.id === article.user.id) {
+    return <AuthUserMenuItems article={article} user={user} />;
+  }
+  return (
+    <>
+      <Menu.Item>Show less like this</Menu.Item>
+      <Menu.Item>Mute</Menu.Item>
+    </>
+  );
+}
+function AuthUserMenuItems({ article, user }) {
+  return (
+    <>
+      {user.email === article.user.email && (
+        <>
+          <Link
+            href={{
+              pathname: `/articles/users/update-article`,
+              query: { articleId: article.id },
+            }}
+          >
+            <Menu.Item icon={<Edit size={14} />}>Update Article</Menu.Item>
+          </Link>
+          <Link
+            href={{
+              pathname: `/articles/users/delete-article`,
+              query: { articleId: article.id },
+            }}
+          >
+            <Menu.Item color="red" icon={<IconTrash size={14} />}>
+              Delete Article
+            </Menu.Item>
+          </Link>
+        </>
+      )}
+    </>
+  );
+}
 
-//https://deploy-preview-subdomain-with-unique-hash.vercel.app
+function shareOnTwitter() {
+  const url = window.location.href;
+  const text = "Check out this article from Art of Banking";
+  const twitterUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+  window.open(twitterUrl, "_blank");
+}
+
+function shareOnFaceBook() {
+  const url = window.location.href;
+  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  window.open(facebookUrl, "_blank");
+}
+
+function shareOnLinkedIn() {
+  const url = window.location.href;
+  const linkedInUrl = `https://www.linkedin.com/shareArticle?url=${url}`;
+  window.open(linkedInUrl, "_blank");
+}

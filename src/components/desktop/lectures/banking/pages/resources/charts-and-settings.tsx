@@ -1,5 +1,5 @@
 import { selectActions } from "../../../../../../features/actions/actionsSlice";
-import { Card, Grid, Tabs, useMantineTheme } from "@mantine/core";
+import { Card, Grid, Tabs } from "@mantine/core";
 import ChartPrivateCredit from "../../interactive-ui/charts/linechart-private-credit";
 import ChartBalances from "../../interactive-ui/charts/barchart-balances";
 import ChartCredit from "../../interactive-ui/charts/linechart-credit";
@@ -11,7 +11,6 @@ import { colors } from "../../../../../../config/colorPalette";
 
 export default function Desktop() {
   const { currentLectureId } = useAppSelector(selectActions);
-  const theme = useMantineTheme();
 
   return (
     <div style={{ height: "25rem" }}>

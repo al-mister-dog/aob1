@@ -1,6 +1,6 @@
 import { getSession } from "next-auth/react";
 import { PrismaClient } from "@prisma/client";
-import { parseDate } from "../../helpers/parseDate";
+import { parseDate } from "../../helpers/api/parseDate";
 
 import ArticleDesktop from "../../components/desktop/articles/users/article";
 import ArticleMobile from "../../components/mobile/articles/users/article";

@@ -36,7 +36,7 @@ export default function TextEditor({ user, article }) {
 
   async function updateArticle() {
     const body = editor.getHTML();
-    const { status, data } = await axios.put("/api/article", {
+    const { status, data } = await axios.put("/api/articles", {
       id: article.id,
       title,
       preview,

@@ -72,7 +72,7 @@ async function post(req, res) {
   const prismaUser = await prisma.user.findUnique({
     where: { email },
   });
-
+  
   const newPost = await prisma.post.create({
     data: {
       title,

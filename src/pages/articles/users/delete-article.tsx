@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 export default function NewArticle({ article, user }) {
   const router = useRouter();
   async function deleteArticle() {
-    const { status } = await axios.delete("/api/article", {
+    const { status } = await axios.delete("/api/articles", {
       data: { id: article.id },
     });
     if (status === 201) {

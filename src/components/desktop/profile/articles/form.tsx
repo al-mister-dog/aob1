@@ -45,7 +45,7 @@ export default function TextEditor({ user }) {
 
   async function saveArticle() {
     const body = editor.getHTML();
-    const { status, data } = await axios.post("/api/article", {
+    const { status, data } = await axios.post("/api/articles", {
       title,
       preview,
       body,

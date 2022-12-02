@@ -1,5 +1,6 @@
 import { parseDate } from "../../../../helpers/api/parseDate";
-import {prisma} from "../../../../lib/prisma";
+import { prisma } from "../../../../lib/prisma";
+
 async function get(req, res) {
   const id = req.query.id;
 

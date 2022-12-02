@@ -48,7 +48,8 @@ export default function TextEditor({ email }) {
 
   async function saveArticle() {
     const body = editor.getHTML();
-    const { data } = await axios.post("/api/article", {
+
+    const { data } = await axios.post("/api/articles", {
       title,
       body,
       email,
@@ -59,7 +60,7 @@ export default function TextEditor({ email }) {
     editor !== null ? editor.getText().slice(0, 250) : "";
 
   return (
-    <Box style={{width: "95"}}>
+    <Box style={{ width: "95" }}>
       <Box mt={25}>
         <TextInput
           label="Title"

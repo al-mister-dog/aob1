@@ -20,40 +20,37 @@ export default function About() {
         >
           <Box>
             <p style={{ marginTop: 0 }}>
-              FTX, a hugely valuable crypto-currency exchange filed for
-              bankruptcy in November 2022. The CEO of this company lost 90% of
-              his value overnight. Fortunately for him he was left with 10% of
-              his former wealth, amounting to almost a billion dollars.
-              Thousands of customers and traders were not so lucky, unable to
-              access their crypto-wallets or seeing their money disappearing
-              into thin air, supposedly siphoned by anonymous hackers.{" "}
+              In November 2022, FTX, an incredibly valuable crypto-currency
+              exchange, declared bankruptcy. This caused the CEO to lose 90% of
+              his wealth instantly. Despite this, he was left with a billion
+              dollars, constituting 10% of his original fortune. Unfortunately,
+              thousands of customers and traders weren't as fortunate, unable to
+              access their crypto-wallets or having their funds stolen by
+              unidentified hackers.
             </p>
             <p style={{ marginTop: 25 }}>
-              In the same month the UK government announced a budget that ended
-              up sending the country into financial meltdown, leaving families
-              hoping to buy their first homes in limbo thanks to sky high
-              mortgage rates.
+              In the same month, the UK government announced a budget that had
+              disastrous consequences, resulting in a financial meltdown and
+              leaving aspiring homeowners unable to secure mortgages due to the
+              high rates.
             </p>
 
             <p style={{ marginTop: 25 }}>
-              Social media and the news media do not leave us any wiser as to
-              how these disasters occur, what is going on behind the scenes and
-              how everyday people can protect themselves from scams or bad
-              policies. One of the reasons for this is the lack of basic
-              information about the mechanics of money, banking, finance and the
-              economy. While there are helpful sites out there, Art of Banking
-              aims to demistify the language of finance and economics so people
-              can visualise the system that we are all a part of and develop an
-              intuition about how everything works under the hood. There is no
-              intellectual barrier to entry if you want to learn as much as
-              possible about money.
+              Despite the lack of basic information available on social media
+              and the news media, Art of Banking is striving to make
+              understanding the language of finance and economics accessible to
+              everyone. This will help people gain an understanding of how the
+              economy and money system works, so they can protect themselves
+              from scams or bad policies. There is no intellectual barrier to
+              learning more about money, and Art of Banking is here to help.
             </p>
             <p style={{ marginTop: 25 }}>
-              Art of Banking also aims to generate discussion about economic
-              concepts from all schools of thought as well as dive into the
-              history of money. This site takes an empiricist approach to
-              economics rather than an ideological one. This site is open to
-              anyone wishing to contribute articles, lessons or discussions.
+              At Art of Banking, we believe in taking an empiricist approach to
+              economics, rather than an ideological one. We want to invite
+              contributions from all schools of thought and provide a platform
+              for discussing economic concepts and the history of money. We
+              welcome anyone who wishes to share their knowledge and contribute
+              to the site.
             </p>
           </Box>
           <Box>
@@ -77,40 +74,37 @@ export default function About() {
         >
           <Box style={{ maxWidth: 700 }}>
             <p style={{ marginTop: 0 }}>
-              FTX, a hugely valuable crypto-currency exchange filed for
-              bankruptcy in November 2022. The CEO of this company lost 90% of
-              his value overnight. Fortunately for him he was left with 10% of
-              his former wealth, amounting to almost a billion dollars.
-              Thousands of customers and traders were not so lucky, unable to
-              access their crypto-wallets or seeing their money disappearing
-              into thin air, supposedly siphoned by anonymous hackers.{" "}
+              In November 2022, FTX, an incredibly valuable crypto-currency
+              exchange, declared bankruptcy. This caused the CEO to lose 90% of
+              his wealth instantly. Despite this, he was left with a billion
+              dollars, constituting 10% of his original fortune. Unfortunately,
+              thousands of customers and traders weren't as fortunate, unable to
+              access their crypto-wallets or having their funds stolen by
+              unidentified hackers.
             </p>
             <p style={{ marginTop: 25 }}>
-              In the same month the UK government announced a budget that ended
-              up sending the country into financial meltdown, leaving families
-              hoping to buy their first homes in limbo thanks to sky high
-              mortgage rates.
+              In the same month, the UK government announced a budget that had
+              disastrous consequences, resulting in a financial meltdown and
+              leaving aspiring homeowners unable to secure mortgages due to the
+              high rates.
             </p>
 
             <p style={{ marginTop: 25 }}>
-              Social media and the news media do not leave us any wiser as to
-              how these disasters occur, what is going on behind the scenes and
-              how everyday people can protect themselves from scams or bad
-              policies. One of the reasons for this is the lack of basic
-              information about the mechanics of money, banking, finance and the
-              economy. While there are helpful sites out there, Art of Banking
-              aims to demistify the language of finance and economics so people
-              can visualise the system that we are all a part of and develop an
-              intuition about how everything works under the hood. There is no
-              intellectual barrier to entry if you want to learn as much as
-              possible about money.
+              Despite the lack of basic information available on social media
+              and the news media, Art of Banking is striving to make
+              understanding the language of finance and economics accessible to
+              everyone. This will help people gain an understanding of how the
+              economy and money system works, so they can protect themselves
+              from scams or bad policies. There is no intellectual barrier to
+              learning more about money, and Art of Banking is here to help.
             </p>
             <p style={{ marginTop: 25 }}>
-              Art of Banking also aims to generate discussion about economic
-              concepts from all schools of thought as well as dive into the
-              history of money. This site takes an empiricist approach to
-              economics rather than an ideological one. This site is open to
-              anyone wishing to contribute articles, lessons or discussions.
+              At Art of Banking, we believe in taking an empiricist approach to
+              economics, rather than an ideological one. We want to invite
+              contributions from all schools of thought and provide a platform
+              for discussing economic concepts and the history of money. We
+              welcome anyone who wishes to share their knowledge and contribute
+              to the site.
             </p>
           </Box>
           <Box>

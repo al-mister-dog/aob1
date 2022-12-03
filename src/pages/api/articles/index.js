@@ -2,7 +2,7 @@ import { unstable_getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 import { parseDate } from "../../../helpers/api/parseDate";
 import { prisma } from "../../../lib/prisma";
-// Path: src/pages/api/articles/index.js
+// Path: src/pages/api/articles/.js
 
 async function getPaginatedPrismaPosts({ page, pageSize }) {
   const posts = await prisma.post.findMany({

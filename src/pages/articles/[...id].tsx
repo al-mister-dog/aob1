@@ -1,7 +1,6 @@
-import { getSession } from "next-auth/react";
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
 import { parseDate } from "../../helpers/api/parseDate";
-
+import { prisma } from "../../lib/prisma";
 import ArticleDesktop from "../../components/desktop/articles/users/article";
 import ArticleMobile from "../../components/mobile/articles/users/article";
 import { useLoaded } from "../../hooks/useLoaded";
@@ -24,47 +23,22 @@ interface Article {
   };
 }
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  title: null | string;
-  bio: null | string;
-  emailVerified: null | boolean;
-  image: string;
-}
-
-function getReadTime(string) {
-  let eachWord = [];
-  let divided = eachWord.length / 200;
-  let int = Math.round(divided);
-  let decimal = (divided - int) / 0.6;
-}
-
-export default function UserArticle({
-  article,
-  user,
-}: {
-  article: Article;
-  user: User | null;
-}) {
+export default function UserArticle({ article }: { article: Article }) {
   const loaded = useLoaded();
   const isMobile = useMediaQuery(mediaQuery);
   if (loaded) {
     return isMobile ? (
-      <ArticleMobile article={article} user={user} />
+      <ArticleMobile article={article} />
     ) : (
-      <ArticleDesktop article={article} user={user} />
+      <ArticleDesktop article={article} />
     );
   }
   return null;
 }
 
 export async function getServerSideProps(context) {
-  const prisma = new PrismaClient();
   const id = context.query.id[1];
 
-  const session = await getSession(context);
   const data = await prisma.post.findUnique({
     where: { id },
     include: {
@@ -80,13 +54,5 @@ export async function getServerSideProps(context) {
     user: data.user,
   };
 
-  if (session) {
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
-    });
-
-    return { props: { article, user } };
-  } else {
-    return { props: { article, user: null } };
-  }
+  return { props: { article } };
 }

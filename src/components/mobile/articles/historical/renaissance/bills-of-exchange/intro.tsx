@@ -100,7 +100,15 @@ export default function Intro() {
         merchant trader, and advises an exchange banker on how to take advantage
         of the foreign exchange system to profit from a bill of exchange...
       </ArticleText>
-      <p style={{ paddingRight: "50px", paddingLeft: "50px" }}>
+      <p
+        style={{
+          paddingRight: "50px",
+          paddingLeft: "50px",
+
+          letterSpacing: 1,
+          fontFamily: "EB Garamond",
+        }}
+      >
         "If you (A) have money in Florence and want to transfer it Lyons,
         because you can make a profitable return exchange, give me (B), who need
         money, 64 ecus in Florence, when the exchange rate reaches this level,

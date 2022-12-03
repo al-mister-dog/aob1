@@ -3,25 +3,10 @@ export const theFedText = {
     lectureTitle: `The Fed`,
     title: `The Fed: Final Settlement`,
     paragraphs: [
-      `We have begun to understand how the banking system consists of many banks that try to act as
-      if they were all part of one big bank. The reason behind this is that a healthy bank is a bank
-      that can meet its daily requirements, and in order to facilitate this it is crucial that all
-      other banks can meet their daily requirements. The Clearing House system was a step towards
-      guaranteeing banks meet their daily requirements by creating a system in which all debts with 
-      the Clearing House and not any individual bank. This system can be easily broken however because
-      at the end of the day the Clearing House is liable to its members with a scarce resource.`,
-      `The Federal Reserve however has the legal right to create its own liabilities, which means
-      theoretically it can not run out of money. This greatly eases the facilitation of the nationwide
-      interbank payment system. However, this is not to say discipline does not play a factor. 
-      The Fed does not simply give away money for free. Banks can run overdrafts with the Fed but this
-      comes with consequences such as fees etc. To avoid overdrafts at the Fed, a bank will go to
-      the Fed Funds Market in search of loans to allow that bank to carry on with its day to day 
-      activities.`,
-      `The Fed Funds Market consists of loans and payments made to and from all the other banks in the federal 
-      banking system. These loans are reserves and involve promises to pay in return yet more Fed Funds reserves. 
-      The entire Fed Funds Market is effectively an expansion of credit based on the existing money
-      that is on the balance sheet of the Fed. It is important now to follow the money from balance
-      sheet to balance sheet as we explore further how exactly banking works.`,
+      `We have started to comprehend how the banking system is composed of many banks that pretend to be part of one large bank. This is because a healthy bank is able to fulfill its daily obligations, and to ensure this, it is essential that all other banks can do the same. The Clearing House system was introduced to guarantee that banks could meet their daily needs by creating a system in which all debts are owed to the Clearing House and not any individual bank. However, this system can be easily undermined since the Clearing House is ultimately responsible for its members with a limited resource.`,
+      `The Federal Reserve has the legal authority to create its own liabilities, theoretically meaning it can not run out of money. This makes it easier to facilitate the national interbank payment system. Nonetheless, this does not mean that discipline is not still necessary. The Fed does not provide money without consequences; banks can overdraft with the Fed, but this comes with fees and other associated penalties. To avoid overdrafting, banks will seek loans in the Fed Funds Market to cover their day-to-day operations.`,
+      `The Fed Funds Market is a system of loans and payments between banks in the federal banking system, and the money is passed between banks in the form of Fed Funds reserves. Lending and borrowing is based on the money each bank has in its account at the fed. This system of lending and borrowing is effectively the expansion and contraction of credit based on the money held on the Federal Reserve's balance sheet. Understanding how the Federal Funds Market works is important in order to gain insight into how banking operates.
+      `,
     ],
     assignment: `Sources: Stigum's Money Market - Marcia Stigum: The Federal Funds Market since the Financial Crisis - Ben Craig: New York Fed - Domestic Market Operations`,
     sources: [
@@ -47,148 +32,68 @@ export const theFedText = {
     lectureTitle: `The Fed`,
     title: `Daylight Overdrafts`,
     paragraphs: [
-      `It is worth being reminded once more that in the federal reserve system, money transfers
-      happen between the banks and the Fed, and not between the banks themselves. Lets say a customer
-      from Bank A transfers money to a customer of Bank B. Bank B does not need to know whether this
-      payment caused Bank A to go into their overdraft. Bank B is happy because their money came
-      directly from the Fed.`,
-      `In todays banking world, the majority of bank reserves in America are deposit accounts 
-      at the Fed. The survival constraint says that cash inflows must be at least as large as cash outflows.
-      For a bank, this constraint involves settling with the Fed by the end of the day (having a non-negative balance).
-      However to avoid stifling banks from being able to make payments, the Fed allows an overdraft in the day.
-      This allows to smooth out payments between banks without bouncing checks etc. At the end
-      of the day this overdraft must be paid back, otherwise the Fed charges an extra fee (usually
-      100 basis points over the interest rate).
+      `When customers from Bank A send money to customers of Bank B, the transfer happens between the Federal Reserve System and the bank, not between the banks themselves. Therefore, Bank B does not need to worry about whether Bank A's account has gone into overdraft. Bank B can be sure that the money was received directly from the Federal Reserve.`,
+      `
+      Most banks in America have deposit accounts at the Federal Reserve (Fed). The survival constraint states that cash inflows must be greater than or equal to cash outflows. As a result, banks must settle with the Fed by the end of the day and have a non-negative balance. To prevent payment delays, the Fed allows banks to have an overdraft during the day. This enables banks to make payments without bouncing checks. At the end of the day, the overdraft must be repaid or else the Fed charges an extra fee (typically 100 basis points over the interest rate).
       `,
-      `To avoid this, banks will try to get loans from other banks to pay off their overdrafts.
-      In order for a bank to lend to another bank, the lender bank must have an excess of reserves in 
-      their own account. These loans still accrue interest, but they are below the interest rate, 
-      (otherwise known as the Fed Funds Rate). This is beneficial for both banks, as the borrower bank is able to settle their accounts without
-      incurring overdraft fees, and the lender bank has used idle reserves in order to make a profit by 
-      lending them out.`,
+      `To avoid this, banks will try to get loans from other banks in order to pay off overdrafts. For a bank to lend to another, the lender must possess an extra amount of reserves in their own account. These loans accrue interest but typically at a lower rate than the Fed Funds Rate, which is advantageous for both banks. The borrower can settle their accounts without incurring overdraft fees, while the lender can make a profit by lending out their idle reserves.`,
     ],
-    assignment: `Imagine that Bank 1 needs to send a payment of $10 to Bank1 (try it out). This will incur 
-    an overdraft with the fed. After this get Bank 1 to take out a fed funds loan from bank 2 in order to 
-    settle with the Fed. Pay attention to the credit graph as well as the color coded payments. What happens
-    if you reverse the order of payments, taking out a loan with bank 2 and then transfering to bank 2? Please note that at this
-    stage in the lectures, Bank Deposits and reserves are the same thing to commercial banks.`,
+    assignment: `Suppose Bank 1 needs to pay Bank 2 $10 (try it out). This would cause Bank 1 to have an overdraft with the Federal Reserve. To resolve this, Bank 1 should first take out a loan from Bank 2 and then use the loan to pay the Federal Reserve. Be sure to observe the credit graph and the payments that are represented by different colors. What would happen if the order of payments was reversed, i.e. taking out a loan from Bank 2 and then transferring the funds to Bank 2? At this stage in the lecture, Bank Deposits and reserves are the same thing to commercial banks.`,
   },
   step3: {
     lectureTitle: `Fed Funds`,
     title: `The Fed Funds Market`,
     paragraphs: [
-      `We have seen how a bank that has gone into its daylight overdraft with the Fed can 
-      get a loan from another bank in order to settle this overdraft. But what does this loan
-      consist of?`,
-      `A bank that looks for loans in the Federal Reserve system goes into the 'Fed Funds Market'
-      to do so. In this market are other banks looking to loan out reserves or looking to borrow 
-      reserves. These reserves are accepted as payment to settle overdrafts with the Fed. They can
-      be used as payment 'right now'. When Bank B lends to Bank A, Bank B is lending reserves. However,
-      the loan that appears on Bank B's assets and Bank A's liabilities is called 'Fed Funds'. Fed
-      Funds are credit, money that Bank A promises to pay the next day. Fed Funds is the money with
-      which banks settle payments with other banks. They are not the liability or the asset of the 
-      Fed.
+      `How does a bank obtain a loan to settle a daylight overdraft with the Fed?`,
+      `A bank looking to borrow or loan out reserves in the Federal Reserve System can do so through the 'Fed Funds Market'. In this market, banks have the option to either loan reserves or borrow reserves, which can be used as payment towards settling overdrafts with the Fed. This payment can be made immediately. When Bank B lends to Bank A, Bank B is providing reserves, however, the loan appears as 'Fed Funds' in Bank B's assets and Bank A's liabilities. Fed Funds are a form of credit, meaning Bank A promises to pay the loan back the next day. Fed Funds are used to settle payments between banks, but are not the liability or asset of the Fed.
       `,
-      `In the previous example we saw that Bank 1 went into its daylight overdraft in order to make a payment.
-      Then Bank 1 took out a loan with another bank to pay it off. In the credit chart you may have noticed
-      that the credit at the Fed expanded when the bank went into its overdraft, and then the credit
-      contracted when the bank took a loan to pay it off. However the credit between the lender and 
-      loanee bank remained. This is called the expansion of private credit. Private credit allows banks
-      flexibility in investments and payments, but private credit can sometimes expand so high that
-      a financial crisis or even a crash may follow. `,
-      `The Fed tries to anticipate and adjust for this using the Fed Funds Rate (in the UK the equivelent
-        is the interest rate or bank rate). The federal funds rate 
-      is the interest rate that banks charge each other to borrow or lend excess reserves overnight. 
-      This rate is set by the Federal Open Market Committee (FOMC) and is adjusted to either encourage
-      or discourage lending. The rate may be increased if the Fed wish to see less banks making risky
-      investments. If the Fed Funds Rate is high then a bank may think twice about doing that 
-      requires them to take a loan with another bank, as the interest on that loan will be much higher.
-      Conversely the rate may be decreased during recessions to allow banks the freedom to make more
-      investments and payments in order to kick start the economy.`,
+      `In the previous example we saw that Bank 1 went into its daylight overdraft in order to make a payment. When Bank 1 went into its daylight overdraft, the credit at the Federal Reserve expanded. This allowed Bank 1 to make a payment. To pay off the overdraft, Bank 1 then took out a loan with another bank. As a result, the credit at the Federal Reserve contracted. However, the credit between the lender and loanee bank remained; this is called the expansion of private credit. Private credit gives banks financial flexibility, but it can expand so much that it can lead to a financial crisis or crash. `,
+      `The Federal Reserve  uses the Federal Funds Rate to anticipate and adjust for this. In the UK, this is equivalent to the Bank Rate or Interest Rate. The rate is set by the Federal Open Market Committee (FOMC) and can be increased to discourage banks from making risky investments, or decreased during recessions to encourage lending and payments that will stimulate the economy. When the Fed Funds Rate is high, banks may be discouraged from borrowing from other banks, as the interest on that loan will be higher.`,
     ],
-    assignment: `Get banks to take out loans, get into overdrafts and settle payments. This may need
-    to be preceeded by customer transfers. Also increase or decrease the Fed Funds Rate. Would you 
-    take a loan out if that was the rate?`,
+    assignment: `Get the banks to offer loans, enter into overdrafts, and process payments. This should be done only after customers have completed their transfers. The Federal Funds Rate should be adjusted as needed. Would customers take out a loan if that was the interest rate?`,
   },
   step4: {
     lectureTitle: `The Fed`,
     title: `Funding a Mortgage`,
     paragraphs: [
-      `The funding of a mortgage loan involves banks going into the Fed Funds market to fund 
-      its customers purchasing properties. Imagine I want to buy a house from you. I will do this
-      by getting a mortgage loan from my bank (Citibank). We swap IOUs; Citibank promises deposits
-      to make my purchase and I promise to pay a mortgage loan to Citibank after x number of years.
-      Then I use these deposits to transfer the money to you in return for the deeds of your property.`,
-      `Behind the scenes there is a lot going on. As we have seen in previous lessons, transfers 
-      between customers of different banks involves those banks oweing each other money. Citibank 
-      may not have enough deposits to cover your transfer. In this case Citibank will need to require a Fed
-      Funds loan from another bank (let say HSBC). Once the reserves are in Citibank's account,
-      I can go ahead and transfer the money to your bank account (you bank at Chase). This will all
-      happen super quickly and under watchful eyes (I wouldn't just be able to cash out the mortgage
-      loan and skip the country).`,
-      `Now lets imagine at the beginning of the day that HSBC did not have the reserves to make a 
-      loan to Citibank. Then it could aqquire reserves by taking a loan out from Chase. Strange as it
-      sounds, in this scenario, my bank could have funded its payment to your bank with your own
-      banks reserves! Such is the alchemy of banking.`,
-      `One other thing to take note of is the role that HSBC has taken in this transaction. HSBC has
-      become a facilitator of a transaction between two other banks. HSBC is buying and selling money
-      in order to facilitate this payment. This role is called the Dealer Function, with HSBC being
-      the Dealer between two banks. We will look more closeley at the Dealer Function in the next lesson.
-      `,
+      `Banks use the Federal Funds market to obtain the funding needed to provide mortgage loans for their customers who are buying property. Imagine that John purchases a property from Jane by taking out a mortgage loan from Citibank. John and Citibank exchange IOUs, with Citibank promising deposits to John for the purchase and John promising to pay off the loan over a certain number of years (a mortgage). With those deposits, John then transfers the money to Jane and receives the deeds of Jane's property.`,
+      `When making these transfers, there is a complex process that happens behind the scenes. For example, if Citibank doesn't have enough deposits to cover John's transfer, it will need to obtain a loan from another bank such as HSBC. Once the reserves have been transferred to Citibank's account, the money can be transferred to Jane's bank account at Chase. This process is closely supervised, so it is not possible for someone to take advantage of this system and steal the money.`,
+      `At the start of the day, if HSBC did not have the reserves needed to lend to Citibank, it could acquire them by borrowing from Chase. In this strange situation, John's bank could have used Janes's bank's own reserves to buy her house! Such is the art of banking.`,
+      `HSBC is playing a facilitating role in this transaction as the Dealer between two banks. This role, called the Dealer Function, involves HSBC buying and selling money to enable the payment. We'll be exploring the Dealer Function more in upcoming lessons.`,
     ],
-    assignment: `I have just taken out a mortgage loan to pay you for a house. Make sure 
-    my bank (Citibank) has enough funds to cover this transaction, by taking a loan out with HSBC, and get me
-    to transfer funds to your bank account (with Chase). For extra credit, you could start the transaction by getting HSBC to 
-    acquire funds from Chase before lending to Citibank. For extra extra credit, can you find a way
-    of contracting the credit after the transfer has been completed? Hint: its down to you...`,
+    assignment: `John has taken out a mortgage loan with Citibank to pay Jane for a house. To ensure that the transaction is successful, get John to transfer funds from HSBC to Jane's bank account with Chase. For additional security, HSBC should acquire funds from Chase before lending to Citibank. Finally, can you find a way of contracting the credit after the transfer has been completed?`,
   },
   step5: {
     lectureTitle: `The Fed`,
     title: `Fed Funds Rate`,
     paragraphs: [
-      `So far we have been trading fed funds between banks, and perhaps even setting the interest rate 
-    of the fed funds. We will now look at the wider picture of these interest rates. Understanding the 
-    wider picture will also help us understand another role the Fed plays outside of just facilitating payments between banks.`,
-      `The interest rate of a fed funds loan is decided between the borrower and lender banks. They are decided 
-      for different reasons. Because this is open market trading, every bank can see how every other bank is doing. 
-      If a lender bank sees that a borrower bank has a high exposure (a large amount of liabilities), the borrower
-      bank may wish to increase the interest rate on its fed funds loan to that bank. Likewise if the lender
-      bank has confidence in another bank's business, they may lend at a lower price, or perhaps the lender bank
-      is keen to get rid of excess reserves.`,
-      `If we averaged all the different fed funds loans traded between banks we would get the Effective Federal Funds Rate (EFFR). 
-    The precise rate is determined by finding the volume-weighted median rate of all fed funds loans.
-    In its simplest terms, the volume-weighted median is derived by halving the amount of money traded in that day
-    and taking note of the interest rate of fed funds that have been traded at that price. This gives us 
-    an idea of the general trend of lending rates. The St Louis Fed gives the following example...
+      `We have been trading fed funds between banks and possibly setting their interest rate. Now, we will examine the broader context of these interest rates. This will help us understand the other roles that the Federal Reserve plays beyond just facilitating payments between banks.`,
+      `The interest rate of a fed funds loan is determined through open market negotiations between borrower and lender banks. When two banks agree on a rate, it is based on factors such as the size of the borrower bank's liabilities and the lender bank's willingness to lend or its need to reduce excess reserves. If the borrower bank has high exposure, the lender bank may increase the interest rate offered. Conversely, if the lender bank is confident in the borrower bank's business, it may offer a lower rate.`,
+      `The Effective Federal Funds Rate (EFFR) is calculated by finding the volume-weighted median rate of all fed funds loans traded between banks. This rate is determined by taking the median of the interest rates of loans traded at the midpoint of the total money traded in a day. The St Louis Fed gives the following example...
     `,
       `"For example, assume that on a given day, $10 billion of federal funds transactions occurred at
      each of 5, 10, 15 and 20 basis points, and $60 billion occurred at 25 basis points. This represents 
      $100 billion of total volume. The median would be the rate at the ‘middle dollar’, or $50 billion, 
      which is 25 basis points in this example."`,
-      `It is important to understand the Effective Federal Funds Rate for two reasons. Firstly it lets us 
-      know the state of the banking system. A low EFFR may mean the economy is growing too fast and 
-      is at risk of inflation. Conversely, a high EFFR may mean the economy is slowing down and is at
-      risk of recession. Secondly it gives the Fed a birds-eye view of the payments system, allowing it to 
-      enter the market itself in order to restore balance. In the next chapter we will see how the Fed can manipulate the EFFR by using the
-      'Target Rate'.`,
+      `It is important to understand the Effective Federal Funds Rate for two reasons. Firstly, it helps us to assess the health of the banking system. A low EFFR may indicate that the economy is growing too quickly, and is at risk of inflation, whereas a high EFFR may suggest that the economy is slowing down and is in danger of recession. Secondly, it allows the Federal Reserve to gain an overview of the payment system, so that it can intervene in the market to restore balance. In the next chapter, we will explore how the Fed can adjust the EFFR by using the 'Target Rate'.`,
     ],
-    assignment: `Below we see that federal funds transactions have occured as given in the example from
-    the St Louis Fed. Get the banks to trade fed funds at different interest rates in order to move the EFFR.
+    assignment: `The chart below illustrates how fed funds transactions have occurred as given in the example from the St Louis Fed.  Trade fed funds between banks at various interest rates in order to adjust the EFFR.
     `,
   },
   step6: {
     lectureTitle: `The Fed`,
     title: `Fed Funds Rate: Target`,
     paragraphs: [
-      `If a bank finds that it is doing much more lending than it is borrowing, the bank stands to lose a lot of money should the investment fail. This type of risk is called exposure. A bank can limit its exposure by increasing the interest rates on its loans. The opposite is also true; if a bank is borrowing more than it is lending then it can encourage more investors by giving loans at a lower interest rate. So the Fed Funds rate is a market rate.`,
-      `Where does the Federal Reserve come into this? It is common to hear that the Federal Reserve 'sets the interest rate'. But the Fed is not a participant in the Fed Funds Market. Instead the Fed has a target rate that it influences by manipulating the quantity of reserves in the system as a whole. The underlying quantity of reserves in the Fed Funds market influences the amount of credit expansion.`,
-      `The Federal Reserve can increase or decrease the money supply by performing 'open-market operations' such as participating in the Repo market. The Repo market will be covered in the next chapter, so instead we will give a simplified example using Treasury Bills. Treasury Bills are promises to pay cash from the government at a specified date in the future. They can't be spent straight away but will have accrued interest on maturity. This makes Treasury Bills a low risk investment.`,
-      `Banks will purchase these Treasury Bills from the fed in exchange for their own reserves. Because reserves have gone out of the system and back into the central bank, there are fewer reserves in the system over all. Less reserves in the system as a whole means banks will be discouraged from lending their own reserves, and therefore raising their interest rates. More reserves in the system as a whole means banks will be encouraged to invest, and therefore lower their interest rates. The Federal Reserve can increase overall reserves by buying treasury bills from other banks, giving banks dollar reserves, which they can now lend in the Fed Funds market. `,
-      `To conclude this chapter it is worth pointing out that so far, these loans are unsecured, meaning that there's no guarantee that a bank will get back the reserves they lent out. In the next chapter we will cover Repurchase Agreement Loans (Repos), which are a sort of swap involving Fed Funds and Treasury Bill Securities as collateral. Repos make up a huge amount of the worlds money supply and are another crucial step in grasping the larger picture of money and banking.
+      `If a bank is lending more money than it is borrowing, it is at risk of losing a lot of money if the investments fail. This risk is referred to as exposure. To limit its exposure, the bank can raise the interest rates on its loans. Alternatively, if a bank is borrowing more than it is lending, it can attract more investors by offering loans at a lower interest rate. In light of this we can say that the Fed Funds Rate is a market rate.`,
+      `What role does the Federal Reserve play in this? It is common to hear that the Federal Reserve 'sets the interest rate'. But the Federal Reserve does not directly participate in the Fed Funds Market; instead, it sets a target interest rate that it influences by controlling the quantity of reserves in the banking system. This, in turn, affects the amount of credit expansion in the market.`,
+      `
+      The Federal Reserve can control the money supply by engaging in open-market operations, such as participating in the Repo market (which will be discussed in the next chapter). As an example, the Federal Reserve can buy Treasury Bills, which are promises from the government to pay out cash at a future date. The Treasury Bills cannot be used for immediate spending, but will have gained interest when they mature. This makes Treasury Bills a low-risk investment.`,
+      `The Federal Reserve can increase overall reserves in the banking system by purchasing Treasury Bills from other banks. This injects more reserves into the system, encouraging banks to invest, and thus lowering their interest rates. Conversely, when reserves are removed from the system, banks become discouraged from lending, resulting in higher interest rates. `,
+      `
+      To conclude this chapter, it is important to note that these loans are unsecured and therefore there is no guarantee that a bank will get back the reserves they lent out. In the following chapter, we will discuss Repurchase Agreement Loans (Repos) which involve the exchange of Fed Funds and Treasury Bill Securities as collateral. Repos are a significant component of the global money supply and are essential to understanding money and banking.
     `,
     ],
-    assignment: `Buy and sell treasury bills in order to manipulate the amount of reserves in the system. At this point in the building of this website, there 
-    is no decision making functionality in the banks, so it is up to the user to decide whether to raise the interest target or not.
-    In the next chapter, banks will start making their own decisions whether to lend or not!`,
+    assignment: `
+    Use the purchase and sale of Treasury bills to affect the amount of reserves in the system. Currently, this website does not have the capability to make decisions on interest rate targeting; it is up to the user to decide whether or not to increase the interest rate. In subsequent chapters, banks will be able to autonomously decide whether or not to approve loans.`,
   },
 };

@@ -4,12 +4,7 @@ async function get(req, res) {
 
   const data = await prisma.post.findMany({
     where: { id: id },
-    select: {
-      id: true,
-      title: true,
-      createdAt: true,
-      preview: true,
-    },
+    include: { user: true },
     orderBy: {
       createdAt: "desc",
     },
@@ -72,7 +67,7 @@ async function post(req, res) {
   const prismaUser = await prisma.user.findUnique({
     where: { email },
   });
-  
+
   const newPost = await prisma.post.create({
     data: {
       title,

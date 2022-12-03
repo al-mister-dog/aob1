@@ -289,8 +289,8 @@ export const setupFunctions: SetupFunctions = {
     BankingSystem.createBank("Citibank", "bank", 0, 250000);
     BankingSystem.createBank("HSBC", "bank", 0, 250000);
     BankingSystem.createBank("Chase", "bank", 0, 250000);
-    BankingSystem.createBank("Me", "customer");
-    BankingSystem.createBank("You", "customer");
+    BankingSystem.createBank("John", "customer");
+    BankingSystem.createBank("Jane", "customer");
     Customer.createAccount(bankData.banks[4], bankData.banks[1]);
     Record.setRound();
     Customer.createAccount(bankData.banks[5], bankData.banks[3]);

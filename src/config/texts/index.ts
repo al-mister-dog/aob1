@@ -1,3 +1,3 @@
-export { fundamentalsText } from "./fundamentals";
-export { clearinghouseText } from "./clearinghouse";
-export { theFedText } from "./theFed";
+export { fundamentalsText } from "./lectures/fundamentals";
+export { clearinghouseText } from "./lectures/clearinghouse";
+export { theFedText } from "./lectures/theFed";

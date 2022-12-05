@@ -6,6 +6,7 @@ import InteractiveUI from "../interactive-ui/layout";
 import KeyTerms from "./resources/key-terms";
 import Links from "./resources/links";
 import { colors } from "../../../../../config/colorPalette";
+import { Props } from "./fixtures";
 
 const useStyles = createStyles(() => ({
   articleContainer: {
@@ -22,7 +23,7 @@ const useStyles = createStyles(() => ({
   articleFooterContainer: { marginTop: 100, position: "sticky", bottom: 0 },
 }));
 
-export default function LecturePath({
+export default function LecturePage({
   slug,
   title,
   sources,
@@ -30,7 +31,7 @@ export default function LecturePath({
   assignment,
   keyTermsIds,
   nextLecture,
-}) {
+}: Props) {
   const { classes } = useStyles();
 
   return (

@@ -39,7 +39,7 @@ function ArticlesList({ user }) {
     `/api/articles/user/email/${user.email}`,
     fetcher
   );
-  console.log(data);
+
   if (!data) {
     return <Box style={{ height: "100vh" }}></Box>;
   } else if (error) {

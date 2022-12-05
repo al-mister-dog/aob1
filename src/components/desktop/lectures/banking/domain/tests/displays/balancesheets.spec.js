@@ -53,6 +53,6 @@ describe("displays for component rendering", () => {
     const balanceSheetDisplay = Display.balanceSheet(bankData.banks[0]);
     // expect(balanceSheetDisplay).toEqual(balanceSheetDisplay5);
 
-    // console.log(JSON.stringify(Balancesheets.get(3)))
+    
   });
 });

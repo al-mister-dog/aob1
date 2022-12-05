@@ -1,6 +1,6 @@
 import { lectureRoutes } from "../../config/routes/lectureRoutes";
 import { homeTexts } from "../../config/homeTexts";
-import LandingDesktop from "../../components/desktop/lectures/banking/pages/landing";
+import LandingDesktop from "../../components/desktop/lectures/banking/pages/landing-page";
 import { useLoaded } from "../../hooks/useLoaded";
 import { mediaQuery } from "../../config/media-query";
 import { useMediaQuery } from "@mantine/hooks";

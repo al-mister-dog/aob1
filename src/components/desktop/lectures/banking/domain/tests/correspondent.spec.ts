@@ -53,13 +53,8 @@ describe("Correspondent transactions", () => {
       bankData.banks[0],
       bankData.banks[1]
     );
-    Dues.decrease(
-      bankData.banks[0],
-      bankData.banks[1],
-      "Customer Deposits",
-      20
-    );
-    expect(Dues.get(bankData.banks[0], bankData.banks[1]).balance).toBe(5);
+    Dues.decrease(bankData.banks[1], bankData.banks[0], 25);
+    expect(Dues.get(bankData.banks[0], bankData.banks[1]).balance).toBe(25);
   });
   it("dues accounts should stay same after bank transfer", () => {
     setupParties();
@@ -71,6 +66,7 @@ describe("Correspondent transactions", () => {
       bankData.banks[0],
       bankData.banks[1]
     );
+
     Banks.transfer(bankData.banks[0], bankData.banks[1], 20);
     expect(Dues.get(bankData.banks[0], bankData.banks[1]).balance).toBe(25);
   });

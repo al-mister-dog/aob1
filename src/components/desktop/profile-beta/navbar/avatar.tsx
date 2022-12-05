@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useForm } from "@mantine/form";
-import { fetcher } from "../../../../lib/fetcher";
-import useSWR from "swr";
 import axios, { AxiosRequestConfig } from "axios";
 import {
   Center,
@@ -21,10 +19,6 @@ import SessionContainer from "../../../auth/registration/SessionContainer";
 export default function AvatarComponent({ user, updatedBio, setUpdatedBio }) {
   const [editting, setEditting] = useState(false);
   const [updatedTag, setUpdatedTag] = useState("");
-  const { data, error } = useSWR(
-    `/api/user/profile/?email=${user.email}`,
-    fetcher
-  );
 
   function handleSuccess(tag, bio) {
     toast.success("Bio Updated", {
@@ -65,7 +59,7 @@ export default function AvatarComponent({ user, updatedBio, setUpdatedBio }) {
       </Center>
       <Center>
         <Text color="dimmed">
-          {updatedTag ? updatedTag : data ? data.title : " "}
+          {updatedTag ? updatedTag : user ? user.title : " "}
         </Text>
       </Center>
       <Center>
@@ -92,7 +86,7 @@ export default function AvatarComponent({ user, updatedBio, setUpdatedBio }) {
             color={colors.textColor}
             align="justify"
           >
-            {updatedBio ? updatedBio : data ? data.bio : " "}
+            {updatedBio ? updatedBio : user ? user.bio : " "}
           </Text>
         </Spoiler>
       </Center>

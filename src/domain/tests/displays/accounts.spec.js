@@ -37,7 +37,7 @@ describe("structures", () => {
   test("structure 3", () => {
     setupFunctions[10]();
     let bank1Account = Accounts.getAccounts(0);
-    console.log(JSON.stringify(bank1Account));
+    
     expect(Object.keys(bank1Account)).toEqual(["accounts"]);
     expect(bank1Account.accounts.length).toBe(3);
     expect(bank1Account.accounts[0].instrument).toBe("Dues");

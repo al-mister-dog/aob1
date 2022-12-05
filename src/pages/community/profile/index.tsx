@@ -1,20 +1,27 @@
-import { getSession, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import { useLoaded } from "../../../hooks/useLoaded";
 import { useMediaQuery } from "@mantine/hooks";
 import { mediaQuery } from "../../../config/media-query";
 import ProfileDesktop from "../../../components/desktop/profile";
 import ProfileMobile from "../../../components/mobile/profile";
-
-import { PrismaClient } from "@prisma/client";
 import { Box } from "@mantine/core";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
 
 export default function Index(props) {
   const { user } = props;
-
+  const router = useRouter();
   const loaded = useLoaded();
   const isMobile = useMediaQuery(mediaQuery);
 
-  if (loaded) {
+  useEffect(() => {
+    if (!user) {
+      router.push("/community");
+    }
+  }, [user]);
+
+  if (loaded && user) {
     return isMobile ? (
       <ProfileMobile user={user} />
     ) : (
@@ -27,25 +34,9 @@ export default function Index(props) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/community",
-      },
-    };
-  }
-  const prisma = new PrismaClient();
-
-  const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
-  });
-
-  if (user) {
-    return {
-      props: {
-        user,
-      },
-    };
-  }
+  return {
+    props: {
+      user: session ? session.user : null,
+    },
+  };
 }

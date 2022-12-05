@@ -224,12 +224,12 @@ export default class InterestCalculator {
 //     let normalInterest = balance / 100;
 //     let compoundInterest = (interest * rate) / 100;
 //     let result = normalInterest + compoundInterest;
-//     // console.log(result);
+//    
 //   }
 
 //   balance = balance + interest;
   
-//   console.log(balance)
+
 //   accruedInterest = accruedInterest + interest;
 
 //   let data = {
@@ -251,7 +251,7 @@ export default class InterestCalculator {
 //   return data;
 // });
 
-// console.log(compoundInterestResults);
+
 
 // function compoundInterval(principal, rate, times, compoundInterval) {
 //   let cInterest = (principal / 100) * rate;

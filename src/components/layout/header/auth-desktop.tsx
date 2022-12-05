@@ -12,7 +12,6 @@ const useStyles = createStyles((theme) => ({
 
 export default function Auth() {
   const { data: session, status } = useSession();
-
   const { classes } = useStyles();
 
   if (status === "loading") {

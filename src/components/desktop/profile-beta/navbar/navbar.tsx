@@ -218,7 +218,3 @@ export default function Navbar({ user, updatedBio, setUpdatedBio }) {
     </Box>
   );
 }
-
-
-
-

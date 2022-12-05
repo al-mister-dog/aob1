@@ -53,7 +53,7 @@
 //     async function getLatestPrice() {
 //       try {
 //         const data = await getStonks();
-//         console.log(data);
+
 //         const gme = data.chart.result[0];
 //         setPrevPrice(price);
 //         setPrice(gme.meta.regularMarketPrice.toFixed(2));
@@ -74,7 +74,7 @@
 //           },
 //         ]);
 //       } catch (error) {
-//         console.log(error);
+
 //       }
 //       timeoutId = setTimeout(getLatestPrice, 5000 * 2);
 //     }

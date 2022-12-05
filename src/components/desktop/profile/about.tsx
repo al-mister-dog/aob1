@@ -12,7 +12,7 @@ export default function About({ user, updatedBio, setUpdatedBio }) {
     `/api/user/profile/?email=${user.email}`,
     fetcher
   );
-  
+
   const [editting, setEditting] = useState(false);
 
   function onClickEdit() {
@@ -47,7 +47,7 @@ export default function About({ user, updatedBio, setUpdatedBio }) {
   }
 
   if (error) {
-    return <Box>Something went wrong...</Box>
+    return <Box>Something went wrong...</Box>;
   }
   return (
     <Box mt={25}>
@@ -64,12 +64,15 @@ export default function About({ user, updatedBio, setUpdatedBio }) {
           content={data}
           placeholder={<Text>This section is currently empty. . .</Text>}
         >
-          {data && data.bio.length && (
-            <Text>This section is currently empty. . .</Text>
+          {data && (
+            <>
+              {!data.bio && <Text>This section is currently empty. . .</Text>}
+
+              <Button color="violet" variant="outline" onClick={onClickEdit}>
+                {data ? "Edit Bio" : "Add Bio"}
+              </Button>
+            </>
           )}
-          <Button color="violet" variant="outline" onClick={onClickEdit}>
-            {data ? "Edit Bio" : "Add Bio"}
-          </Button>
         </SessionContainer>
       </Box>
       <Box mt={25}>
@@ -88,4 +91,3 @@ export default function About({ user, updatedBio, setUpdatedBio }) {
     </Box>
   );
 }
-

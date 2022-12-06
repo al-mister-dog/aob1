@@ -1,11 +1,8 @@
 import "../styles/globals.css";
-
 import { Provider as StateProvider } from "react-redux";
 import { SessionProvider } from "next-auth/react";
-import type { AppProps } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
-
 import store from "../app/store";
 import Layout from "../components/layout/layout";
 

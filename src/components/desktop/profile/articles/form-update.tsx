@@ -12,7 +12,7 @@ import TextAlign from "@tiptap/extension-text-align";
 import Superscript from "@tiptap/extension-superscript";
 import SubScript from "@tiptap/extension-subscript";
 
-import { Box, Text, TextInput, Button, Textarea } from "@mantine/core";
+import { Box, Text, TextInput, Button, Textarea, Loader } from "@mantine/core";
 
 //<sub> <sup>
 export default function TextEditor({ user, article }) {
@@ -20,6 +20,7 @@ export default function TextEditor({ user, article }) {
   const router = useRouter();
   const [title, setTitle] = useState(article.title);
   const [preview, setPreview] = useState(article.preview);
+  const [loading, setLoading] = useState(false);
 
   const editor = useEditor({
     extensions: [
@@ -35,6 +36,7 @@ export default function TextEditor({ user, article }) {
   });
 
   async function updateArticle() {
+    setLoading(true);
     const body = editor.getHTML();
     const { status, data } = await axios.put("/api/articles", {
       id: article.id,
@@ -44,8 +46,10 @@ export default function TextEditor({ user, article }) {
       email,
     });
     if (status === 201) {
+      setLoading(false);
       router.replace("/community/users");
     } else {
+      setLoading(false);
       toast.error(
         "Something went wrong with posting your article. Please try again later",
         {
@@ -61,7 +65,20 @@ export default function TextEditor({ user, article }) {
       );
     }
   }
-
+  if (loading) {
+    return (
+      <Box
+        style={{
+          minWidth: 390,
+          maxWidth: "50%",
+          margin: "auto",
+          marginTop: 50,
+        }}
+      >
+        <Loader />
+      </Box>
+    );
+  }
   return (
     <Box>
       <Box mt={25}>

@@ -2,8 +2,6 @@ import ArticleDesktop from "../../components/desktop/articles/users/article";
 import ArticleMobile from "../../components/mobile/articles/users/article";
 import { useMediaQuery } from "@mantine/hooks";
 import { mediaQuery } from "../../config/media-query";
-import useSWR from "swr";
-import { fetcher } from "../../lib/fetcher";
 import Loader from "../../components/shared-ui/loader";
 import { Box } from "@mantine/core";
 import { parseDate } from "../../helpers/api/parseDate";

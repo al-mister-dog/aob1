@@ -4,16 +4,22 @@ import axios from "axios";
 import { getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../../../components/shared-ui/loader";
+import { useState } from "react";
 
 export default function NewArticle({ article, user }) {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   async function deleteArticle() {
+    setLoading(true);
     const { status } = await axios.delete("/api/articles", {
       data: { id: article.id },
     });
     if (status === 201) {
+      setLoading(false);
       router.replace("/community/users");
     } else {
+      setLoading(false);
       toast.error(
         "Something went wrong with deleting your article. Please try again later",
         {
@@ -28,6 +34,21 @@ export default function NewArticle({ article, user }) {
         }
       );
     }
+  }
+
+  if (loading) {
+    return (
+      <Box
+        style={{
+          minWidth: 390,
+          maxWidth: "50%",
+          margin: "auto",
+          marginTop: 50,
+        }}
+      >
+        <Loader />
+      </Box>
+    );
   }
   return (
     <Box

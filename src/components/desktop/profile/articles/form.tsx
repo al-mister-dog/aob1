@@ -22,7 +22,7 @@ export default function TextEditor({ user }) {
   const [article, setArticle] = useState("");
   const [title, setTitle] = useState("");
   const [preview, setPreview] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -45,6 +45,7 @@ export default function TextEditor({ user }) {
 
   async function saveArticle() {
     const body = editor.getHTML();
+    setLoading(true);
     const { status, data } = await axios.post("/api/articles", {
       title,
       preview,
@@ -52,8 +53,10 @@ export default function TextEditor({ user }) {
       email,
     });
     if (status === 201) {
+      setLoading(false);
       router.replace("/community/users");
     } else {
+      setLoading(false);
       toast.error(
         "Something went wrong with posting your article. Please try again later",
         {
@@ -73,6 +76,20 @@ export default function TextEditor({ user }) {
   const previewPlaceholder =
     editor !== null ? editor.getText().slice(0, 250) : "";
 
+    if (loading) {
+      return (
+        <Box
+          style={{
+            minWidth: 390,
+            maxWidth: "50%",
+            margin: "auto",
+            marginTop: 50,
+          }}
+        >
+          <Loader />
+        </Box>
+      );
+    }
   return (
     <Box>
       <Box mt={25}>
@@ -154,6 +171,7 @@ export default function TextEditor({ user }) {
 import parse from "html-react-parser";
 import { colors } from "../../../../config/colorPalette";
 import Router from "next/router";
+import Loader from "../../../shared-ui/loader";
 
 function Output({ article }) {
   const reactElement = parse(article);

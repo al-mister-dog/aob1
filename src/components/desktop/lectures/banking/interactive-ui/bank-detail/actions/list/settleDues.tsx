@@ -269,7 +269,6 @@ function NextStepCH({ bank, selectedBank }) {
         </Button>
       ) : (
         <>
-          (
           <Button
             color={`${bank.color}`}
             onClick={payDuesPayload}
@@ -277,7 +276,6 @@ function NextStepCH({ bank, selectedBank }) {
           >
             Decrease {otherBank.name} Balance
           </Button>
-          )
         </>
       )}
     </>

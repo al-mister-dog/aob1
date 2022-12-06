@@ -2,19 +2,16 @@ import { parseDate } from "../../../helpers/api/parseDate";
 async function get(req, res) {
   const id = req.query.id;
 
-  const data = await prisma.post.findMany({
+  const data = await prisma.post.findUnique({
     where: { id: id },
     include: { user: true },
-    orderBy: {
-      createdAt: "desc",
-    },
   });
-  const posts = data.map((d) => ({
-    ...d,
-    createdAt: parseDate(`${d.createdAt}`),
-  }));
+  const post = {
+    ...data,
+    createdAt: parseDate(`${data.createdAt}`),
+  };
 
-  return res.status(201).json(posts);
+  return res.status(201).json(post);
 }
 
 async function put(req, res) {

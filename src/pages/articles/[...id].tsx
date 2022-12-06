@@ -7,7 +7,6 @@ import useSWR from "swr";
 import { fetcher } from "../../lib/fetcher";
 import Loader from "../../components/shared-ui/loader";
 import { Box } from "@mantine/core";
-import { useRouter } from "next/router";
 
 interface Article {
   id: string;
@@ -25,9 +24,7 @@ interface Article {
   };
 }
 
-export default function UserArticle() {
-  const router = useRouter();
-  const id = router.query.id[1];
+export default function UserArticle({ id }) {
   const { data, error } = useSWR(`/api/articles/${id}`, fetcher);
   let article: Article = data;
   const isMobile = useMediaQuery(mediaQuery);
@@ -48,7 +45,7 @@ export default function UserArticle() {
   }
 }
 
-// export async function getServerSideProps(context) {
-//   const id = context.query.id[1];
-//   return { props: { id } };
-// }
+export async function getServerSideProps(context) {
+  const id = context.query.id[1];
+  return { props: { id } };
+}

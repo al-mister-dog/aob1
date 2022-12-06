@@ -1,24 +1,16 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
   Box,
-  Button,
   UnstyledButton,
   Badge,
   Text,
   ActionIcon,
   Tooltip,
   Group,
-  Center,
-  Avatar,
-  TextInput,
   createStyles,
-  Textarea,
-  Spoiler,
 } from "@mantine/core";
 import { IconBulb, IconUser, IconBook2, IconPlus } from "@tabler/icons";
-import { useState } from "react";
+
 import AvatarComponent from "./avatar";
 import { colors } from "../../../../config/colorPalette";
 

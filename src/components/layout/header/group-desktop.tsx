@@ -106,7 +106,7 @@ export default function HeaderGroup() {
   ));
   return (
     <Group sx={{ height: "100%" }} spacing={0} className="hidden-mobile">
-       <Link href="/" className={classes.link}>
+      <Link href="/" className={classes.link}>
         Home
       </Link>
       <Menu
@@ -118,14 +118,12 @@ export default function HeaderGroup() {
         onChange={setOpened}
       >
         <Menu.Target>
-          <a href="#" className={classes.link}>
-            <Center inline>
-              <Box component="span" mr={5}>
-                Features
-              </Box>
-              <IconChevronDown size={16} color="purple" />
-            </Center>
-          </a>
+          <Center inline className={classes.link} style={{ cursor: "pointer" }}>
+            <Box component="span" mr={5}>
+              Features
+            </Box>
+            <IconChevronDown size={16} color="purple" />
+          </Center>
         </Menu.Target>
 
         <Menu.Dropdown sx={{ overflow: "hidden" }}>

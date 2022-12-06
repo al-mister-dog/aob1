@@ -13,6 +13,7 @@ import {
   Group,
   Textarea,
   TextInput,
+  Loader,
 } from "@mantine/core";
 import { ToastContainer, toast } from "react-toastify";
 import { colors } from "../../../../config/colorPalette";
@@ -83,7 +84,36 @@ export default function AvatarComponent({ user, updatedBio, setUpdatedBio }) {
           }
           transitionDuration={100}
         >
-          <Text
+          
+          {updatedBio ? (
+            <Text
+              p={15}
+              pb={0}
+              size="sm"
+              mt={0}
+              mb={0}
+              color={colors.textColor}
+              align="justify"
+            >
+              {updatedBio}
+            </Text>
+          ) : data ? (
+            <Text
+              p={15}
+              pb={0}
+              size="sm"
+              mt={0}
+              mb={0}
+              color={colors.textColor}
+              align="justify"
+            >
+              {data.bio}
+            </Text>
+          ) : (
+            <Loader color="violet" size="xs" />
+          )}
+
+          {/* <Text
             p={15}
             pb={0}
             size="sm"
@@ -93,7 +123,7 @@ export default function AvatarComponent({ user, updatedBio, setUpdatedBio }) {
             align="justify"
           >
             {updatedBio ? updatedBio : data ? data.bio : " "}
-          </Text>
+          </Text> */}
         </Spoiler>
       </Center>
       <EditProfileButton

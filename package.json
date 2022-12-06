@@ -43,7 +43,6 @@
         "chartjs-plugin-annotation": "^2.0.1",
         "dayjs": "^1.11.5",
         "embla-carousel-react": "^7.0.5",
-        "enzyme-adapter-react-16": "^1.15.7",
         "framer-motion": "^7.6.1",
         "html-react-parser": "^3.0.4",
         "next": "latest",

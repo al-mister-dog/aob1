@@ -6,9 +6,9 @@ import useSWR from "swr";
 import { fetcher } from "../../lib/fetcher";
 import Loader from "../../components/shared-ui/loader";
 import { Box } from "@mantine/core";
-import { PrismaClient } from "@prisma/client";
 import { parseDate } from "../../helpers/api/parseDate";
 import { prisma } from "../../lib/prisma";
+
 interface Article {
   id: string;
   title: string;
@@ -25,13 +25,10 @@ interface Article {
   };
 }
 
-export default function UserArticle({ id }) {
-  const { data, error } = useSWR(`/api/articles/${id}`, fetcher);
-  let article: Article = data;
+export default function UserArticle({ article }: { article: Article }) {
   const isMobile = useMediaQuery(mediaQuery);
-  if (error) {
-    return <Box>{JSON.stringify(error)}</Box>;
-  } else if (article) {
+
+  if (article) {
     return isMobile ? (
       <ArticleMobile article={article} />
     ) : (
@@ -49,28 +46,20 @@ export default function UserArticle({ id }) {
 export async function getServerSideProps(context) {
   const id = context.query.id[1];
 
-  return { props: { id } };
+  const data = await prisma.post.findUnique({
+    where: { id },
+    include: {
+      user: true,
+    },
+  });
+
+  const article = {
+    id: data.id,
+    title: data.title,
+    body: data.body,
+    createdAt: parseDate(`${data.createdAt}`),
+    user: data.user,
+  };
+
+  return { props: { article } };
 }
-
-
-
-// export async function getServerSideProps(context) {
-//   const id = context.query.id[1];
-
-//   const data = await prisma.post.findUnique({
-//     where: { id },
-//     include: {
-//       user: true,
-//     },
-//   });
-
-//   const article = {
-//     id: data.id,
-//     title: data.title,
-//     body: data.body,
-//     createdAt: parseDate(`${data.createdAt}`),
-//     user: data.user,
-//   };
-
-//   return { props: { article } };
-// }

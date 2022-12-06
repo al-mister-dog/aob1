@@ -1,9 +1,10 @@
-import { Box, Text, Button, Divider, Loader } from "@mantine/core";
+import { Box, Text, Button, Divider, LoadingOverlay } from "@mantine/core";
 import Link from "next/link";
 import useSWR from "swr";
 import { colors } from "../../../../config/colorPalette";
 import { fetcher } from "../../../../lib/fetcher";
 import SessionContainer from "../../../auth/registration/SessionContainer";
+import Loader from "../../../shared-ui/loader";
 
 export default function Articles({ user }) {
   return (

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function MobileSignin({ closeDrawer }) {
   return (
-    <Group>
+    <Group position="center" grow pb="xl" px="md">
       <Auth closeDrawer={closeDrawer} />
     </Group>
   );
@@ -15,17 +15,19 @@ function Auth({ closeDrawer }) {
   const loading = status === "loading";
   if (!session && loading) {
     return (
-      <Group position="center" grow pb="xl" px="md">
+      <>
         <Skeleton height={10} width={100} />
         <Skeleton height={30} width={100} />
-      </Group>
+      </>
     );
   } else if (session?.user) {
     return (
       <>
-        <Link href="/community" passHref>
-          <Text>{session.user.name}</Text>
-        </Link>
+        <div onClick={closeDrawer}>
+          <Link href="/community/profile" passHref>
+            <Text>{session.user.name}</Text>
+          </Link>
+        </div>
 
         <Link href="/" passHref>
           <Button color="violet" onClick={() => signOut()}>

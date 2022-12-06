@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, Button, Text } from "@mantine/core";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useSWR from "swr";
 import { fetcher } from "../../../lib/fetcher";
@@ -87,7 +87,6 @@ export default function About({ user, updatedBio, setUpdatedBio }) {
           <p>{updatedBio ? updatedBio : data ? data.bio : " "}</p>
         )}
       </Box>
-      <ToastContainer />
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, Text, Button, Divider } from "@mantine/core";
+import { Box, Text, Button, Divider, Loader } from "@mantine/core";
 import Link from "next/link";
 import useSWR from "swr";
 import { colors } from "../../../../config/colorPalette";
@@ -41,7 +41,7 @@ function ArticlesList({ user }) {
   );
 
   if (!data) {
-    return <Box style={{ height: "100vh" }}></Box>;
+    return <Loader />;
   } else if (error) {
     return <>there was a problem retrieving articles</>;
   } else if (data.length === 0) {

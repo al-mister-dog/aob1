@@ -1,59 +1,49 @@
-import { createStyles, Group, Button, Avatar, Skeleton } from "@mantine/core";
-import { useSession, signOut, getSession } from "next-auth/react";
+import { Group, Button, Avatar, Skeleton } from "@mantine/core";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
-
-const useStyles = createStyles((theme) => ({
-  hiddenMobile: {
-    [theme.fn.smallerThan("sm")]: {
-      display: "none",
-    },
-  },
-}));
 
 export default function Auth() {
   const { data: session, status } = useSession();
-  const { classes } = useStyles();
+  const loading = status === "loading";
 
-  if (status === "loading") {
-    return (
-      <Group className={classes.hiddenMobile}>
-        <span>
-          <Skeleton height={40} circle />
-        </span>
-        <span>
-          <Skeleton height={30} width={100} />
-        </span>
-      </Group>
-    );
-  } else if (session) {
-    return (
-      <Group className={classes.hiddenMobile}>
-        <Link
-          href="/community/profile"
-          // as={`/community/users/@${session.user.name.split(" ").join("-")}`}
-          passHref
-        >
-          <Avatar
-            src={session.user.image || null}
-            alt={`${session.user.name} profile picture`}
-            radius="xl"
-            style={{ cursor: "pointer" }}
-          />
-        </Link>
-
-        <Link href="/" passHref>
-          <Button color="violet" onClick={() => signOut()}>
-            Sign out
-          </Button>
-        </Link>
-      </Group>
-    );
-  }
   return (
-    <Group className={classes.hiddenMobile}>
-      <Link href="/registration/signin" passHref>
-        <Button color="violet">Sign in</Button>
-      </Link>
+    <Group className="hidden-mobile">
+      {
+        // Check if the user is not signed in and the session data is still being fetched
+        !session && loading ? (
+          <>
+            <Skeleton height={38} circle />
+            <Skeleton height={30} width={94.84} />
+          </>
+        ) : // Check if the user is signed in and the session data is available
+        session.user ? (
+          <>
+            <Link
+              href="/community/profile"
+              // as={`/community/users/@${session.user.name.split(" ").join("-")}`}
+              passHref
+            >
+              <Avatar
+                src={session.user.image || null}
+                alt={`${session.user.name} profile picture`}
+                radius="xl"
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
+
+            <Link href="/" passHref>
+              <Button color="violet" onClick={() => signOut()}>
+                Sign out
+              </Button>
+            </Link>
+          </>
+        ) : (
+          // Otherwise, the user is not signed in and the session data is not being fetched
+          <Link href="/registration/signin" passHref>
+            <Button color="violet">Sign in</Button>
+          </Link>
+        )
+      }
     </Group>
   );
 }

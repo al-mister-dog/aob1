@@ -8,6 +8,7 @@ import { ChevronRight } from "tabler-icons-react";
 import image1 from "../../../../../../public/lectures-1.jpg";
 import image2 from "../../../../../../public/clearinghouse.jpeg";
 import fed2 from "../../../../../../public/fed-2.jpeg";
+import bull from "../../../../../../public/bull.jpeg"
 import Title from "../../../../shared-ui/texts/Title";
 import { colors } from "../../../../../config/colorPalette";
 
@@ -27,6 +28,7 @@ export default function Intro({ title, text, nextPath, id }) {
       img: fed2,
       alt: "President Wilson signing the Federal Reserve Act  1923 painting by Wilburg G. Kurtz; photo courtesy of Woodrow Wilson Presidential Library",
     },
+    {img: bull, alt: "The Charging Bull, a statue on Broadway in Manhattan"}
   ];
   const image = images[id];
 

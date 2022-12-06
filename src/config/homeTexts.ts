@@ -10,4 +10,7 @@ export const homeTexts = {
     text: `In this series of lectures, we will explore the inner workings of the Fed Funds market. We will examine how the Fed creates money to facilitate day-to-day payments between banks, how the Fed regulates credit growth, and how private banks serve as 'dealers' in the payment process. Finally, we will analyze the impact of the 2008 financial crisis on the national payments system.
         `,
   },
+  3: {
+    text: `In this series of lectures, we will examine another instrument traded in the money markets, the repo. Repos help banks and other financial institutions manage their liquidity and funding risks. We will see how the government and security dealers play a large part in this huge market.`
+  }
 };

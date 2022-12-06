@@ -194,4 +194,74 @@ export const sliderSettings = {
       overdraft: 100,
     },
   },
+  20: {
+    sliderSettings: {
+      overdraft: false,
+      reserveRequirement: true,
+      interestRate: false,
+    },
+    sliderFixtures: {
+      overdraft: 100,
+    },
+  },
+  21: {
+    sliderSettings: {
+      overdraft: false,
+      reserveRequirement: true,
+      interestRate: false,
+    },
+    sliderFixtures: {
+      overdraft: 100,
+    },
+  },
+  22: {
+    sliderSettings: {
+      overdraft: false,
+      reserveRequirement: true,
+      interestRate: false,
+    },
+    sliderFixtures: {
+      overdraft: 100,
+    },
+  },
+  23: {
+    sliderSettings: {
+      overdraft: false,
+      reserveRequirement: true,
+      interestRate: false,
+    },
+    sliderFixtures: {
+      overdraft: 100,
+    },
+  },
+  24: {
+    sliderSettings: {
+      overdraft: false,
+      reserveRequirement: true,
+      interestRate: false,
+    },
+    sliderFixtures: {
+      overdraft: 100,
+    },
+  },
+  25: {
+    sliderSettings: {
+      overdraft: false,
+      reserveRequirement: true,
+      interestRate: false,
+    },
+    sliderFixtures: {
+      overdraft: 100,
+    },
+  },
+  26: {
+    sliderSettings: {
+      overdraft: false,
+      reserveRequirement: true,
+      interestRate: false,
+    },
+    sliderFixtures: {
+      overdraft: 100,
+    },
+  },
 };

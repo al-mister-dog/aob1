@@ -44,6 +44,13 @@ export interface SecuritiesAccount {
   maturity?: number;
 }
 
+export interface ReposAccount {
+  id: number;
+  balance: number;
+  instrument: string;
+  maturity?: number;
+}
+
 export interface DuesAccount {
   id: number;
   subordinateId: number;
@@ -88,6 +95,9 @@ export interface SecuritiesAccounts {
   [key: string]: SecuritiesAccount[];
 }
 
+export interface ReposAccounts {
+  [key: string]: ReposAccount[];
+}
 export interface DuesAccounts {
   [key: string]: DuesAccount;
 }

@@ -128,4 +128,23 @@ export const CentralBank = {
     const centralbank = bankData.banks[0];
     Securities.addSecurities(centralbank, "Treasury Bills", amount);
   },
+  
 };
+
+
+//Normal Repo Transaction
+//First Leg
+//bank1 is borrowing money for treasuries
+//bank2 is lending money for treasuries
+//bank1 treasuries decrease
+//bank2 treasuries increase
+//bank1 bank deposits increase
+//bank2 bank deposits decrease
+
+//Second Leg
+//bank1 gives back money plus interest in return for treasuries
+//bank2 get back money plus interest in return for treasuries
+//bank1 treasuries increase
+//bank2 treasuries decrease
+//bank1 bank deposits decrease
+//bank2 bank deposits increase

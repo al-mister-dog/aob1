@@ -12,6 +12,8 @@ import {
   ReservesAccount,
   ReservesAccounts,
   SecuritiesAccounts,
+  ReposAccount,
+  ReposAccounts,
   CreditDataObject,
   SecuritiesAccount,
 } from "./types";
@@ -51,6 +53,12 @@ export let loanData = {
 export let securitiesData = {
   id: 0,
   accounts: {} as SecuritiesAccounts,
+  allIds: [],
+};
+
+export let reposData = {
+  id: 0,
+  accounts: {} as ReposAccounts,
   allIds: [],
 };
 
@@ -98,6 +106,17 @@ export const SecuritiesData = {
     let newSecurities = { ...securitiesData.accounts };
     newSecurities = { ...newSecurities, [securities.id]: securities };
     securitiesData = { ...securitiesData, accounts: newSecurities };
+  },
+};
+
+export const ReposData = {
+  assign(newReposData: any) {
+    securitiesData = { ...newReposData };
+  },
+  assignReposAccounts(repos: ReposAccount) {
+    let newRepos = { ...reposData.accounts };
+    newRepos = { ...newRepos, [repos.id]: repos };
+    reposData = { ...reposData, accounts: newRepos };
   },
 };
 

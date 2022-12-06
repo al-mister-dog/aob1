@@ -74,12 +74,6 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
     }`,
   },
-
-  hiddenMobile: {
-    [theme.fn.smallerThan("sm")]: {
-      display: "none",
-    },
-  },
 }));
 
 export default function HeaderGroup() {
@@ -111,7 +105,7 @@ export default function HeaderGroup() {
     </Link>
   ));
   return (
-    <Group sx={{ height: "100%" }} spacing={0} className={classes.hiddenMobile}>
+    <Group sx={{ height: "100%" }} spacing={0} className="hidden-mobile">
       <a href="/" className={classes.link}>
         Home
       </a>

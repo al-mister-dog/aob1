@@ -1,4 +1,4 @@
-import { fundamentalsText, clearinghouseText, theFedText } from "./texts";
+import { fundamentalsText, clearinghouseText, theFedText, reposText } from "./texts";
 
 export const introductoryTexts = {
   0: fundamentalsText.step1,
@@ -20,5 +20,14 @@ export const introductoryTexts = {
   16: theFedText.step3,
   17: theFedText.step4,
   18: theFedText.step5,
-  19: theFedText.step6
+  19: theFedText.step6,
+  20: reposText.step1,
+  21: reposText.step2,
+  22: reposText.step3,
+  23: reposText.step4,
+  24: reposText.step5,
+  25: reposText.step6,
+  26: reposText.step6,
+  27: reposText.step6,
+  28: reposText.step6,
 };

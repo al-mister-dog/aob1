@@ -347,4 +347,65 @@ export const setupFunctions: SetupFunctions = {
     GraphData.setCentralBankGraphData();
     Record.setRound();
   },
+  20(){},
+  21() {
+    clearBankData();
+    System.setSystem("centralbank");
+    BankingSystem.createBank("Bank 1", "bank", 0, 100);
+    BankingSystem.createBank("Bank 2", "bank", 0, 100);
+    Securities.createSecurity(bankData.banks[0], "Treasury Bills", 200);
+    Securities.createSecurity(bankData.banks[1], "Treasury Bills", 200);
+    GraphData.setCentralBankGraphData();
+    Record.setRound();
+  },
+  22() {
+    clearBankData();
+    System.setSystem("centralbank");
+    BankingSystem.createBank("Bank 1", "bank", 0, 100);
+    BankingSystem.createBank("Bank 2", "bank", 0, 100);
+    Securities.createSecurity(bankData.banks[0], "Treasury Bills", 200);
+    Securities.createSecurity(bankData.banks[1], "Treasury Bills", 200);
+    GraphData.setCentralBankGraphData();
+    Record.setRound();
+  },
+  23() {
+    clearBankData();
+    System.setSystem("centralbank");
+    BankingSystem.createBank("Bank 1", "bank", 0, 100);
+    BankingSystem.createBank("Bank 2", "bank", 0, 100);
+    Securities.createSecurity(bankData.banks[0], "Treasury Bills", 200);
+    Securities.createSecurity(bankData.banks[1], "Treasury Bills", 200);
+    GraphData.setCentralBankGraphData();
+    Record.setRound();
+  },
+  24() {
+    clearBankData();
+    System.setSystem("centralbank");
+    BankingSystem.createBank("Bank 1", "bank", 0, 100);
+    BankingSystem.createBank("Bank 2", "bank", 0, 100);
+    Securities.createSecurity(bankData.banks[0], "Treasury Bills", 200);
+    Securities.createSecurity(bankData.banks[1], "Treasury Bills", 200);
+    GraphData.setCentralBankGraphData();
+    Record.setRound();
+  },
+  25() {
+    clearBankData();
+    System.setSystem("centralbank");
+    BankingSystem.createBank("Bank 1", "bank", 0, 100);
+    BankingSystem.createBank("Bank 2", "bank", 0, 100);
+    Securities.createSecurity(bankData.banks[0], "Treasury Bills", 200);
+    Securities.createSecurity(bankData.banks[1], "Treasury Bills", 200);
+    GraphData.setCentralBankGraphData();
+    Record.setRound();
+  },
+  26() {
+    clearBankData();
+    System.setSystem("centralbank");
+    BankingSystem.createBank("Bank 1", "bank", 0, 100);
+    BankingSystem.createBank("Bank 2", "bank", 0, 100);
+    Securities.createSecurity(bankData.banks[0], "Treasury Bills", 200);
+    Securities.createSecurity(bankData.banks[1], "Treasury Bills", 200);
+    GraphData.setCentralBankGraphData();
+    Record.setRound();
+  }
 };

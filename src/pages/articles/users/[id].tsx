@@ -5,13 +5,6 @@ import { colors } from "../../../config/colorPalette";
 import Link from "next/link";
 import { getSession } from "next-auth/react";
 
-interface Article {
-  id: string;
-  title: string;
-  preview: string;
-  createdAt: string;
-  user: {};
-}
 export default function UserArticles({ articles }) {
   return (
     <>
@@ -59,7 +52,7 @@ export async function getServerSideProps(context) {
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
   });
-  
+
   const data = await prisma.post.findMany({
     where: { userId: context.query.id },
     include: {

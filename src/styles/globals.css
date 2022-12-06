@@ -194,3 +194,10 @@ a {
 .embla__slide--thumb.is-selected .embla__slide__thumbnail {
   opacity: 1;
 }
+
+
+@media (max-width: 599px) {
+  .hidden-mobile {
+    display: none;
+  }
+}

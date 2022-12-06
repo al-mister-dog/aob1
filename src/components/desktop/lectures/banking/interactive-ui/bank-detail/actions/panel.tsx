@@ -10,6 +10,7 @@ export default function ActionsPanel({ bank }: { bank: CardInfo }) {
   const { actions } = useAppSelector(selectActions);
   const [action, setAction] = useState<string | null>(null);
   const theme = useMantineTheme();
+  console.log(actions)
   let actionData = actions[bank.cardInfo.type];
 
   if (actionData === undefined || actionData.length === 0) {

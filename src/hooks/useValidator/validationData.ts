@@ -494,4 +494,11 @@ export const validatorsById = {
   17: validatorsByLecture.fed,
   18: validatorsByLecture.fed,
   19: validatorsByLecture.fed,
+  20: validatorsByLecture.fed,
+  21: validatorsByLecture.fed,
+  22: validatorsByLecture.fed,
+  23: validatorsByLecture.fed,
+  24: validatorsByLecture.fed,
+  25: validatorsByLecture.fed,
+  26: validatorsByLecture.fed,
 };

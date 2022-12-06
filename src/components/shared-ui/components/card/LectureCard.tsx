@@ -32,7 +32,7 @@ export default function LectureCard({
         backgroundColor: colors.background2,
         paddingBottom: "0px",
         cursor: "pointer",
-        border: hovered ? hoverBorder : "",
+        border: hovered ? hoverBorder : "inherit",
       }}
       onClick={onClick}
     >

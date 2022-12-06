@@ -1,6 +1,5 @@
 import ArticleDesktop from "../../components/desktop/articles/users/article";
 import ArticleMobile from "../../components/mobile/articles/users/article";
-
 import { useMediaQuery } from "@mantine/hooks";
 import { mediaQuery } from "../../config/media-query";
 import useSWR from "swr";
@@ -47,5 +46,6 @@ export default function UserArticle({ id }) {
 
 export async function getServerSideProps(context) {
   const id = context.query.id[1];
+
   return { props: { id } };
 }

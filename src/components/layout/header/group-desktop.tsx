@@ -106,9 +106,9 @@ export default function HeaderGroup() {
   ));
   return (
     <Group sx={{ height: "100%" }} spacing={0} className="hidden-mobile">
-      <a href="/" className={classes.link}>
+       <Link href="/" className={classes.link}>
         Home
-      </a>
+      </Link>
       <Menu
         width={600}
         position="bottom"

@@ -6,7 +6,7 @@ import HeroDesktop from "../components/hero/hero-test";
 import HeroMobile from "../components/hero/hero-mobile";
 import { Box } from "@mantine/core";
 
-function IndexPage() {
+const IndexPage: NextPage = () => {
   const loaded = useLoaded();
   const isMobile = useMediaQuery(mediaQuery);
 
@@ -15,8 +15,6 @@ function IndexPage() {
   } else {
     return <Box style={{ height: "100vh" }}></Box>;
   }
-}
+};
 
 export default IndexPage;
-
-// const IndexPage: NextPage = () => {

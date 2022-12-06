@@ -78,7 +78,7 @@ export default function TextEditor({ user, article }) {
   return (
     <Box>
       <LoadingOverlay
-        visible={true}
+        visible={loading}
         loaderProps={{ color: "violet", size: "xl" }}
       />
       <Box mt={25}>

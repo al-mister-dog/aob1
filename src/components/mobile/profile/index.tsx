@@ -26,7 +26,7 @@ function HeaderTabs({ user }) {
       </Tabs.List>
 
       <Tabs.Panel value="first" pt="xs">
-        <ArticlesList />
+        <ArticlesList user={user} />
       </Tabs.Panel>
 
       <Tabs.Panel value="second" pt="xs">

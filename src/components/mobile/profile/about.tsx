@@ -44,11 +44,11 @@ export default function About({ user }) {
     });
   }
   return (
-    <Box mt={25} p={25}>
+    <Box mt={25} p={25} style={{minHeight: "50vh"}}>
       <Box
         style={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "row-reverse",
           justifyContent: "space-between",
           alignItems: "center",
         }}

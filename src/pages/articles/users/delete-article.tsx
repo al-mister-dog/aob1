@@ -1,13 +1,12 @@
 import { prisma } from "../../../lib/prisma";
-import { Box, Button, Group, Text } from "@mantine/core";
+import { Box, Button, Group, LoadingOverlay, Text } from "@mantine/core";
 import axios from "axios";
 import { getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
-import Loader from "../../../components/shared-ui/loader";
 import { useState } from "react";
 
-export default function NewArticle({ article, user }) {
+export default function NewArticle({ article }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   async function deleteArticle() {
@@ -16,7 +15,6 @@ export default function NewArticle({ article, user }) {
       data: { id: article.id },
     });
     if (status === 201) {
-      setLoading(false);
       router.replace("/community/users");
     } else {
       setLoading(false);
@@ -36,45 +34,37 @@ export default function NewArticle({ article, user }) {
     }
   }
 
-  if (loading) {
-    return (
+  return (
+    <>
       <Box
+        mt={100}
         style={{
-          minWidth: 390,
-          maxWidth: "50%",
-          margin: "auto",
-          marginTop: 50,
+          height: "100vh",
         }}
       >
-        <Loader />
+        <Box style={{ margin: "auto", width: "350px" }}>
+          <h3>Delete "{article.title}"</h3>
+          <Text>Are you sure you want to delete this article?!</Text>
+          <Group mt={10}>
+            <Button
+              variant="outline"
+              color="violet"
+              onClick={() => router.replace(`/community/users`)}
+            >
+              Cancel
+            </Button>
+            <Button variant="filled" color="red" onClick={deleteArticle}>
+              Delete
+            </Button>
+          </Group>
+        </Box>
       </Box>
-    );
-  }
-  return (
-    <Box
-      mt={100}
-      style={{
-        height: "100vh",
-      }}
-    >
-      <Box style={{ marginLeft: 50 }}>
-        <h3>Delete {article.title}</h3>
-        <Text>Are you sure you want to delete this article?</Text>
-        <Group mt={10}>
-          <Button
-            variant="outline"
-            onClick={() => router.replace(`/community/users`)}
-          >
-            Cancel
-          </Button>
-          <Button variant="filled" color="red" onClick={deleteArticle}>
-            Delete
-          </Button>
-        </Group>
-      </Box>
-
+      <LoadingOverlay
+        visible={loading}
+        loaderProps={{ color: "violet", size: "xl" }}
+      />
       <ToastContainer />
-    </Box>
+    </>
   );
 }
 export async function getServerSideProps(context) {
@@ -103,7 +93,9 @@ export async function getServerSideProps(context) {
     path: data.path,
     userId: data.userId,
   };
+
   const user = data.user;
+
   return {
     props: { article, user },
   };

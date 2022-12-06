@@ -12,13 +12,20 @@ import TextAlign from "@tiptap/extension-text-align";
 import Superscript from "@tiptap/extension-superscript";
 import SubScript from "@tiptap/extension-subscript";
 
-import { Box, Text, TextInput, Button, Textarea } from "@mantine/core";
+import {
+  Box,
+  Text,
+  TextInput,
+  Button,
+  Textarea,
+  LoadingOverlay,
+} from "@mantine/core";
 
 //<sub> <sup>
 export default function TextEditor({ user }) {
   const { email } = user;
   const router = useRouter();
-  const [error, setError] = useState(false);
+
   const [article, setArticle] = useState("");
   const [title, setTitle] = useState("");
   const [preview, setPreview] = useState("");
@@ -53,7 +60,6 @@ export default function TextEditor({ user }) {
       email,
     });
     if (status === 201) {
-      setLoading(false);
       router.replace("/community/users");
     } else {
       setLoading(false);
@@ -76,22 +82,12 @@ export default function TextEditor({ user }) {
   const previewPlaceholder =
     editor !== null ? editor.getText().slice(0, 250) : "";
 
-    if (loading) {
-      return (
-        <Box
-          style={{
-            minWidth: 390,
-            maxWidth: "50%",
-            margin: "auto",
-            marginTop: 50,
-          }}
-        >
-          <Loader />
-        </Box>
-      );
-    }
   return (
     <Box>
+      <LoadingOverlay
+        visible={loading}
+        loaderProps={{ color: "violet",  size: "xl" }}
+      />
       <Box mt={25}>
         <TextInput
           label="Title"

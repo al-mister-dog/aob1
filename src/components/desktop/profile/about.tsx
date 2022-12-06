@@ -54,7 +54,7 @@ export default function About({ user, updatedBio, setUpdatedBio }) {
       <Box
         style={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "row-reverse",
           justifyContent: "space-between",
           alignItems: "center",
         }}

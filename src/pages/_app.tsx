@@ -30,6 +30,7 @@ export default function MyApp({
             theme={{
               colorScheme: "light",
               fontFamily: "Poppins, EB Garamond, Roboto",
+              loader: 'dots'
             }}
           >
             <Layout>

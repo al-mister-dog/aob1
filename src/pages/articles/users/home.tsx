@@ -1,7 +1,7 @@
 import Link from "next/link";
 import useSWR from "swr";
 import { fetcher } from "../../../lib/fetcher";
-import { Box, Tabs, Divider } from "@mantine/core";
+import { Box, Tabs, Divider, LoadingOverlay } from "@mantine/core";
 import ArticleToolbar from "../../../components/desktop/articles/users/article-toolbar";
 import Loader from "../../../components/shared-ui/loader";
 import { colors } from "../../../config/colorPalette";
@@ -82,5 +82,14 @@ function HeaderTabs() {
         Explore Section
       </Tabs.Panel>
     </Tabs>
+  );
+}
+
+function FeaturedArticles() {
+  const { data, error } = useSWR(`/api/articles/`, fetcher);
+  return (
+    <>
+      <LoadingOverlay visible={data} />
+    </>
   );
 }

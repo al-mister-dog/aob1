@@ -11,8 +11,17 @@ import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import Superscript from "@tiptap/extension-superscript";
 import SubScript from "@tiptap/extension-subscript";
+import { colors } from "../../../../config/colorPalette";
 
-import { Box, Text, TextInput, Button, Textarea, Loader } from "@mantine/core";
+import {
+  Box,
+  Text,
+  TextInput,
+  Button,
+  Textarea,
+  Loader,
+  LoadingOverlay,
+} from "@mantine/core";
 
 //<sub> <sup>
 export default function TextEditor({ user, article }) {
@@ -65,22 +74,13 @@ export default function TextEditor({ user, article }) {
       );
     }
   }
-  if (loading) {
-    return (
-      <Box
-        style={{
-          minWidth: 390,
-          maxWidth: "50%",
-          margin: "auto",
-          marginTop: 50,
-        }}
-      >
-        <Loader />
-      </Box>
-    );
-  }
+
   return (
     <Box>
+      <LoadingOverlay
+        visible={true}
+        loaderProps={{ color: "violet", size: "xl" }}
+      />
       <Box mt={25}>
         <TextInput
           label="Title"
@@ -155,7 +155,3 @@ export default function TextEditor({ user, article }) {
     </Box>
   );
 }
-
-import parse from "html-react-parser";
-import { colors } from "../../../../config/colorPalette";
-import Router from "next/router";

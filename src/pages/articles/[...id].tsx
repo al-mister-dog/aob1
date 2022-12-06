@@ -6,7 +6,9 @@ import useSWR from "swr";
 import { fetcher } from "../../lib/fetcher";
 import Loader from "../../components/shared-ui/loader";
 import { Box } from "@mantine/core";
-
+import { PrismaClient } from "@prisma/client";
+import { parseDate } from "../../helpers/api/parseDate";
+import { prisma } from "../../lib/prisma";
 interface Article {
   id: string;
   title: string;
@@ -28,7 +30,7 @@ export default function UserArticle({ id }) {
   let article: Article = data;
   const isMobile = useMediaQuery(mediaQuery);
   if (error) {
-    return <Box>Sorry, we couldn't load article at this time</Box>;
+    return <Box>{JSON.stringify(error)}</Box>;
   } else if (article) {
     return isMobile ? (
       <ArticleMobile article={article} />
@@ -49,3 +51,26 @@ export async function getServerSideProps(context) {
 
   return { props: { id } };
 }
+
+
+
+// export async function getServerSideProps(context) {
+//   const id = context.query.id[1];
+
+//   const data = await prisma.post.findUnique({
+//     where: { id },
+//     include: {
+//       user: true,
+//     },
+//   });
+
+//   const article = {
+//     id: data.id,
+//     title: data.title,
+//     body: data.body,
+//     createdAt: parseDate(`${data.createdAt}`),
+//     user: data.user,
+//   };
+
+//   return { props: { article } };
+// }

@@ -2,19 +2,27 @@ import { Group, Button, Text, Skeleton } from "@mantine/core";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
-export default function Auth({ closeDrawer }) {
-  const { data: session, status } = useSession();
+export default function MobileSignin({ closeDrawer }) {
+  return (
+    <Group>
+      <Auth closeDrawer={closeDrawer} />
+    </Group>
+  );
+}
 
-  if (status === "loading") {
+function Auth({ closeDrawer }) {
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
+  if (!session && loading) {
     return (
       <Group position="center" grow pb="xl" px="md">
         <Skeleton height={10} width={100} />
         <Skeleton height={30} width={100} />
       </Group>
     );
-  } else if (session) {
+  } else if (session?.user) {
     return (
-      <Group position="center" grow pb="xl" px="md">
+      <>
         <Link href="/community" passHref>
           <Text>{session.user.name}</Text>
         </Link>
@@ -24,17 +32,15 @@ export default function Auth({ closeDrawer }) {
             Sign out
           </Button>
         </Link>
-      </Group>
+      </>
     );
-  }
-
-  return (
-    <Group position="center" grow pb="xl" px="md">
+  } else {
+    return (
       <Link href="/registration/signin" passHref>
         <Button color="violet" variant="default" onClick={closeDrawer}>
           Sign in
         </Button>
       </Link>
-    </Group>
-  );
+    );
+  }
 }

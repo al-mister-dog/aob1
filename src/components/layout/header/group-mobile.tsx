@@ -14,8 +14,6 @@ import {
 } from "@mantine/core";
 
 import { IconChevronDown } from "@tabler/icons";
-
-import Link from "next/link";
 import LecturesContent from "../../navigation/nav-learn-content/lectures-list-mobile";
 import ArticlesContent from "../../navigation/nav-learn-content/articles-list-mobile";
 import { features } from "./features-data";

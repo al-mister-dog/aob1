@@ -6,9 +6,9 @@ async function get(req, res) {
   const userByEmail = await prisma.user.findUnique({
     where: { email },
   });
-  console.log(userByEmail)
+
   const data = await prisma.post.findMany({
-    where: {userId: userByEmail.id},
+    where: { userId: userByEmail.id },
     select: {
       id: true,
       title: true,

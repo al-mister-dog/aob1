@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const financialAlgorithms = {
   getExpectedValue: (probabilities: number[], values: number[]) => {
     let expectedValue = 0;
@@ -205,3 +207,59 @@ const probabilities = {
     return probability;
   },
 };
+
+export default function Finance() {
+  const [probabilities, setProbabilities] = useState<number[]>([]);
+  const [values, setValues] = useState<number[]>([]);
+  const [value, setValue] = useState<number>(0);
+  const [min, setMin] = useState<number>(0);
+  const [max, setMax] = useState<number>(0);
+  const [expectedMean, setExpectedMean] = useState<number>(0);
+  const [expectedAverage, setExpectedAverage] = useState<number>(0);
+  const [expectedMedian, setExpectedMedian] = useState<number>(0);
+  const [standardDeviation, setStandardDeviation] = useState<number>(0);
+  const [variance, setVariance] = useState<number>(0);
+  const [probability, setProbability] = useState<number>(0);
+  const [probabilityRange, setProbabilityRange] = useState<number>(0);
+  const [probabilityLessThan, setProbabilityLessThan] = useState<number>(0);
+  const [probabilityGreaterThan, setProbabilityGreaterThan] =
+    useState<number>(0);
+  const [probabilityLessThanEqualTo, setProbabilityLessThanEqualTo] =
+    useState<number>(0);
+  const [probabilityGreaterThanEqualTo, setProbabilityGreaterThanEqualTo] =
+    useState<number>(0);
+  const [probabilityNotEqualTo, setProbabilityNotEqualTo] = useState<number>(0);
+  const [probabilityEqualTo, setProbabilityEqualTo] = useState<number>(0);
+  const [probabilityBetween, setProbabilityBetween] = useState<number>(0);
+  const [probabilityOutside, setProbabilityOutside] = useState<number>(0);
+  const [probabilityOutsideEqualTo, setProbabilityOutsideEqualTo] =
+    useState<number>(0);
+  const [probabilityBetweenEqualTo, setProbabilityBetweenEqualTo] =
+    useState<number>(0);
+
+  const handleProbabilities = (e: any) => {
+    setProbabilities(e.target.value.split(",").map((x: string) => +x));
+  };
+
+  const handleValues = (e: any) => {
+    setValues(e.target.value.split(",").map((x: string) => +x));
+  };
+
+  const handleValue = (e: any) => {
+    setValue(+e.target.value);
+  };
+
+  const handleMin = (e: any) => {
+    setMin(+e.target.value);
+  };
+
+  const handleMax = (e: any) => {
+    setMax(+e.target.value);
+  };
+
+  return (
+    <>
+      <h1>Financial Algorithms</h1>
+    </>
+  );
+}
